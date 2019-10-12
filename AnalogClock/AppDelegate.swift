@@ -10,8 +10,14 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
+    
+    // Clock settings with defaults
+    var settings = AppSettings(
+        clockType: .twelveHour,
+        hasAnalogClock: true,
+        hasDigitalClock: true,
+        hasDateDisplay: true
+    )
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
