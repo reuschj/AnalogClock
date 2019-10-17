@@ -14,9 +14,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Clock settings with defaults
     var settings = AppSettings(
         clockType: .twelveHour,
-        hasAnalogClock: true,
-        hasDigitalClock: true,
-        hasDateDisplay: true
+        precision: .low,
+        showAnalogClock: true,
+        showDigitalClock: true,
+        showDateDisplay: true,
+        showTickMarks: false,
+        showPeriodDisplay: false,
+        showTickTockDisplay: false
     )
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
