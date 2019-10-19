@@ -50,6 +50,7 @@ struct ContentView: View {
                     Text("Low").tag(TimeEmitter(updatedEvery: ClockPrecision.low.rawValue))
                     Text("Medium").tag(TimeEmitter(updatedEvery: ClockPrecision.medium.rawValue))
                     Text("High").tag(TimeEmitter(updatedEvery: ClockPrecision.high.rawValue))
+                    Text("Higher").tag(TimeEmitter(updatedEvery: ClockPrecision.veryHigh.rawValue))
             }).pickerStyle(SegmentedPickerStyle()).padding()
             Spacer()
             
