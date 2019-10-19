@@ -16,7 +16,7 @@ struct ContentView: View {
     @ObservedObject var settings = getAppSettings()
     
     /// This will keep the current time, updated on a regular interval
-    var timeEmitter = TimeEmitter(updatedEvery: 1.0)
+    @State var timeEmitter = TimeEmitter(updatedEvery: getAppSettings().actualPrecision.rawValue)
     
     /// Clock dipslay state
     @State var selection = 2
@@ -42,6 +42,16 @@ struct ContentView: View {
                     Spacer()
                 }
             }
+            Text("Precision: \(timeEmitter.interval)")
+            
+            Picker(selection: $timeEmitter, label:
+                Text("Precision")
+                , content: {
+                    Text("Low").tag(TimeEmitter(updatedEvery: ClockPrecision.low.rawValue))
+                    Text("Medium").tag(TimeEmitter(updatedEvery: ClockPrecision.medium.rawValue))
+                    Text("High").tag(TimeEmitter(updatedEvery: ClockPrecision.high.rawValue))
+            }).pickerStyle(SegmentedPickerStyle()).padding()
+            Spacer()
             
             Picker(selection: $selection, label:
                 Text("Picker Name")
