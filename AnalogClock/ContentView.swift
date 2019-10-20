@@ -32,6 +32,10 @@ struct ContentView: View {
     private var showAnalogClock: Bool { selection == 0 || selection == 2 }
     /// Getter for digital clock display flag
     private var showDigitalClock: Bool { selection == 1 || selection == 2 }
+    /// Show the date display
+    @State private var showDateDisplay: Bool = getAppSettings().visibleModules.dateDisplay {
+        didSet { getAppSettings().visibleModules.dateDisplay = self.showDateDisplay }
+    }
     
     var body: some View {
         VStack {
@@ -55,8 +59,10 @@ struct ContentView: View {
                         .padding()
                     Spacer()
                 }
-                DateDisplay(timeEmitter: timeEmitter).padding()
-                Spacer()
+                if showDateDisplay {
+                    DateDisplay(timeEmitter: timeEmitter).padding()
+                    Spacer()
+                }
             }
             if showSettings {
                 
@@ -82,6 +88,17 @@ struct ContentView: View {
                     }).pickerStyle(SegmentedPickerStyle())
                 }.padding()
                 Spacer()
+//                VStack {
+//                    HStack {
+//                        Text("Show date display").font(.subheadline)
+//                        Spacer()
+//                    }
+//                    Toggle(
+//                    isOn: $showDateDisplay) {
+//                        Text("Show date display")
+//                    }
+//                }.padding()
+//                Spacer()
                 VStack {
                     HStack {
                         Text("Clock type").font(.subheadline)
