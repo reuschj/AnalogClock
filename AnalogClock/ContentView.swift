@@ -16,10 +16,13 @@ struct ContentView: View {
     @ObservedObject var settings = getAppSettings()
     
     /// This will keep the current time, updated on a regular interval
-    @State var timeEmitter = TimeEmitter(updatedEvery: getAppSettings().actualPrecision.rawValue)
+    @State var timeEmitter = TimeEmitter(precision: getAppSettings().actualPrecision)
     
     /// Clock dipslay state
-    @State var selection = 2
+    @State private var selection = 2
+    
+    /// Display settings controls
+    @State private var showSettings: Bool = false
     
     /// Getter for analog clock display flag
     private var showAnalogClock: Bool { selection == 0 || selection == 2 }
@@ -28,6 +31,13 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
+            
+            HStack {
+                Spacer()
+                Button(action: { self.showSettings = !self.showSettings }) {
+                    Text(self.showSettings ? "Hide Settings" : "Show Settings")
+                }.padding()
+            }
             
             VStack {
                 Spacer()
@@ -42,25 +52,32 @@ struct ContentView: View {
                     Spacer()
                 }
             }
-            Text("Precision: \(timeEmitter.interval)")
-            
-            Picker(selection: $timeEmitter, label:
-                Text("Precision")
-                , content: {
-                    Text("Low").tag(TimeEmitter(updatedEvery: ClockPrecision.low.rawValue))
-                    Text("Medium").tag(TimeEmitter(updatedEvery: ClockPrecision.medium.rawValue))
-                    Text("High").tag(TimeEmitter(updatedEvery: ClockPrecision.high.rawValue))
-                    Text("Higher").tag(TimeEmitter(updatedEvery: ClockPrecision.veryHigh.rawValue))
-            }).pickerStyle(SegmentedPickerStyle()).padding()
-            Spacer()
-            
-            Picker(selection: $selection, label:
-                Text("Picker Name")
-                , content: {
-                    Text("Analog").tag(0)
-                    Text("Digital").tag(1)
-                    Text("Both").tag(2)
-            }).pickerStyle(SegmentedPickerStyle()).padding()
+            if showSettings {
+                
+                Divider()
+                
+                Text("Settings").font(.title)
+                Spacer()
+                Picker(selection: $timeEmitter, label:
+                    Text("Precision")
+                    , content: {
+                        Text("Low").tag(TimeEmitter(precision: ClockPrecision.low))
+                        Text("Medium").tag(TimeEmitter(precision: ClockPrecision.medium))
+                        Text("High").tag(TimeEmitter(precision: ClockPrecision.high))
+                        Text("Higher").tag(TimeEmitter(precision: ClockPrecision.veryHigh))
+                }).pickerStyle(SegmentedPickerStyle()).padding()
+                Text("Precision").font(.callout)
+                Text("\(timeEmitter.interval)").font(.caption)
+                Spacer()
+                Picker(selection: $selection, label:
+                    Text("Show modules")
+                    , content: {
+                        Text("Analog").tag(0)
+                        Text("Digital").tag(1)
+                        Text("Both").tag(2)
+                }).pickerStyle(SegmentedPickerStyle()).padding()
+                Spacer()
+            }
             Spacer()
         }
     }
