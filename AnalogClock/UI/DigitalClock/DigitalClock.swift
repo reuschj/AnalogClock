@@ -23,8 +23,32 @@ struct DigitalClock: View {
             TimeTextBlock(text: time.paddedMinute)
             DigitalClockSeperator()
             TimeTextBlock(text: time.paddedSecond)
-            DigitalClockSeperator()
-            TimeTextBlock(text: time.period?.rawValue)
+            if type == .twelveHour {
+                DigitalClockSeperator()
+                TimeTextBlock(text: time.period?.rawValue)
+            }
+            Spacer()
+        }
+    }
+}
+
+struct DateDisplay: View {
+    
+    @ObservedObject var timeEmitter: TimeEmitter
+    
+    var time: TimeKeeper { timeEmitter.time }
+    
+    var font: Font = .body
+    
+    var body: some View {
+        HStack {
+            Spacer()
+            TimeTextBlock(text: time.dayOfWeek, font: font)
+            TimeTextBlock(text: ",", font: font)
+            TimeTextBlock(text: time.monthName, font: font)
+            TimeNumberBlock(number: time.day, font: font)
+            TimeTextBlock(text: ",", font: font)
+            TimeNumberBlock(number: time.year, font: font)
             Spacer()
         }
     }

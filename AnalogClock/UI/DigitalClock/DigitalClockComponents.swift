@@ -29,9 +29,11 @@ struct TimeTextBlock: View {
     
     var color: Color = .primary
     
+    var font: Font = .title
+    
     var body: some View {
         Text(text ?? "")
-            .font(.title)
+            .font(font)
             .foregroundColor(color)
     }
 }
@@ -42,7 +44,9 @@ struct TimeNumberBlock: View {
     
     var color: Color = .primary
     
+    var font: Font = .title
+    
     var body: some View {
-        TimeTextBlock(text: "\(number ?? 0)", color: color)
+        TimeTextBlock(text: "\(number ?? 0)", color: color, font: font)
     }
 }

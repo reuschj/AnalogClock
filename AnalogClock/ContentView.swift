@@ -18,6 +18,10 @@ struct ContentView: View {
     /// This will keep the current time, updated on a regular interval
     @State var timeEmitter = TimeEmitter(precision: getAppSettings().actualPrecision)
     
+    @State private var clockType: ClockType = getAppSettings().clockType {
+        didSet { getAppSettings().clockType = self.clockType }
+    }
+
     /// Clock dipslay state
     @State private var selection = 2
     
@@ -42,40 +46,72 @@ struct ContentView: View {
             VStack {
                 Spacer()
                 if showAnalogClock {
-                    AnalogClock(timeEmitter: timeEmitter)
+                    AnalogClock(timeEmitter: timeEmitter, type: clockType)
                         .padding()
                     Spacer()
                 }
                 if showDigitalClock {
-                    DigitalClock(timeEmitter: timeEmitter, type: ClockType.twelveHour)
+                    DigitalClock(timeEmitter: timeEmitter, type: clockType)
                         .padding()
                     Spacer()
                 }
+                DateDisplay(timeEmitter: timeEmitter).padding()
+                Spacer()
             }
             if showSettings {
                 
                 Divider()
                 
-                Text("Settings").font(.title)
+                HStack {
+                    Text("Settings").font(.title)
+                    Spacer()
+                }.padding()
                 Spacer()
-                Picker(selection: $timeEmitter, label:
-                    Text("Precision")
-                    , content: {
-                        Text("Low").tag(TimeEmitter(precision: ClockPrecision.low))
-                        Text("Medium").tag(TimeEmitter(precision: ClockPrecision.medium))
-                        Text("High").tag(TimeEmitter(precision: ClockPrecision.high))
-                        Text("Higher").tag(TimeEmitter(precision: ClockPrecision.veryHigh))
-                }).pickerStyle(SegmentedPickerStyle()).padding()
-                Text("Precision").font(.callout)
-                Text("\(timeEmitter.interval)").font(.caption)
+                VStack {
+                    HStack {
+                        Text("Show clocks").font(.subheadline)
+                        Spacer()
+                    }
+                    Picker(
+                        selection: $selection,
+                        label: Text("Show modules"),
+                        content: {
+                            Text("Analog").tag(0)
+                            Text("Digital").tag(1)
+                            Text("Both").tag(2)
+                    }).pickerStyle(SegmentedPickerStyle())
+                }.padding()
                 Spacer()
-                Picker(selection: $selection, label:
-                    Text("Show modules")
-                    , content: {
-                        Text("Analog").tag(0)
-                        Text("Digital").tag(1)
-                        Text("Both").tag(2)
-                }).pickerStyle(SegmentedPickerStyle()).padding()
+                VStack {
+                    HStack {
+                        Text("Clock type").font(.subheadline)
+                        Spacer()
+                    }
+                    Picker(
+                        selection: $clockType,
+                        label: Text("Show modules"),
+                        content: {
+                            Text("12-hour").tag(ClockType.twelveHour)
+                            Text("24-hour").tag(ClockType.twentyFourHour)
+                    }).pickerStyle(SegmentedPickerStyle())
+                }.padding()
+                Spacer()
+                VStack {
+                    HStack {
+                        Text("Precision").font(.subheadline)
+                        Spacer()
+                        Text("\(round(timeEmitter.interval * 1_000) / 1_000)").font(.subheadline)
+                    }
+                    Picker(
+                        selection: $timeEmitter,
+                        label: Text("Precision"),
+                        content: {
+                            Text("Low").tag(TimeEmitter(precision: ClockPrecision.low))
+                            Text("Medium").tag(TimeEmitter(precision: ClockPrecision.medium))
+                            Text("High").tag(TimeEmitter(precision: ClockPrecision.high))
+                            Text("Higher").tag(TimeEmitter(precision: ClockPrecision.veryHigh))
+                    }).pickerStyle(SegmentedPickerStyle())
+                }.padding()
                 Spacer()
             }
             Spacer()
