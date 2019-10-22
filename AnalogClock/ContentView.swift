@@ -88,6 +88,11 @@ struct ContentView: View {
                 
                 Divider()
                 
+                HStack {
+                    Text("Setttings").font(.title).padding()
+                    Spacer()
+                }
+                
                 SettingsModule(title: "Show modules") {
                     Toggle(isOn: $showAnalogClock) {
                         Text("Analog clock")

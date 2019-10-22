@@ -37,7 +37,7 @@
 		A4FEB0D023582BDF00EA11F9 /* ClockNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FEB0CF23582BDF00EA11F9 /* ClockNumbers.swift */; };
 		A4FEB0D223582C0300EA11F9 /* ClockHands.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FEB0D123582C0300EA11F9 /* ClockHands.swift */; };
 		A4FEB0D523582C4900EA11F9 /* DigitalClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FEB0D423582C4900EA11F9 /* DigitalClockView.swift */; };
-		A4FEB0D723582C6E00EA11F9 /* DigitalClockComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FEB0D623582C6E00EA11F9 /* DigitalClockComponents.swift */; };
+		A4FEB0D723582C6E00EA11F9 /* DigitalClockDateComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FEB0D623582C6E00EA11F9 /* DigitalClockDateComponents.swift */; };
 		A4FEB0D923582EA500EA11F9 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FEB0D823582EA500EA11F9 /* Utilities.swift */; };
 		A4FEB0DB2358335F00EA11F9 /* ClockPrecision.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FEB0DA2358335F00EA11F9 /* ClockPrecision.swift */; };
 		A4FEB0DE235CCCE300EA11F9 /* DateDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FEB0DD235CCCE300EA11F9 /* DateDisplayView.swift */; };
@@ -99,7 +99,7 @@
 		A4FEB0CF23582BDF00EA11F9 /* ClockNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockNumbers.swift; sourceTree = "<group>"; };
 		A4FEB0D123582C0300EA11F9 /* ClockHands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockHands.swift; sourceTree = "<group>"; };
 		A4FEB0D423582C4900EA11F9 /* DigitalClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitalClockView.swift; sourceTree = "<group>"; };
-		A4FEB0D623582C6E00EA11F9 /* DigitalClockComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitalClockComponents.swift; sourceTree = "<group>"; };
+		A4FEB0D623582C6E00EA11F9 /* DigitalClockDateComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitalClockDateComponents.swift; sourceTree = "<group>"; };
 		A4FEB0D823582EA500EA11F9 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		A4FEB0DA2358335F00EA11F9 /* ClockPrecision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockPrecision.swift; sourceTree = "<group>"; };
 		A4FEB0DD235CCCE300EA11F9 /* DateDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDisplayView.swift; sourceTree = "<group>"; };
@@ -256,8 +256,7 @@
 		A4DFE1AE2342FE8F00164D30 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				A4FEB0DC235CCCC900EA11F9 /* DateDisplay */,
-				A4FEB0D323582C3A00EA11F9 /* DigitalClock */,
+				A4FEB0D323582C3A00EA11F9 /* DigitalClock and Date */,
 				A4FEB0CE23582BC500EA11F9 /* AnalogClock */,
 			);
 			path = UI;
@@ -282,21 +281,14 @@
 			path = AnalogClock;
 			sourceTree = "<group>";
 		};
-		A4FEB0D323582C3A00EA11F9 /* DigitalClock */ = {
-			isa = PBXGroup;
-			children = (
-				A4FEB0D423582C4900EA11F9 /* DigitalClockView.swift */,
-				A4FEB0D623582C6E00EA11F9 /* DigitalClockComponents.swift */,
-			);
-			path = DigitalClock;
-			sourceTree = "<group>";
-		};
-		A4FEB0DC235CCCC900EA11F9 /* DateDisplay */ = {
+		A4FEB0D323582C3A00EA11F9 /* DigitalClock and Date */ = {
 			isa = PBXGroup;
 			children = (
 				A4FEB0DD235CCCE300EA11F9 /* DateDisplayView.swift */,
+				A4FEB0D423582C4900EA11F9 /* DigitalClockView.swift */,
+				A4FEB0D623582C6E00EA11F9 /* DigitalClockDateComponents.swift */,
 			);
-			path = DateDisplay;
+			path = "DigitalClock and Date";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -444,7 +436,7 @@
 				A4FEB0DB2358335F00EA11F9 /* ClockPrecision.swift in Sources */,
 				A4FEB0D523582C4900EA11F9 /* DigitalClockView.swift in Sources */,
 				A4DFE18A233DCD0100164D30 /* Updatable.swift in Sources */,
-				A4FEB0D723582C6E00EA11F9 /* DigitalClockComponents.swift in Sources */,
+				A4FEB0D723582C6E00EA11F9 /* DigitalClockDateComponents.swift in Sources */,
 				A4DFE17F233DCD0100164D30 /* ClockType.swift in Sources */,
 				A4FEB0D923582EA500EA11F9 /* Utilities.swift in Sources */,
 				A4FEB0D223582C0300EA11F9 /* ClockHands.swift in Sources */,
