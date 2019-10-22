@@ -8,6 +8,25 @@
 
 import Foundation
 
-protocol Timed {
-    var timer: Timer! { get }
+public protocol Timed {
+    
+    /// Starts the time with some default interval
+    func startTimer() -> Void
+    
+    /// Starts the time with specified interval
+    func startTimer(withTimeInterval interval: TimeInterval) -> Void
+    
+    /// Updates the interval
+    func updateTimerInterval(to interval: TimeInterval) -> Void
+    
+    /// Stops the timer
+    func stopTimer() -> Void
+}
+
+public extension Timed {
+    
+    /// Default implementation for update interval
+    func updateTimerInterval(to interval: TimeInterval) -> Void {
+        startTimer(withTimeInterval: interval)
+    }
 }

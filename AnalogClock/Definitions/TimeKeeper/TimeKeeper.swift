@@ -11,9 +11,8 @@ import Foundation
 /**
  A class to hold a time and date that updates itself on a regular interval
  */
-public class TimeKeeper: Updatable {
+public class TimeKeeper: Timed, Updatable {
     
-    public let interval: TimeInterval
     private var date: Date
     private let calendar: Calendar
     private var timer: Timer?
@@ -118,21 +117,37 @@ public class TimeKeeper: Updatable {
         return second % 2 == 0 ? .tick : .tock
     }
     
-    public init(updatedEvery interval: TimeInterval = defaultTickInterval, withOwnTimer: Bool = true) {
+    /// Initializer without own timer
+    public init() {
+        self.timer = nil
         self.date = Date()
         self.calendar = Calendar.current
-        self.interval = interval
+    }
+    
+    /// Initializer with own timer
+    public init(updatedEvery interval: TimeInterval = defaultTickInterval) {
+        self.date = Date()
+        self.calendar = Calendar.current
         self.timer = nil
-        if withOwnTimer {
-            self.timer = startTimer(withTimeInterval: interval)
-        }
+        startTimer(withTimeInterval: interval)
     }
     
     /// Creates a timer
-    public func startTimer(withTimeInterval interval: TimeInterval) -> Timer {
-        return Timer.scheduledTimer(withTimeInterval: interval, repeats: true, block: { [weak self] timer in
+    public func startTimer(withTimeInterval interval: TimeInterval) {
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true, block: { [weak self] timer in
             self?.update()
         })
+    }
+    
+    /// Creates a timer
+    public func startTimer() {
+        startTimer(withTimeInterval: defaultTickInterval)
+    }
+    
+    /// Stops the timer
+    public func stopTimer() {
+        timer?.invalidate()
     }
     
     /**
