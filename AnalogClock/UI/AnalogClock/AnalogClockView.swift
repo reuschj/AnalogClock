@@ -1,5 +1,5 @@
 //
-//  AnalogClock.swift
+//  AnalogClockView.swift
 //  AnalogClock
 //
 //  Created by Justin Reusch on 10/16/19.
@@ -11,7 +11,7 @@ import SwiftUI
 /**
  A complete analog clock view module
  */
-struct AnalogClock: View {
+struct AnalogClockView: View {
     
     /// Keeps track of the 
     var timeEmitter: TimeEmitter

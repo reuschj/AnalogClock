@@ -8,6 +8,28 @@
 
 import SwiftUI
 
+struct SettingsModule<Content>: View where Content: View {
+
+    var title: String
+
+    private var content: Content
+    
+    @inlinable public init(title: String, @ViewBuilder content: () -> Content) {
+        self.title = title
+        self.content = content()
+    }
+
+    var body: some View {
+        VStack {
+            HStack {
+                Text(title).font(.subheadline)
+                Spacer()
+            }
+            content
+        }.padding()
+    }
+}
+
 /**
  Base content view for the clock app
  */
@@ -18,24 +40,22 @@ struct ContentView: View {
     /// This will keep the current time, updated on a regular interval
     @State var timeEmitter = TimeEmitter(precision: getAppSettings().actualPrecision)
     
-    @State private var clockType: ClockType = getAppSettings().clockType {
-        didSet { getAppSettings().clockType = self.clockType }
-    }
+    @State private var clockType: ClockType = getAppSettings().clockType
 
     /// Clock dipslay state
-    @State private var selection = 2
+//    @State private var selection = 2
     
     /// Display settings controls
     @State private var showSettings: Bool = false
     
-    /// Getter for analog clock display flag
-    private var showAnalogClock: Bool { selection == 0 || selection == 2 }
-    /// Getter for digital clock display flag
-    private var showDigitalClock: Bool { selection == 1 || selection == 2 }
-    /// Show the date display
-    @State private var showDateDisplay: Bool = getAppSettings().visibleModules.dateDisplay {
-        didSet { getAppSettings().visibleModules.dateDisplay = self.showDateDisplay }
-    }
+    /// Show the analog clock state
+    @State private var showAnalogClock: Bool = getAppSettings().visibleModules.analogClock
+    
+    /// Show the digital clock state
+    @State private var showDigitalClock: Bool = getAppSettings().visibleModules.digitalClock
+    
+    /// Show the date display state
+    @State private var showDateDisplay: Bool = getAppSettings().visibleModules.dateDisplay
     
     var body: some View {
         VStack {
@@ -45,22 +65,22 @@ struct ContentView: View {
                 Button(action: { self.showSettings = !self.showSettings }) {
                     Text(self.showSettings ? "Hide Settings" : "Show Settings")
                 }.padding()
-            }
+            } 
             
             VStack {
                 Spacer()
                 if showAnalogClock {
-                    AnalogClock(timeEmitter: timeEmitter, type: clockType)
+                    AnalogClockView(timeEmitter: timeEmitter, type: clockType)
                         .padding()
                     Spacer()
                 }
                 if showDigitalClock {
-                    DigitalClock(timeEmitter: timeEmitter, type: clockType)
+                    DigitalClockView(timeEmitter: timeEmitter, type: clockType)
                         .padding()
                     Spacer()
                 }
                 if showDateDisplay {
-                    DateDisplay(timeEmitter: timeEmitter).padding()
+                    DateDisplayView(timeEmitter: timeEmitter, color: .secondary).padding()
                     Spacer()
                 }
             }
@@ -68,42 +88,19 @@ struct ContentView: View {
                 
                 Divider()
                 
-                HStack {
-                    Text("Settings").font(.title)
-                    Spacer()
-                }.padding()
-                Spacer()
-                VStack {
-                    HStack {
-                        Text("Show clocks").font(.subheadline)
-                        Spacer()
+                SettingsModule(title: "Show modules") {
+                    Toggle(isOn: $showAnalogClock) {
+                        Text("Analog clock")
                     }
-                    Picker(
-                        selection: $selection,
-                        label: Text("Show modules"),
-                        content: {
-                            Text("Analog").tag(0)
-                            Text("Digital").tag(1)
-                            Text("Both").tag(2)
-                    }).pickerStyle(SegmentedPickerStyle())
-                }.padding()
-                Spacer()
-//                VStack {
-//                    HStack {
-//                        Text("Show date display").font(.subheadline)
-//                        Spacer()
-//                    }
-//                    Toggle(
-//                    isOn: $showDateDisplay) {
-//                        Text("Show date display")
-//                    }
-//                }.padding()
-//                Spacer()
-                VStack {
-                    HStack {
-                        Text("Clock type").font(.subheadline)
-                        Spacer()
+                    Toggle(isOn: $showDigitalClock) {
+                        Text("Digital clock")
                     }
+                    Toggle(isOn: $showDateDisplay) {
+                        Text("Date display")
+                    }
+                }
+                
+                SettingsModule(title: "Clock type") {
                     Picker(
                         selection: $clockType,
                         label: Text("Show modules"),
@@ -111,14 +108,9 @@ struct ContentView: View {
                             Text("12-hour").tag(ClockType.twelveHour)
                             Text("24-hour").tag(ClockType.twentyFourHour)
                     }).pickerStyle(SegmentedPickerStyle())
-                }.padding()
-                Spacer()
-                VStack {
-                    HStack {
-                        Text("Precision").font(.subheadline)
-                        Spacer()
-                        Text("\(round(timeEmitter.interval * 1_000) / 1_000)").font(.subheadline)
-                    }
+                }
+                
+                SettingsModule(title: "Precision: \(timeEmitter.interval)") {
                     Picker(
                         selection: $timeEmitter,
                         label: Text("Precision"),
@@ -128,8 +120,7 @@ struct ContentView: View {
                             Text("High").tag(TimeEmitter(precision: ClockPrecision.high))
                             Text("Higher").tag(TimeEmitter(precision: ClockPrecision.veryHigh))
                     }).pickerStyle(SegmentedPickerStyle())
-                }.padding()
-                Spacer()
+                }
             }
             Spacer()
         }

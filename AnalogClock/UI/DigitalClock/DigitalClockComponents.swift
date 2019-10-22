@@ -31,8 +31,14 @@ struct TimeTextBlock: View {
     
     var font: Font = .title
     
+    var pre: String? = nil
+    
+    var post: String? = nil
+    
+    private func getText() -> String { "\(self.text ?? "")\(self.pre ?? "")\(self.post ?? "")" }
+    
     var body: some View {
-        Text(text ?? "")
+        Text(getText())
             .font(font)
             .foregroundColor(color)
     }
@@ -46,7 +52,11 @@ struct TimeNumberBlock: View {
     
     var font: Font = .title
     
+    var pre: String? = nil
+    
+    var post: String? = nil
+    
     var body: some View {
-        TimeTextBlock(text: "\(number ?? 0)", color: color, font: font)
+        TimeTextBlock(text: "\(number ?? 0)", color: color, font: font, pre: pre, post: post)
     }
 }

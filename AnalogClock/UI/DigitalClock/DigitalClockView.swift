@@ -1,5 +1,5 @@
 //
-//  DigitalClock.swift
+//  DigitalClockView.swift
 //  AnalogClock
 //
 //  Created by Justin Reusch on 10/16/19.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct DigitalClock: View {
+struct DigitalClockView: View {
     
     @ObservedObject var timeEmitter: TimeEmitter
     var type: ClockType = ClockType.twelveHour
@@ -18,7 +18,7 @@ struct DigitalClock: View {
     var body: some View {
         HStack {
             Spacer()
-            TimeTextBlock(text: time.hour12String)
+            TimeTextBlock(text: type == .twelveHour ? time.hour12String : time.hour24String)
             DigitalClockSeperator()
             TimeTextBlock(text: time.paddedMinute)
             DigitalClockSeperator()
