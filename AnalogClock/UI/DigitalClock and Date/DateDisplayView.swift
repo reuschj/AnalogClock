@@ -10,7 +10,7 @@ import SwiftUI
 
 struct DateDisplayView: View {
     
-    @ObservedObject var timeEmitter: TimeEmitter
+    @ObservedObject var timeEmitter: TimeEmitter = getTimeEmitter()
     
     var time: TimeKeeper { timeEmitter.time }
     

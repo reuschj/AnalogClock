@@ -10,7 +10,7 @@ import SwiftUI
 
 struct DigitalClockView: View {
     
-    @ObservedObject var timeEmitter: TimeEmitter
+    @ObservedObject var timeEmitter: TimeEmitter = getTimeEmitter()
     var type: ClockType = ClockType.twelveHour
     
     var time: TimeKeeper { timeEmitter.time }

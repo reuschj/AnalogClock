@@ -13,7 +13,7 @@ import Combine
  Emits the current time and clock hand position at the specified time interval
  */
 class TimeEmitter: ObservableObject, Timed, Updatable, Hashable {
-    
+        
     /// The current time to emit with accessors to all time components
     @Published var time: TimeKeeper
     
@@ -24,6 +24,16 @@ class TimeEmitter: ObservableObject, Timed, Updatable, Hashable {
     var interval: TimeInterval {
         didSet {
             updateTimerInterval(to: interval)
+        }
+    }
+    
+    /// Computed getter/setter for clock precision
+    var precision: ClockPrecision? {
+        get { ClockPrecision.getPrecision(from: interval) }
+        set {
+            if let newValue = newValue {
+                interval = newValue.rawValue
+            }
         }
     }
     

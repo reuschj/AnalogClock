@@ -20,7 +20,8 @@ class AppSettings: ObservableObject {
         
     /// Gets the acutal precision needed (may be higher than requested precision if tick-tock display is on).
     var actualPrecision: ClockPrecision {
-        precision == .low && analogClockOptions.tickTockDisplay ? .medium : precision
+        get { precision == .low && analogClockOptions.tickTockDisplay ? .medium : precision }
+        set { precision = newValue == .low && analogClockOptions.tickTockDisplay ? .medium : newValue }
     }
     
     /**

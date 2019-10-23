@@ -10,7 +10,7 @@ import SwiftUI
 
 struct HourHand: View {
     
-    var timeEmitter: TimeEmitter
+    var timeEmitter: TimeEmitter = getTimeEmitter()
     
     var twentyFourHour: Bool = false
     
@@ -25,7 +25,7 @@ struct HourHand: View {
 
 struct MinuteHand: View {
     
-    var timeEmitter: TimeEmitter
+    var timeEmitter: TimeEmitter = getTimeEmitter()
     
     var color: Color = .primary
     
@@ -36,7 +36,7 @@ struct MinuteHand: View {
 
 struct SecondHand: View {
     
-    var timeEmitter: TimeEmitter
+    @ObservedObject var timeEmitter: TimeEmitter = getTimeEmitter()
     
     var color: Color = .primary
     
@@ -49,7 +49,7 @@ struct SecondHand: View {
 
 struct ClockHand: View {
     
-    @ObservedObject var timeEmitter: TimeEmitter
+    @ObservedObject var timeEmitter: TimeEmitter = getTimeEmitter()
     
     var lengthRatio: CGFloat = 1
     var width: CGFloat = 4

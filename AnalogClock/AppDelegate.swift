@@ -22,9 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         showPeriodDisplay: false,
         showTickTockDisplay: false
     )
-
+    
+    var timeEmitter = TimeEmitter(precision: .low)
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        timeEmitter.precision = settings.actualPrecision
         return true
     }
 

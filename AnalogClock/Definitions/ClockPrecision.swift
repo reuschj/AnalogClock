@@ -8,11 +8,21 @@
 
 import Foundation
 
-enum ClockPrecision: TimeInterval {
+enum ClockPrecision: TimeInterval, CaseIterable {
     typealias RawValue = TimeInterval
     
     case low = 1.0
     case medium = 0.1
     case high = 0.05
     case veryHigh = 0.01
+    
+    static func getPrecision(from interval: TimeInterval) -> ClockPrecision? {
+        var matchedCase: ClockPrecision? = nil
+        let _ = ClockPrecision.allCases.map {
+            if $0.rawValue == interval {
+                matchedCase = $0
+            }
+        }
+        return matchedCase
+    }
 }
