@@ -33,6 +33,8 @@
 		A4DFE1A6234146AB00164D30 /* UIAspectRatio.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFE197234146AB00164D30 /* UIAspectRatio.swift */; };
 		A4DFE1AD234147A100164D30 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFE1AC234147A100164D30 /* App.swift */; };
 		A4DFE1B02342FF0200164D30 /* TimeEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFE1AF2342FF0200164D30 /* TimeEmitter.swift */; };
+		A4F0ADD4236159B500C74EE9 /* SettingsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F0ADD3236159B500C74EE9 /* SettingsPanel.swift */; };
+		A4F0ADD623616E9C00C74EE9 /* SettingsLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F0ADD523616E9C00C74EE9 /* SettingsLink.swift */; };
 		A4FEB0CD23582B3700EA11F9 /* AnalogClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FEB0CC23582B3700EA11F9 /* AnalogClockView.swift */; };
 		A4FEB0D023582BDF00EA11F9 /* ClockNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FEB0CF23582BDF00EA11F9 /* ClockNumbers.swift */; };
 		A4FEB0D223582C0300EA11F9 /* ClockHands.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FEB0D123582C0300EA11F9 /* ClockHands.swift */; };
@@ -95,6 +97,8 @@
 		A4DFE197234146AB00164D30 /* UIAspectRatio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAspectRatio.swift; sourceTree = "<group>"; };
 		A4DFE1AC234147A100164D30 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		A4DFE1AF2342FF0200164D30 /* TimeEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEmitter.swift; sourceTree = "<group>"; };
+		A4F0ADD3236159B500C74EE9 /* SettingsPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPanel.swift; sourceTree = "<group>"; };
+		A4F0ADD523616E9C00C74EE9 /* SettingsLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLink.swift; sourceTree = "<group>"; };
 		A4FEB0CC23582B3700EA11F9 /* AnalogClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalogClockView.swift; sourceTree = "<group>"; };
 		A4FEB0CF23582BDF00EA11F9 /* ClockNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockNumbers.swift; sourceTree = "<group>"; };
 		A4FEB0D123582C0300EA11F9 /* ClockHands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockHands.swift; sourceTree = "<group>"; };
@@ -256,10 +260,20 @@
 		A4DFE1AE2342FE8F00164D30 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				A4F0ADD22361597F00C74EE9 /* Settings */,
 				A4FEB0D323582C3A00EA11F9 /* DigitalClock and Date */,
 				A4FEB0CE23582BC500EA11F9 /* AnalogClock */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		A4F0ADD22361597F00C74EE9 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A4F0ADD3236159B500C74EE9 /* SettingsPanel.swift */,
+				A4F0ADD523616E9C00C74EE9 /* SettingsLink.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		A4F73E5923504A5A0067525D /* UI */ = {
@@ -427,12 +441,14 @@
 				A4DFE188233DCD0100164D30 /* UpdatableClock.swift in Sources */,
 				A4DFE136233DCAC200164D30 /* SceneDelegate.swift in Sources */,
 				A4B60F2E234AE80B00797A3B /* limitToRange.swift in Sources */,
+				A4F0ADD623616E9C00C74EE9 /* SettingsLink.swift in Sources */,
 				A4DFE1AD234147A100164D30 /* App.swift in Sources */,
 				A48100AC2346EE47002D9ED4 /* enums.swift in Sources */,
 				A48100B0234703F5002D9ED4 /* utilities.swift in Sources */,
 				A4DFE180233DCD0100164D30 /* AppSettings.swift in Sources */,
 				A4B60F2A23484F7100797A3B /* UIMeasurement.swift in Sources */,
 				A4DFE1B02342FF0200164D30 /* TimeEmitter.swift in Sources */,
+				A4F0ADD4236159B500C74EE9 /* SettingsPanel.swift in Sources */,
 				A4FEB0DB2358335F00EA11F9 /* ClockPrecision.swift in Sources */,
 				A4FEB0D523582C4900EA11F9 /* DigitalClockView.swift in Sources */,
 				A4DFE18A233DCD0100164D30 /* Updatable.swift in Sources */,

@@ -22,5 +22,5 @@ let shortMonthNames = ["Jan.", "Feb.", "March", "April", "May", "June", "July", 
 /**
  Strings for week names
  */
-let weekNames = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-let shortWeekNames = ["Mon.", "Tues.", "Wed.", "Thur.", "Fri.", "Sat.", "Sun."]
+let weekNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+let shortWeekNames = ["Sun.", "Mon.", "Tues.", "Wed.", "Thur.", "Fri.", "Sat."]
