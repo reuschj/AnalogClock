@@ -11,7 +11,7 @@ import SwiftUI
 struct SettingsLink: View {
     var body: some View {
         NavigationLink(destination: SettingsPanel()) {
-            Text("Settings").padding(.trailing)
+            Text(strings.settings).padding(.trailing)
         }
     }
 }

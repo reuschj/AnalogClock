@@ -1,0 +1,22 @@
+/* 
+  Localizable.strings
+  AnalogClock
+
+  Created by Justin Reusch on 10/25/19.
+  Copyright © 2019 Justin Reusch. All rights reserved.
+*/
+
+"analogClock" = "Analog clock";
+"digitalClock" = "Digital clock";
+"dateDisplay" = "Date display";
+"settings" = "Settings";
+"showModules" = "Show modules";
+"clockType" = "Clock type";
+"twentyFourHour" = "24-hour";
+"precision" = "Precision";
+"low" = "Low";
+"medium" = "Medium";
+"high" = "High";
+"updatesSing" = "update per second";
+"updatesPlu" = "updates per second";
+

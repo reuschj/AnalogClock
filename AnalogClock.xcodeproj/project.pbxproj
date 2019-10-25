@@ -10,6 +10,8 @@
 		A48100AC2346EE47002D9ED4 /* enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48100AB2346EE47002D9ED4 /* enums.swift */; };
 		A48100AE23470383002D9ED4 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48100AD23470383002D9ED4 /* constants.swift */; };
 		A48100B0234703F5002D9ED4 /* utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48100AF234703F5002D9ED4 /* utilities.swift */; };
+		A4ADC5AF2362BEBF0019C756 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4ADC5AE2362BEBF0019C756 /* Localizable.strings */; };
+		A4ADC5B12362C0390019C756 /* strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ADC5B02362C0390019C756 /* strings.swift */; };
 		A4B60F2A23484F7100797A3B /* UIMeasurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B60F2923484F7100797A3B /* UIMeasurement.swift */; };
 		A4B60F2E234AE80B00797A3B /* limitToRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B60F2D234AE80B00797A3B /* limitToRange.swift */; };
 		A4DFE134233DCAC200164D30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFE133233DCAC200164D30 /* AppDelegate.swift */; };
@@ -67,6 +69,8 @@
 		A48100AB2346EE47002D9ED4 /* enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enums.swift; sourceTree = "<group>"; };
 		A48100AD23470383002D9ED4 /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		A48100AF234703F5002D9ED4 /* utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utilities.swift; sourceTree = "<group>"; };
+		A4ADC5AE2362BEBF0019C756 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		A4ADC5B02362C0390019C756 /* strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = strings.swift; sourceTree = "<group>"; };
 		A4B60F2923484F7100797A3B /* UIMeasurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMeasurement.swift; sourceTree = "<group>"; };
 		A4B60F2D234AE80B00797A3B /* limitToRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = limitToRange.swift; sourceTree = "<group>"; };
 		A4DFE130233DCAC200164D30 /* AnalogClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnalogClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,6 +173,8 @@
 				A4DFE139233DCAC400164D30 /* Assets.xcassets */,
 				A4DFE13E233DCAC400164D30 /* LaunchScreen.storyboard */,
 				A4DFE141233DCAC400164D30 /* Info.plist */,
+				A4ADC5AE2362BEBF0019C756 /* Localizable.strings */,
+				A4ADC5B02362C0390019C756 /* strings.swift */,
 				A4DFE13B233DCAC400164D30 /* Preview Content */,
 			);
 			path = AnalogClock;
@@ -409,6 +415,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4ADC5AF2362BEBF0019C756 /* Localizable.strings in Resources */,
 				A4DFE140233DCAC400164D30 /* LaunchScreen.storyboard in Resources */,
 				A4DFE13D233DCAC400164D30 /* Preview Assets.xcassets in Resources */,
 				A4DFE13A233DCAC400164D30 /* Assets.xcassets in Resources */,
@@ -454,6 +461,7 @@
 				A4DFE18A233DCD0100164D30 /* Updatable.swift in Sources */,
 				A4FEB0D723582C6E00EA11F9 /* DigitalClockDateComponents.swift in Sources */,
 				A4DFE17F233DCD0100164D30 /* ClockType.swift in Sources */,
+				A4ADC5B12362C0390019C756 /* strings.swift in Sources */,
 				A4FEB0D923582EA500EA11F9 /* Utilities.swift in Sources */,
 				A4FEB0D223582C0300EA11F9 /* ClockHands.swift in Sources */,
 				A4DFE18C233DCD0100164D30 /* Ratio.swift in Sources */,

@@ -51,46 +51,44 @@ struct SettingsPanel: View {
         set: { settings.visibleModules.dateDisplay = $0 }
     )
     
-    private func PrecisionText() -> some View {
+    private func getPrecisionText() -> String {
         let updatesPerSecond = Int(1 / timeEmitter.interval)
-        return HStack {
-            Text("\(updatesPerSecond) update\(updatesPerSecond > 1 ? "s" : "") per second")
-        }
+        return "\(updatesPerSecond) \(updatesPerSecond > 1 ? strings.updatesPlu : strings.updatesSing)"
     }
     
     var body: some View {
         NavigationView {
             Form {
-                Section(header: SectionHeaderText("Show modules")) {
+                Section(header: SectionHeaderText(strings.showModules)) {
                     Toggle(isOn: showAnalogClock) {
-                        Text("Analog clock")
+                        Text(strings.analogClock)
                     }
                     Toggle(isOn: showDigitalClock) {
-                        Text("Digital clock")
+                        Text(strings.digitalClock)
                     }
                     Toggle(isOn: showDateDisplay) {
-                        Text("Date display")
+                        Text(strings.dateDisplay)
                     }
                 }
                 
-                Section(header: SectionHeaderText("Clock type")) {
+                Section(header: SectionHeaderText(strings.clockType)) {
                     Toggle(isOn: isTwentyFourHour) {
-                        Text("24-hour")
+                        Text(strings.twentyFourHour)
                     }
                 }
                 
-                Section(header: SectionHeaderText("Precision")) {
-                    PrecisionText()
+                Section(header: SectionHeaderText(strings.precision)) {
+                    Text(getPrecisionText())
                     Picker(
                         selection: clockPrecision,
-                        label: Text("Precision"),
+                        label: Text(strings.precision),
                         content: {
-                            Text("Low").tag(ClockPrecision.low)
-                            Text("Medium").tag(ClockPrecision.medium)
-                            Text("High").tag(ClockPrecision.high)
+                            Text(strings.low).tag(ClockPrecision.low)
+                            Text(strings.medium).tag(ClockPrecision.medium)
+                            Text(strings.high).tag(ClockPrecision.high)
                     }).pickerStyle(SegmentedPickerStyle())
                 }
-            }.navigationBarTitle("Settings")
+            }.navigationBarTitle(strings.settings)
         }
     }
 }
