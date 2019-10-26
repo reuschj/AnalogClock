@@ -1,0 +1,46 @@
+/* 
+  Localizable.strings
+  AnalogClock
+
+  Created by Justin Reusch on 10/25/19.
+  Copyright © 2019 Justin Reusch. All rights reserved.
+*/
+
+/*
+ Settings
+ -----------------------------
+ */
+"analogClock" = "Đồng hồ truyền thống";
+"digitalClock" = "Đồng hồ kỹ thuật số";
+"dateDisplay" = "Ngày";
+"settings" = "Cài đặt";
+"showModules" = "Hiển thị các mô-đun";
+"clockType" = "Loại đồng hồ";
+"twentyFourHour" = "24-giờ";
+"precision" = "Độ chính xác";
+"low" = "Thấp";
+"medium" = "Trung bình";
+"high" = "Cao";
+"updatesSing" = "cập nhật mỗi giây 1 lần";
+"updatesPlu" = "cập nhật mỗi giây 1 lần";
+
+
+/*
+ Days
+ -----------------------------
+ */
+"sunday" = "Chủ nhật";
+"monday" = "Thứ hai";
+"tuesday" = "Thứ ba";
+"wednesday" = "Thứ tư";
+"thursday" = "Thứ năm";
+"friday" = "Thứ sáu";
+"saturday" = "Thứ bảy";
+// Short
+"sundayShort" = "Chủ nhật";
+"mondayShort" = "Thứ 2";
+"tuesdayShort" = "Thứ 3";
+"wednesdayShort" = "Thứ 4";
+"thursdayShort" = "Thứ 5";
+"fridayShort" = "Thứ 6";
+"saturdayShort" = "Thứ 7";

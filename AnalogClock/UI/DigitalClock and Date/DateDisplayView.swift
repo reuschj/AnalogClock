@@ -21,10 +21,7 @@ struct DateDisplayView: View {
     var body: some View {
         HStack {
             Spacer()
-            TimeTextBlock(text: time.dayOfWeek, color: color, font: font, post: ",")
-            TimeTextBlock(text: time.monthName, color: color, font: font)
-            TimeNumberBlock(number: time.day, color: color, font: font, post: ",")
-            TimeNumberBlock(number: time.year, color: color, font: font)
+            TimeTextBlock(text: time.dateString, color: color, font: font)
             Spacer()
         }
     }

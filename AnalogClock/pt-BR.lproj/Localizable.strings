@@ -1,0 +1,25 @@
+/*
+ Localizable.strings
+ AnalogClock
+ 
+ Created by Justin Reusch on 10/25/19.
+ Copyright © 2019 Justin Reusch. All rights reserved.
+ */
+
+/*
+ Settings
+ -----------------------------
+ */
+"analogClock" = "Relógio analógico";
+"digitalClock" = "Relógio digital";
+"dateDisplay" = "Encontro";
+"settings" = "Configurações";
+"showModules" = "Mostrar módulos";
+"clockType" = "Tipo de relógio";
+"twentyFourHour" = "24-hora";
+"precision" = "Precisão";
+"low" = "Baixo";
+"medium" = "Médio";
+"high" = "Alto";
+"updatesSing" = "atualização por segundo";
+"updatesPlu" = "atualizações por segundo";

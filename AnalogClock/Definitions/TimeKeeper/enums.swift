@@ -12,8 +12,8 @@ import Foundation
  Enum for periods (AM/PM) on a 12-hour clock
  */
 public enum Period: String {
-    case am = "AM"
-    case pm = "PM"
+    case am
+    case pm
 }
 
 /**

@@ -20,6 +20,8 @@ struct AnalogClockView: View {
     
     var lineWidth: CGFloat = 1
     
+    @ObservedObject var settings: AppSettings = getAppSettings()
+    
     private let padding: CGFloat = UIMeasurement(2).value
     
     private func getSize(_ geometry: GeometryProxy) -> CGFloat { CGFloat.minimum(geometry.size.width, geometry.size.height) }
@@ -31,6 +33,9 @@ struct AnalogClockView: View {
                 .overlay(Circle()
                     .stroke(Color.secondary, lineWidth: lineWidth))
             ClockNumbers(type: type, color: .primary)
+            if settings.analogClockOptions.tickMarks {
+                ClockTicks(color: .primary)
+            }
             HourHand(timeEmitter: timeEmitter, twentyFourHour: type == .twentyFourHour, color: .accentColor)
             MinuteHand(timeEmitter: timeEmitter, color: .primary)
             SecondHand(timeEmitter: timeEmitter, color: .secondary)

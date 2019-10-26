@@ -6,6 +6,10 @@
   Copyright © 2019 Justin Reusch. All rights reserved.
 */
 
+/*
+ Settings
+ -----------------------------
+ */
 "analogClock" = "Analog clock";
 "digitalClock" = "Digital clock";
 "dateDisplay" = "Date display";
@@ -19,4 +23,3 @@
 "high" = "High";
 "updatesSing" = "update per second";
 "updatesPlu" = "updates per second";
-

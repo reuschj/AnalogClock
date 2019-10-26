@@ -25,7 +25,7 @@ struct DigitalClockView: View {
             TimeTextBlock(text: time.paddedSecond)
             if type == .twelveHour {
                 DigitalClockSeperator()
-                TimeTextBlock(text: time.period?.rawValue)
+                TimeTextBlock(text: time.periodString)
             }
             Spacer()
         }
