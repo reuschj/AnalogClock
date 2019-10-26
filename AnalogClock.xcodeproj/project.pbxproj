@@ -13,6 +13,10 @@
 		A4ADC5B12362C0390019C756 /* strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ADC5B02362C0390019C756 /* strings.swift */; };
 		A4B01A1F2363F4C500AF5D14 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4B01A212363F4C500AF5D14 /* Localizable.strings */; };
 		A4B01A272364115B00AF5D14 /* ClockTicks.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B01A262364115B00AF5D14 /* ClockTicks.swift */; };
+		A4B01A292364A4AA00AF5D14 /* SectionHeaderText.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B01A282364A4AA00AF5D14 /* SectionHeaderText.swift */; };
+		A4B01A2B2364BD5700AF5D14 /* MainDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B01A2A2364BD5700AF5D14 /* MainDisplay.swift */; };
+		A4B01A2D2364BD8E00AF5D14 /* Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B01A2C2364BD8E00AF5D14 /* Orientation.swift */; };
+		A4B01A2F2364BDBA00AF5D14 /* RotatableStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B01A2E2364BDBA00AF5D14 /* RotatableStack.swift */; };
 		A4B60F2A23484F7100797A3B /* UIMeasurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B60F2923484F7100797A3B /* UIMeasurement.swift */; };
 		A4B60F2E234AE80B00797A3B /* limitToRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B60F2D234AE80B00797A3B /* limitToRange.swift */; };
 		A4DFE134233DCAC200164D30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFE133233DCAC200164D30 /* AppDelegate.swift */; };
@@ -79,6 +83,10 @@
 		A4B01A242363FC2A00AF5D14 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		A4B01A252363FC2A00AF5D14 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A4B01A262364115B00AF5D14 /* ClockTicks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockTicks.swift; sourceTree = "<group>"; };
+		A4B01A282364A4AA00AF5D14 /* SectionHeaderText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderText.swift; sourceTree = "<group>"; };
+		A4B01A2A2364BD5700AF5D14 /* MainDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDisplay.swift; sourceTree = "<group>"; };
+		A4B01A2C2364BD8E00AF5D14 /* Orientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orientation.swift; sourceTree = "<group>"; };
+		A4B01A2E2364BDBA00AF5D14 /* RotatableStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatableStack.swift; sourceTree = "<group>"; };
 		A4B60F2923484F7100797A3B /* UIMeasurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMeasurement.swift; sourceTree = "<group>"; };
 		A4B60F2D234AE80B00797A3B /* limitToRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = limitToRange.swift; sourceTree = "<group>"; };
 		A4DFE130233DCAC200164D30 /* AnalogClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnalogClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,6 +154,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A4B01A302364BE1200AF5D14 /* RotatableStack */ = {
+			isa = PBXGroup;
+			children = (
+				A4B01A2C2364BD8E00AF5D14 /* Orientation.swift */,
+				A4B01A2E2364BDBA00AF5D14 /* RotatableStack.swift */,
+			);
+			path = RotatableStack;
+			sourceTree = "<group>";
+		};
 		A4DFE127233DCAC200164D30 = {
 			isa = PBXGroup;
 			children = (
@@ -274,9 +291,11 @@
 		A4DFE1AE2342FE8F00164D30 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				A4F0ADD22361597F00C74EE9 /* Settings */,
-				A4FEB0D323582C3A00EA11F9 /* DigitalClock and Date */,
 				A4FEB0CE23582BC500EA11F9 /* AnalogClock */,
+				A4FEB0D323582C3A00EA11F9 /* DigitalClock and Date */,
+				A4F0ADD22361597F00C74EE9 /* Settings */,
+				A4B01A302364BE1200AF5D14 /* RotatableStack */,
+				A4B01A2A2364BD5700AF5D14 /* MainDisplay.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -286,6 +305,7 @@
 			children = (
 				A4F0ADD3236159B500C74EE9 /* SettingsPanel.swift */,
 				A4F0ADD523616E9C00C74EE9 /* SettingsLink.swift */,
+				A4B01A282364A4AA00AF5D14 /* SectionHeaderText.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -459,8 +479,11 @@
 				A4DFE18B233DCD0100164D30 /* Timed.swift in Sources */,
 				A4DFE188233DCD0100164D30 /* UpdatableClock.swift in Sources */,
 				A4DFE136233DCAC200164D30 /* SceneDelegate.swift in Sources */,
+				A4B01A2B2364BD5700AF5D14 /* MainDisplay.swift in Sources */,
 				A4B60F2E234AE80B00797A3B /* limitToRange.swift in Sources */,
+				A4B01A292364A4AA00AF5D14 /* SectionHeaderText.swift in Sources */,
 				A4F0ADD623616E9C00C74EE9 /* SettingsLink.swift in Sources */,
+				A4B01A2F2364BDBA00AF5D14 /* RotatableStack.swift in Sources */,
 				A4DFE1AD234147A100164D30 /* App.swift in Sources */,
 				A48100AC2346EE47002D9ED4 /* enums.swift in Sources */,
 				A48100B0234703F5002D9ED4 /* utilities.swift in Sources */,
@@ -469,6 +492,7 @@
 				A4DFE1B02342FF0200164D30 /* TimeEmitter.swift in Sources */,
 				A4F0ADD4236159B500C74EE9 /* SettingsPanel.swift in Sources */,
 				A4B01A272364115B00AF5D14 /* ClockTicks.swift in Sources */,
+				A4B01A2D2364BD8E00AF5D14 /* Orientation.swift in Sources */,
 				A4FEB0DB2358335F00EA11F9 /* ClockPrecision.swift in Sources */,
 				A4FEB0D523582C4900EA11F9 /* DigitalClockView.swift in Sources */,
 				A4DFE18A233DCD0100164D30 /* Updatable.swift in Sources */,

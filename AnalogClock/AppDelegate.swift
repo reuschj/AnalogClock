@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         showAnalogClock: true,
         showDigitalClock: true,
         showDateDisplay: true,
-        showTickMarks: false,
+        showTickMarks: true,
         showPeriodDisplay: false,
         showTickTockDisplay: false
     )

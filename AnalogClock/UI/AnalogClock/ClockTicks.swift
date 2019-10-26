@@ -75,7 +75,6 @@ struct ClockTickMark: View {
         GeometryReader { geometry in
             Path { path in
                 let origin = self.getOrigin(from: geometry)
-                print(origin)
                 path.move(to: origin)
                 path.addLine(to: CGPoint(x: origin.x, y: origin.y + self.tickSize))
             }.stroke(self.color)
