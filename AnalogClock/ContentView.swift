@@ -21,6 +21,7 @@ struct ContentView: View {
     }
 }
 
+/// For Xcode preview
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()

@@ -11,7 +11,7 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    // Clock settings with defaults
+    /// Clock settings with defaults
     var settings = AppSettings(
         clockType: .twelveHour,
         precision: .low,
@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         showTickTockDisplay: false
     )
     
+    /// Emits current time and date on a regular interval
     var timeEmitter = TimeEmitter(precision: .low)
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

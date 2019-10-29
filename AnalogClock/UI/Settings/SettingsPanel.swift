@@ -51,6 +51,12 @@ struct SettingsPanel: View {
         set: { settings.visibleModules.dateDisplay = $0 }
     )
     
+    /// Show the tick marks
+    private var showTickMarks = Binding<Bool>(
+        get: { settings.analogClockOptions.tickMarks },
+        set: { settings.analogClockOptions.tickMarks = $0 }
+    )
+    
     private func getPrecisionText() -> String {
         let updatesPerSecond = Int(1 / timeEmitter.interval)
         return "\(updatesPerSecond) \(updatesPerSecond > 1 ? strings.updatesPlu : strings.updatesSing)"
@@ -87,6 +93,12 @@ struct SettingsPanel: View {
                             Text(strings.medium).tag(ClockPrecision.medium)
                             Text(strings.high).tag(ClockPrecision.high)
                     }).pickerStyle(SegmentedPickerStyle())
+                }
+                
+                Section(header: SectionHeaderText(strings.otherOptions)) {
+                    Toggle(isOn: showTickMarks) {
+                        Text(strings.showTickMarks)
+                    }
                 }
             }.navigationBarTitle(strings.settings)
         }

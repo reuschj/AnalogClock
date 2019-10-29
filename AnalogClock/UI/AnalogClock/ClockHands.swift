@@ -9,9 +9,7 @@
 import SwiftUI
 
 struct HourHand: View {
-    
-    var timeEmitter: TimeEmitter = getTimeEmitter()
-    
+        
     var twentyFourHour: Bool = false
     
     var color: Color = .primary
@@ -19,36 +17,35 @@ struct HourHand: View {
     var type: ClockHandType { twentyFourHour ? .twentyFourHour : .hour }
     
     var body: some View {
-        ClockHand(timeEmitter: timeEmitter, lengthRatio: 0.6, width: 6, type: type, color: color)
+        ClockHand(lengthRatio: 0.6, width: 6, type: type, color: color)
     }
 }
 
 struct MinuteHand: View {
-    
-    var timeEmitter: TimeEmitter = getTimeEmitter()
-    
+        
     var color: Color = .primary
     
     var body: some View {
-        ClockHand(timeEmitter: timeEmitter, lengthRatio: 0.85, width: 4, type: .minute, color: color)
+        ClockHand(lengthRatio: 0.85, width: 4, type: .minute, color: color)
     }
 }
 
 struct SecondHand: View {
     
-    @ObservedObject var timeEmitter: TimeEmitter = getTimeEmitter()
-    
     var color: Color = .primary
+    
+    @ObservedObject var timeEmitter: TimeEmitter = getTimeEmitter()
     
     private var type: ClockHandType { timeEmitter.interval < 1 ? .preciseSecond : .second }
     
     var body: some View {
-        ClockHand(timeEmitter: timeEmitter, lengthRatio: 0.92, width: 2, type: type, color: color)
+        ClockHand(lengthRatio: 0.92, width: 2, type: type, color: color)
     }
 }
 
 struct ClockHand: View {
     
+    /// Emits the current time and date at regular intervals
     @ObservedObject var timeEmitter: TimeEmitter = getTimeEmitter()
     
     var lengthRatio: CGFloat = 1

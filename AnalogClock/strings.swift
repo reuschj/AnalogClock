@@ -21,7 +21,9 @@ let strings = (
     medium: NSLocalizedString("medium", comment: ""),
     high: NSLocalizedString("high", comment: ""),
     updatesSing: NSLocalizedString("updatesSing", comment: ""),
-    updatesPlu: NSLocalizedString("updatesPlu", comment: "")
+    updatesPlu: NSLocalizedString("updatesPlu", comment: ""),
+    otherOptions: NSLocalizedString("otherOptions", comment: ""),
+    showTickMarks: NSLocalizedString("showTickMarks", comment: "")
 )
 
 /**

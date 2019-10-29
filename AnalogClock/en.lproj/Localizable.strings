@@ -23,3 +23,5 @@
 "high" = "High";
 "updatesSing" = "update per second";
 "updatesPlu" = "updates per second";
+"otherOptions" = "Other options";
+"showTickMarks" = "Show tick marks";

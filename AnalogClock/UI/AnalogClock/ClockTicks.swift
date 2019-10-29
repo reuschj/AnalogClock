@@ -17,9 +17,9 @@ struct ClockTicks: View {
     var color: Color = .primary
     
     /// Amount of clock ticks to display
-    private let steps: Int = 24
+    var steps: Int = 60
     /// Angle between each clock tick
-    private let increment: Double  = 15
+    private var increment: Double { 360 / Double(steps) }
     
     /// Allowable bounds for tick scaling
     private let tickSizeRange: ClosedRange<CGFloat> = 2...10

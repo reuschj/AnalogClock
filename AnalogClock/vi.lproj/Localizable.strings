@@ -23,24 +23,5 @@
 "high" = "Cao";
 "updatesSing" = "cập nhật mỗi giây 1 lần";
 "updatesPlu" = "cập nhật mỗi giây 1 lần";
-
-
-/*
- Days
- -----------------------------
- */
-"sunday" = "Chủ nhật";
-"monday" = "Thứ hai";
-"tuesday" = "Thứ ba";
-"wednesday" = "Thứ tư";
-"thursday" = "Thứ năm";
-"friday" = "Thứ sáu";
-"saturday" = "Thứ bảy";
-// Short
-"sundayShort" = "Chủ nhật";
-"mondayShort" = "Thứ 2";
-"tuesdayShort" = "Thứ 3";
-"wednesdayShort" = "Thứ 4";
-"thursdayShort" = "Thứ 5";
-"fridayShort" = "Thứ 6";
-"saturdayShort" = "Thứ 7";
+"otherOptions" = "Sự lựa chọn khác";
+"showTickMarks" = "Hiển thị nhãn hiệu";

@@ -13,10 +13,8 @@ import SwiftUI
  */
 struct MainDisplay: View {
     
+    /// Global app setttings
     @ObservedObject var settings = getAppSettings()
-    
-    /// Display settings controls
-    @State private var showSettings: Bool = false
     
     var body: some View {
         RotatableStack {

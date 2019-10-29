@@ -38,7 +38,6 @@
 		A4DFE18B233DCD0100164D30 /* Timed.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFE17A233DCD0100164D30 /* Timed.swift */; };
 		A4DFE18C233DCD0100164D30 /* Ratio.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFE17C233DCD0100164D30 /* Ratio.swift */; };
 		A4DFE1A6234146AB00164D30 /* UIAspectRatio.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFE197234146AB00164D30 /* UIAspectRatio.swift */; };
-		A4DFE1AD234147A100164D30 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFE1AC234147A100164D30 /* App.swift */; };
 		A4DFE1B02342FF0200164D30 /* TimeEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFE1AF2342FF0200164D30 /* TimeEmitter.swift */; };
 		A4F0ADD4236159B500C74EE9 /* SettingsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F0ADD3236159B500C74EE9 /* SettingsPanel.swift */; };
 		A4F0ADD623616E9C00C74EE9 /* SettingsLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F0ADD523616E9C00C74EE9 /* SettingsLink.swift */; };
@@ -115,7 +114,6 @@
 		A4DFE17A233DCD0100164D30 /* Timed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timed.swift; sourceTree = "<group>"; };
 		A4DFE17C233DCD0100164D30 /* Ratio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ratio.swift; sourceTree = "<group>"; };
 		A4DFE197234146AB00164D30 /* UIAspectRatio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAspectRatio.swift; sourceTree = "<group>"; };
-		A4DFE1AC234147A100164D30 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		A4DFE1AF2342FF0200164D30 /* TimeEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEmitter.swift; sourceTree = "<group>"; };
 		A4F0ADD3236159B500C74EE9 /* SettingsPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPanel.swift; sourceTree = "<group>"; };
 		A4F0ADD523616E9C00C74EE9 /* SettingsLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLink.swift; sourceTree = "<group>"; };
@@ -193,7 +191,6 @@
 				A4DFE17B233DCD0100164D30 /* Utilities */,
 				A4DFE133233DCAC200164D30 /* AppDelegate.swift */,
 				A4DFE135233DCAC200164D30 /* SceneDelegate.swift */,
-				A4DFE1AC234147A100164D30 /* App.swift */,
 				A4DFE137233DCAC200164D30 /* ContentView.swift */,
 				A4DFE139233DCAC400164D30 /* Assets.xcassets */,
 				A4DFE13E233DCAC400164D30 /* LaunchScreen.storyboard */,
@@ -484,7 +481,6 @@
 				A4B01A292364A4AA00AF5D14 /* SectionHeaderText.swift in Sources */,
 				A4F0ADD623616E9C00C74EE9 /* SettingsLink.swift in Sources */,
 				A4B01A2F2364BDBA00AF5D14 /* RotatableStack.swift in Sources */,
-				A4DFE1AD234147A100164D30 /* App.swift in Sources */,
 				A48100AC2346EE47002D9ED4 /* enums.swift in Sources */,
 				A48100B0234703F5002D9ED4 /* utilities.swift in Sources */,
 				A4DFE180233DCD0100164D30 /* AppSettings.swift in Sources */,

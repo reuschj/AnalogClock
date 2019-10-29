@@ -41,7 +41,7 @@ class AppSettings: ObservableObject {
         showAnalogClock: Bool = true,
         showDigitalClock: Bool = true,
         showDateDisplay: Bool = true,
-        showTickMarks: Bool = false,
+        showTickMarks: Bool = true,
         showPeriodDisplay: Bool = false,
         showTickTockDisplay: Bool = false
     ) {
