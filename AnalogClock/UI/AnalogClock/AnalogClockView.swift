@@ -13,17 +13,22 @@ import SwiftUI
  */
 struct AnalogClockView: View {
     
-    /// Keeps track of the 
-    var timeEmitter: TimeEmitter
+    /// Emits the current time and date at regular intervals
+    var timeEmitter: TimeEmitter = getTimeEmitter()
     
+    /// Type of clock, 12 or 24-hour
     var type: ClockType = ClockType.twelveHour
     
-    var lineWidth: CGFloat = 1
+    /// Width of clock's outer outline
+    var lineWidth: CGFloat = 2
     
-    private let padding: CGFloat = UIMeasurement(2).value
+    /// Global app setttings
+    @ObservedObject var settings: AppSettings = getAppSettings()
     
-    private func getSize(_ geometry: GeometryProxy) -> CGFloat { CGFloat.minimum(geometry.size.width, geometry.size.height) }
+    /// Gets the size of the clock by reading the parent geometry
+    private func getSize(_ geometry: GeometryProxy) -> CGFloat { min(geometry.size.width, geometry.size.height) }
     
+    /// Renders the clock at the specified size
     private func renderClock(size: CGFloat) -> some View {
         ZStack {
             Circle()
@@ -31,9 +36,15 @@ struct AnalogClockView: View {
                 .overlay(Circle()
                     .stroke(Color.secondary, lineWidth: lineWidth))
             ClockNumbers(type: type, color: .primary)
-            HourHand(timeEmitter: timeEmitter, twentyFourHour: type == .twentyFourHour, color: .accentColor)
-            MinuteHand(timeEmitter: timeEmitter, color: .primary)
-            SecondHand(timeEmitter: timeEmitter, color: .secondary)
+            // Add tick marks
+            if settings.analogClockOptions.tickMarks {
+                ClockTicks(color: .gray, steps: 60)
+                ClockTicks(color: .secondary, steps: 12)
+            }
+            // Add hands
+            HourHand(twentyFourHour: type == .twentyFourHour, color: .accentColor)
+            MinuteHand(color: .primary)
+            SecondHand(color: .secondary)
         }
         .frame(width: size, height: size, alignment: .center)
     }

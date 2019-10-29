@@ -10,6 +10,13 @@
 		A48100AC2346EE47002D9ED4 /* enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48100AB2346EE47002D9ED4 /* enums.swift */; };
 		A48100AE23470383002D9ED4 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48100AD23470383002D9ED4 /* constants.swift */; };
 		A48100B0234703F5002D9ED4 /* utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48100AF234703F5002D9ED4 /* utilities.swift */; };
+		A4ADC5B12362C0390019C756 /* strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ADC5B02362C0390019C756 /* strings.swift */; };
+		A4B01A1F2363F4C500AF5D14 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4B01A212363F4C500AF5D14 /* Localizable.strings */; };
+		A4B01A272364115B00AF5D14 /* ClockTicks.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B01A262364115B00AF5D14 /* ClockTicks.swift */; };
+		A4B01A292364A4AA00AF5D14 /* SectionHeaderText.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B01A282364A4AA00AF5D14 /* SectionHeaderText.swift */; };
+		A4B01A2B2364BD5700AF5D14 /* MainDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B01A2A2364BD5700AF5D14 /* MainDisplay.swift */; };
+		A4B01A2D2364BD8E00AF5D14 /* Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B01A2C2364BD8E00AF5D14 /* Orientation.swift */; };
+		A4B01A2F2364BDBA00AF5D14 /* RotatableStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B01A2E2364BDBA00AF5D14 /* RotatableStack.swift */; };
 		A4B60F2A23484F7100797A3B /* UIMeasurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B60F2923484F7100797A3B /* UIMeasurement.swift */; };
 		A4B60F2E234AE80B00797A3B /* limitToRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B60F2D234AE80B00797A3B /* limitToRange.swift */; };
 		A4DFE134233DCAC200164D30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFE133233DCAC200164D30 /* AppDelegate.swift */; };
@@ -31,8 +38,9 @@
 		A4DFE18B233DCD0100164D30 /* Timed.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFE17A233DCD0100164D30 /* Timed.swift */; };
 		A4DFE18C233DCD0100164D30 /* Ratio.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFE17C233DCD0100164D30 /* Ratio.swift */; };
 		A4DFE1A6234146AB00164D30 /* UIAspectRatio.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFE197234146AB00164D30 /* UIAspectRatio.swift */; };
-		A4DFE1AD234147A100164D30 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFE1AC234147A100164D30 /* App.swift */; };
 		A4DFE1B02342FF0200164D30 /* TimeEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFE1AF2342FF0200164D30 /* TimeEmitter.swift */; };
+		A4F0ADD4236159B500C74EE9 /* SettingsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F0ADD3236159B500C74EE9 /* SettingsPanel.swift */; };
+		A4F0ADD623616E9C00C74EE9 /* SettingsLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F0ADD523616E9C00C74EE9 /* SettingsLink.swift */; };
 		A4FEB0CD23582B3700EA11F9 /* AnalogClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FEB0CC23582B3700EA11F9 /* AnalogClockView.swift */; };
 		A4FEB0D023582BDF00EA11F9 /* ClockNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FEB0CF23582BDF00EA11F9 /* ClockNumbers.swift */; };
 		A4FEB0D223582C0300EA11F9 /* ClockHands.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FEB0D123582C0300EA11F9 /* ClockHands.swift */; };
@@ -65,6 +73,19 @@
 		A48100AB2346EE47002D9ED4 /* enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enums.swift; sourceTree = "<group>"; };
 		A48100AD23470383002D9ED4 /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		A48100AF234703F5002D9ED4 /* utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utilities.swift; sourceTree = "<group>"; };
+		A4ADC5B02362C0390019C756 /* strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = strings.swift; sourceTree = "<group>"; };
+		A4B01A1D2363EDAE00AF5D14 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		A4B01A1E2363EDB900AF5D14 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		A4B01A202363F4C500AF5D14 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A4B01A222363F4D100AF5D14 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A4B01A232363F4D200AF5D14 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A4B01A242363FC2A00AF5D14 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		A4B01A252363FC2A00AF5D14 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		A4B01A262364115B00AF5D14 /* ClockTicks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockTicks.swift; sourceTree = "<group>"; };
+		A4B01A282364A4AA00AF5D14 /* SectionHeaderText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderText.swift; sourceTree = "<group>"; };
+		A4B01A2A2364BD5700AF5D14 /* MainDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDisplay.swift; sourceTree = "<group>"; };
+		A4B01A2C2364BD8E00AF5D14 /* Orientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orientation.swift; sourceTree = "<group>"; };
+		A4B01A2E2364BDBA00AF5D14 /* RotatableStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatableStack.swift; sourceTree = "<group>"; };
 		A4B60F2923484F7100797A3B /* UIMeasurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMeasurement.swift; sourceTree = "<group>"; };
 		A4B60F2D234AE80B00797A3B /* limitToRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = limitToRange.swift; sourceTree = "<group>"; };
 		A4DFE130233DCAC200164D30 /* AnalogClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnalogClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,8 +114,9 @@
 		A4DFE17A233DCD0100164D30 /* Timed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timed.swift; sourceTree = "<group>"; };
 		A4DFE17C233DCD0100164D30 /* Ratio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ratio.swift; sourceTree = "<group>"; };
 		A4DFE197234146AB00164D30 /* UIAspectRatio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAspectRatio.swift; sourceTree = "<group>"; };
-		A4DFE1AC234147A100164D30 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		A4DFE1AF2342FF0200164D30 /* TimeEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEmitter.swift; sourceTree = "<group>"; };
+		A4F0ADD3236159B500C74EE9 /* SettingsPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPanel.swift; sourceTree = "<group>"; };
+		A4F0ADD523616E9C00C74EE9 /* SettingsLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLink.swift; sourceTree = "<group>"; };
 		A4FEB0CC23582B3700EA11F9 /* AnalogClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalogClockView.swift; sourceTree = "<group>"; };
 		A4FEB0CF23582BDF00EA11F9 /* ClockNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockNumbers.swift; sourceTree = "<group>"; };
 		A4FEB0D123582C0300EA11F9 /* ClockHands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockHands.swift; sourceTree = "<group>"; };
@@ -130,6 +152,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A4B01A302364BE1200AF5D14 /* RotatableStack */ = {
+			isa = PBXGroup;
+			children = (
+				A4B01A2C2364BD8E00AF5D14 /* Orientation.swift */,
+				A4B01A2E2364BDBA00AF5D14 /* RotatableStack.swift */,
+			);
+			path = RotatableStack;
+			sourceTree = "<group>";
+		};
 		A4DFE127233DCAC200164D30 = {
 			isa = PBXGroup;
 			children = (
@@ -160,11 +191,12 @@
 				A4DFE17B233DCD0100164D30 /* Utilities */,
 				A4DFE133233DCAC200164D30 /* AppDelegate.swift */,
 				A4DFE135233DCAC200164D30 /* SceneDelegate.swift */,
-				A4DFE1AC234147A100164D30 /* App.swift */,
 				A4DFE137233DCAC200164D30 /* ContentView.swift */,
 				A4DFE139233DCAC400164D30 /* Assets.xcassets */,
 				A4DFE13E233DCAC400164D30 /* LaunchScreen.storyboard */,
 				A4DFE141233DCAC400164D30 /* Info.plist */,
+				A4B01A212363F4C500AF5D14 /* Localizable.strings */,
+				A4ADC5B02362C0390019C756 /* strings.swift */,
 				A4DFE13B233DCAC400164D30 /* Preview Content */,
 			);
 			path = AnalogClock;
@@ -256,10 +288,23 @@
 		A4DFE1AE2342FE8F00164D30 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				A4FEB0D323582C3A00EA11F9 /* DigitalClock and Date */,
 				A4FEB0CE23582BC500EA11F9 /* AnalogClock */,
+				A4FEB0D323582C3A00EA11F9 /* DigitalClock and Date */,
+				A4F0ADD22361597F00C74EE9 /* Settings */,
+				A4B01A302364BE1200AF5D14 /* RotatableStack */,
+				A4B01A2A2364BD5700AF5D14 /* MainDisplay.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		A4F0ADD22361597F00C74EE9 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A4F0ADD3236159B500C74EE9 /* SettingsPanel.swift */,
+				A4F0ADD523616E9C00C74EE9 /* SettingsLink.swift */,
+				A4B01A282364A4AA00AF5D14 /* SectionHeaderText.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		A4F73E5923504A5A0067525D /* UI */ = {
@@ -277,6 +322,7 @@
 				A4FEB0CC23582B3700EA11F9 /* AnalogClockView.swift */,
 				A4FEB0CF23582BDF00EA11F9 /* ClockNumbers.swift */,
 				A4FEB0D123582C0300EA11F9 /* ClockHands.swift */,
+				A4B01A262364115B00AF5D14 /* ClockTicks.swift */,
 			);
 			path = AnalogClock;
 			sourceTree = "<group>";
@@ -377,6 +423,9 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
+				vi,
+				"pt-BR",
 			);
 			mainGroup = A4DFE127233DCAC200164D30;
 			productRefGroup = A4DFE131233DCAC200164D30 /* Products */;
@@ -395,6 +444,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4B01A1F2363F4C500AF5D14 /* Localizable.strings in Resources */,
 				A4DFE140233DCAC400164D30 /* LaunchScreen.storyboard in Resources */,
 				A4DFE13D233DCAC400164D30 /* Preview Assets.xcassets in Resources */,
 				A4DFE13A233DCAC400164D30 /* Assets.xcassets in Resources */,
@@ -426,18 +476,25 @@
 				A4DFE18B233DCD0100164D30 /* Timed.swift in Sources */,
 				A4DFE188233DCD0100164D30 /* UpdatableClock.swift in Sources */,
 				A4DFE136233DCAC200164D30 /* SceneDelegate.swift in Sources */,
+				A4B01A2B2364BD5700AF5D14 /* MainDisplay.swift in Sources */,
 				A4B60F2E234AE80B00797A3B /* limitToRange.swift in Sources */,
-				A4DFE1AD234147A100164D30 /* App.swift in Sources */,
+				A4B01A292364A4AA00AF5D14 /* SectionHeaderText.swift in Sources */,
+				A4F0ADD623616E9C00C74EE9 /* SettingsLink.swift in Sources */,
+				A4B01A2F2364BDBA00AF5D14 /* RotatableStack.swift in Sources */,
 				A48100AC2346EE47002D9ED4 /* enums.swift in Sources */,
 				A48100B0234703F5002D9ED4 /* utilities.swift in Sources */,
 				A4DFE180233DCD0100164D30 /* AppSettings.swift in Sources */,
 				A4B60F2A23484F7100797A3B /* UIMeasurement.swift in Sources */,
 				A4DFE1B02342FF0200164D30 /* TimeEmitter.swift in Sources */,
+				A4F0ADD4236159B500C74EE9 /* SettingsPanel.swift in Sources */,
+				A4B01A272364115B00AF5D14 /* ClockTicks.swift in Sources */,
+				A4B01A2D2364BD8E00AF5D14 /* Orientation.swift in Sources */,
 				A4FEB0DB2358335F00EA11F9 /* ClockPrecision.swift in Sources */,
 				A4FEB0D523582C4900EA11F9 /* DigitalClockView.swift in Sources */,
 				A4DFE18A233DCD0100164D30 /* Updatable.swift in Sources */,
 				A4FEB0D723582C6E00EA11F9 /* DigitalClockDateComponents.swift in Sources */,
 				A4DFE17F233DCD0100164D30 /* ClockType.swift in Sources */,
+				A4ADC5B12362C0390019C756 /* strings.swift in Sources */,
 				A4FEB0D923582EA500EA11F9 /* Utilities.swift in Sources */,
 				A4FEB0D223582C0300EA11F9 /* ClockHands.swift in Sources */,
 				A4DFE18C233DCD0100164D30 /* Ratio.swift in Sources */,
@@ -486,10 +543,24 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		A4B01A212363F4C500AF5D14 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4B01A202363F4C500AF5D14 /* en */,
+				A4B01A222363F4D100AF5D14 /* es */,
+				A4B01A232363F4D200AF5D14 /* vi */,
+				A4B01A252363FC2A00AF5D14 /* pt-BR */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		A4DFE13E233DCAC400164D30 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				A4DFE13F233DCAC400164D30 /* Base */,
+				A4B01A1D2363EDAE00AF5D14 /* es */,
+				A4B01A1E2363EDB900AF5D14 /* vi */,
+				A4B01A242363FC2A00AF5D14 /* pt-BR */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -501,6 +572,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -561,6 +633,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

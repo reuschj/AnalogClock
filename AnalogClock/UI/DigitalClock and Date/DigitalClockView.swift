@@ -10,7 +10,7 @@ import SwiftUI
 
 struct DigitalClockView: View {
     
-    @ObservedObject var timeEmitter: TimeEmitter
+    @ObservedObject var timeEmitter: TimeEmitter = getTimeEmitter()
     var type: ClockType = ClockType.twelveHour
     
     var time: TimeKeeper { timeEmitter.time }
@@ -25,7 +25,7 @@ struct DigitalClockView: View {
             TimeTextBlock(text: time.paddedSecond)
             if type == .twelveHour {
                 DigitalClockSeperator()
-                TimeTextBlock(text: time.period?.rawValue)
+                TimeTextBlock(text: time.periodString)
             }
             Spacer()
         }

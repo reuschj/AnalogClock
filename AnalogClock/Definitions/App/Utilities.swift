@@ -17,3 +17,8 @@ func getApp() -> AppDelegate { UIApplication.shared.delegate as! AppDelegate }
  Gets the app settings instance
  */
 func getAppSettings() -> AppSettings { getApp().settings }
+
+/**
+ Gets the time emitter
+ */
+func getTimeEmitter() -> TimeEmitter { getApp().timeEmitter }

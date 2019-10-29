@@ -11,20 +11,24 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    // Clock settings with defaults
+    /// Clock settings with defaults
     var settings = AppSettings(
         clockType: .twelveHour,
         precision: .low,
         showAnalogClock: true,
         showDigitalClock: true,
         showDateDisplay: true,
-        showTickMarks: false,
+        showTickMarks: true,
         showPeriodDisplay: false,
         showTickTockDisplay: false
     )
-
+    
+    /// Emits current time and date on a regular interval
+    var timeEmitter = TimeEmitter(precision: .low)
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        timeEmitter.precision = settings.actualPrecision
         return true
     }
 
