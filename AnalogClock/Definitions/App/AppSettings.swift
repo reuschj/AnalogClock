@@ -14,14 +14,15 @@ import SwiftUI
 class AppSettings: ObservableObject {
     
     @Published var clockType: ClockType = .twelveHour
-    @Published var precision: ClockPrecision = .low
+    @Published var precision: ClockPrecision = .low {
+        didSet { actualPrecision = precision == .low && analogClockOptions.tickTockDisplay ? .medium : precision }
+    }
     @Published var visibleModules: VisibleModules
     @Published var analogClockOptions: AnalogClockOptions
         
     /// Gets the acutal precision needed (may be higher than requested precision if tick-tock display is on).
-    var actualPrecision: ClockPrecision {
-        get { precision == .low && analogClockOptions.tickTockDisplay ? .medium : precision }
-        set { precision = newValue == .low && analogClockOptions.tickTockDisplay ? .medium : newValue }
+    @Published private(set) var actualPrecision: ClockPrecision = .low {
+        didSet { print("Changed actual precision to \(actualPrecision)") }
     }
     
     /**
@@ -45,8 +46,8 @@ class AppSettings: ObservableObject {
         showPeriodDisplay: Bool = false,
         showTickTockDisplay: Bool = false
     ) {
+        self.actualPrecision = .low
         self.clockType = clockType
-        self.precision = precision
         self.visibleModules = VisibleModules(
             analogClock: showAnalogClock,
             digitalClock: showDigitalClock,
@@ -57,6 +58,7 @@ class AppSettings: ObservableObject {
             periodDisplay: showPeriodDisplay,
             tickTockDisplay: showTickTockDisplay
         )
+        self.precision = precision
     }
 }
 

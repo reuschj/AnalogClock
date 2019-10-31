@@ -8,7 +8,8 @@
 
 import Foundation
 
-enum ClockPrecision: TimeInterval, CaseIterable {
+enum ClockPrecision: TimeInterval, CaseIterable, Comparable, Equatable {
+    
     typealias RawValue = TimeInterval
     
     case low = 1.0
@@ -24,5 +25,10 @@ enum ClockPrecision: TimeInterval, CaseIterable {
             }
         }
         return matchedCase
+    }
+    
+    /// Function to compare two clock precisions
+    static func < (lhs: ClockPrecision, rhs: ClockPrecision) -> Bool {
+        lhs.rawValue > rhs.rawValue
     }
 }

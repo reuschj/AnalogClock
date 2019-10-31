@@ -28,7 +28,7 @@ struct SettingsPanel: View {
     private var clockPrecision = Binding<ClockPrecision>(
         get: { settings.actualPrecision },
         set: {
-            settings.actualPrecision = $0
+            settings.precision = $0
             getTimeEmitter().precision = $0
         }
     )
