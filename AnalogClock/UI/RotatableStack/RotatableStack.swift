@@ -9,29 +9,39 @@
 import SwiftUI
 
 /**
- A stack that is  VStack when in portrait and HStack in landscape
+ A view that embeds in a `VStack` when in portrait orientation and `HStack` in landscape orientation
  */
-struct RotatableStack<Content>: View where Content : View {
+public struct RotatableStack<Content>: View where Content : View {
     
-    var content: Content
+    /// Stores the content function builder
+    public var content: () -> Content
     
-    init(@ViewBuilder content: () -> Content) {
-        self.content = content()
+    /**
+    - Parameters:
+        - content: The view builder content to pass
+     */
+    @inlinable public init(@ViewBuilder content: @escaping () -> Content) {
+        self.content = content
     }
     
+    /**
+    Gets the orientation (portrait or landscape) based on the current geometry
+     - Parameters:
+        - geometry: The geometry obtained from the `GeometryReader`
+     */
     private func getOrientation(from geometry: GeometryProxy) -> Orientation {
         geometry.size.width > geometry.size.height ? .landscape : .portrait
     }
     
-    var body: some View {
+    public var body: some View {
         GeometryReader { geometry in
             if self.getOrientation(from: geometry) == .portrait {
                 VStack {
-                    self.content
+                    self.content()
                 }
             } else {
                 HStack {
-                    self.content
+                    self.content()
                 }
             }
         }

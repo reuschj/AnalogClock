@@ -21,9 +21,7 @@ class AppSettings: ObservableObject {
     @Published var analogClockOptions: AnalogClockOptions
         
     /// Gets the acutal precision needed (may be higher than requested precision if tick-tock display is on).
-    @Published private(set) var actualPrecision: ClockPrecision = .low {
-        didSet { print("Changed actual precision to \(actualPrecision)") }
-    }
+    @Published private(set) var actualPrecision: ClockPrecision = .low
     
     /**
     - Parameters:

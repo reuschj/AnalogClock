@@ -13,21 +13,35 @@ import Foundation
  */
 public class TimeKeeper: Timed, Updatable {
     
+    /// Stores the current date
     private var date: Date
+    
+    /// The stored system calendar
     private let calendar: Calendar
+    
+    /// The timer which will drive any updates
     private var timer: Timer?
+    
+    /// Computed property extracting date components from the current date based on the current calendar
     private var dateComponents: DateComponents {
         calendar.dateComponents([.year,.month,.day,.weekday,.hour,.minute,.second,.nanosecond], from: date)
     }
 
+    /// The current year
     public var year: Int? { dateComponents.year }
+    
+    /// The current month (numerical)
     public var month: Int? { dateComponents.month }
+    
+    /// The current month as a full string
     public var monthName: String? {
         guard let month = month else { return nil }
         let index = month - 1
         guard index >= 0 && index < calendar.monthSymbols.count else { return nil }
         return calendar.monthSymbols[index].capitalized
     }
+    
+    /// The current month as a short string
     public var shortMonthName: String? {
         guard let month = month else { return nil }
         let index = month - 1
@@ -116,7 +130,11 @@ public class TimeKeeper: Timed, Updatable {
         calendar = Calendar.current
     }
     
-    /// Initializer with own timer
+    /**
+     Initializer with own timer
+    - Parameters:
+        - interval: The interval which the emitter will update the current time and date
+     */
     public init(updatedEvery interval: TimeInterval = defaultTickInterval) {
         date = Date()
         calendar = Calendar.current
@@ -124,7 +142,11 @@ public class TimeKeeper: Timed, Updatable {
         startTimer(withTimeInterval: interval)
     }
     
-    /// Creates a timer
+    /**
+     Creates a timer
+     - Parameters:
+        - interval: The interval which the emitter will update the current time and date
+     */
     public func startTimer(withTimeInterval interval: TimeInterval) {
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true, block: { [weak self] timer in
@@ -143,7 +165,7 @@ public class TimeKeeper: Timed, Updatable {
     }
     
     /**
-     Called everytime the timer fires, this refreshes the date property with the current date
+     Called every time the timer fires, this refreshes the date property with the current date
      Or, can be called from an external Timer
      */
     public func update() {

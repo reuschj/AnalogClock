@@ -51,7 +51,7 @@ struct SecondHand: View {
     /// Emits the current time and date at regular intervals
     @ObservedObject var timeEmitter: TimeEmitter = getTimeEmitter()
     
-    /// Global app setttings
+    /// Global app settings
     @ObservedObject var settings: AppSettings = getAppSettings()
     
     /// Computed value that gets the clock hand type (second or precise second) based on app settings

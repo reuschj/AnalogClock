@@ -8,14 +8,21 @@
 
 import SwiftUI
 
+/**
+ A date display view module
+ */
 struct DateDisplayView: View {
     
+    /// Emits the current time and date at regular intervals
     @ObservedObject var timeEmitter: TimeEmitter = getTimeEmitter()
     
+    /// The emitted time from the `timeEmitter`
     var time: TimeKeeper { timeEmitter.time }
     
+    /// The color of the date display text
     var color: Color = .primary
     
+    /// The font to use for the date display text
     var font: Font = .body
     
     var body: some View {

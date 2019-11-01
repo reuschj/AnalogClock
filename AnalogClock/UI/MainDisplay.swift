@@ -13,25 +13,25 @@ import SwiftUI
  */
 struct MainDisplay: View {
     
-    /// Global app setttings
+    /// Global app settings
     @ObservedObject var settings = getAppSettings()
     
     var body: some View {
         RotatableStack {
             Spacer()
-            if settings.visibleModules.analogClock {
-                AnalogClockView(type: settings.clockType)
+            if self.settings.visibleModules.analogClock {
+                AnalogClockView(type: self.settings.clockType)
                     .padding()
             }
-            if settings.visibleModules.digitalClock || settings.visibleModules.dateDisplay {
+            if self.settings.visibleModules.digitalClock || self.settings.visibleModules.dateDisplay {
                 VStack {
                     Spacer()
-                    if settings.visibleModules.digitalClock {
-                        DigitalClockView(type: settings.clockType)
+                    if self.settings.visibleModules.digitalClock {
+                        DigitalClockView(type: self.settings.clockType)
                             .padding()
                         Spacer()
                     }
-                    if settings.visibleModules.dateDisplay {
+                    if self.settings.visibleModules.dateDisplay {
                         DateDisplayView(color: .secondary).padding()
                         Spacer()
                     }

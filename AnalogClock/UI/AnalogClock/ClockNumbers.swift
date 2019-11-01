@@ -30,12 +30,21 @@ struct ClockNumbers: View {
     /// Allowable bounds for font scaling
     private let fontRange: ClosedRange<CGFloat> = 14...40
     
-    /// Calculates a scaled font size that fits with the clock's diameter
+    /**
+    Calculates a scaled font size that fits with the clock's diameter
+     - Parameters:
+         - clockDiameter: Diameter of the clock, obtained via geometry
+     */
     private func calculateFontSize(clockDiameter: CGFloat) -> CGFloat {
         limitToRange((clockDiameter / 22), range: fontRange)
     }
     
-    /// Calculates an offset that based on the clock's diameter and scaled font size
+    /**
+     Calculates an offset that based on the clock's diameter and scaled font size
+     - Parameters:
+        - clockDiameter: Diameter of the clock, obtained via geometry
+        - fontSize: The size of the font, obtained from `calculateFontSize`
+     */
     private func calculateOffset(clockDiameter: CGFloat, fontSize: CGFloat) -> CGFloat {
         (clockDiameter / 2 - fontSize) * -1
     }
