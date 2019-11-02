@@ -272,7 +272,6 @@ public class TimeKeeper: Timed, Updatable {
      */
     public func update() {
         date = Date()
-        print(self.second, self.preciseSecond, self.millisecond, self.nanosecond, self.paddedSecond, self.paddedPreciseSecond)
     }
     
 }
