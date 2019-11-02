@@ -26,14 +26,24 @@ public class TimeKeeper: Timed, Updatable {
     private var dateComponents: DateComponents {
         calendar.dateComponents([.year,.month,.day,.weekday,.hour,.minute,.second,.nanosecond], from: date)
     }
+    
+    /*
+     Year
+     -----------------------------------------------
+     */
 
     /// The current year
     public var year: Int? { dateComponents.year }
     
+    /*
+     Month
+     -----------------------------------------------
+     */
+    
     /// The current month (numerical)
     public var month: Int? { dateComponents.month }
     
-    /// The current month as a full string
+    /// The current month as a full-length string, using the current locale and capitalized
     public var monthName: String? {
         guard let month = month else { return nil }
         let index = month - 1
@@ -41,34 +51,63 @@ public class TimeKeeper: Timed, Updatable {
         return calendar.monthSymbols[index].capitalized
     }
     
-    /// The current month as a short string
-    public var shortMonthName: String? {
+    /// The current month as a short string, using the current locale and capitalized
+    public var monthNameShort: String? {
         guard let month = month else { return nil }
         let index = month - 1
         guard index >= 0 && index < calendar.shortMonthSymbols.count else { return nil }
         return calendar.shortMonthSymbols[index].capitalized
     }
+    
+    /*
+     Day
+     -----------------------------------------------
+     */
+    
+    /// The current day of the month
     public var day: Int? { dateComponents.day }
+    
+    /// The current weekday as an integer, starting with 1 as Sunday
     public var weekday: Int? { dateComponents.weekday }
-    public var dayOfWeek: String? {
+    
+    /// The current weekday name as a full-length string, using the current locale and capitalized
+    public var weekdayName: String? {
         guard let weekday = weekday else { return nil }
         let index = weekday - 1
         guard index >= 0 && index < calendar.weekdaySymbols.count else { return nil }
         return calendar.weekdaySymbols[index].capitalized
     }
-    public var shortDayOfWeek: String? {
+    
+    /// The current weekday name as a short string, using the current locale and capitalized
+    public var weekdayNameShort: String? {
         guard let weekday = weekday else { return nil }
         let index = weekday - 1
         guard index >= 0 && index < calendar.shortWeekdaySymbols.count else { return nil }
         return calendar.shortWeekdaySymbols[index].capitalized
     }
+    
+    /*
+     Date
+     -----------------------------------------------
+     */
+    
+    /// A date string with month, day and year, formatted using the current locale
     public var dateString: String? {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
-        let day = dayOfWeek ?? ""
+        let day = weekdayName ?? ""
         return "\(day)\(day.isEmpty ? "" : ", ")\(formatter.string(from: date))"
     }
+    
+    /*
+     Hours
+     -----------------------------------------------
+     */
+    
+    /// The current hour
     public var hour: Int? { dateComponents.hour }
+    
+    /// The current hour for a 12-hour clock
     public var hour12: Int? {
         guard let hour = dateComponents.hour else { return nil }
         if hour == 0 {
@@ -79,49 +118,107 @@ public class TimeKeeper: Timed, Updatable {
             return hour % 12
         }
     }
+    
+    /// The current hour for a 12-hour clock, converted to a `String`
     public var hour12String: String? {
         guard let hour12 = hour12 else { return nil }
         return String(hour12)
     }
+    
+    /// The current hour for a 24-hour clock
     public var hour24: Int? { dateComponents.hour }
+    
+    /// The current hour for a 24-hour clock, converted to a padded, 2-digit `String`
     public var hour24String: String? {
         guard let hour24 = hour24 else { return nil }
         return padTimeUnit(hour24)
     }
+    
+    /*
+     Period
+     -----------------------------------------------
+     */
+    
+    /// The current period on a 12-hour clock, AM or PM
     public var period: Period? {
         guard let hour = dateComponents.hour else { return nil }
         return hour >= 0 && hour < 12 ? .am : .pm
     }
+    
+    /// The current period on a 12-hour clock, AM or PM, formatted as a  `String` using the current locale
     public var periodString: String? {
         guard let period = period else { return nil }
         return period == .am ? calendar.amSymbol : calendar.pmSymbol
     }
+    
+    /*
+     Minute
+     -----------------------------------------------
+     */
+    
+    /// The current minute
     public var minute: Int? { dateComponents.minute }
+    
+    /// The current minute, converted to a padded, 2-digit `String`
     public var paddedMinute: String? {
         guard let minute = minute else { return nil }
         return padTimeUnit(minute)
     }
+    
+    /*
+     Second
+     -----------------------------------------------
+     */
+    
+    /// The current second
     public var second: Int? { dateComponents.second }
+    
+    /// The current second, converted to a padded, 2-digit `String`
     public var paddedSecond: String? {
         guard let second = second else { return nil }
         return padTimeUnit(second)
     }
-    public var preciseSecond: Int? {
-        (dateComponents.second ?? 0) + (dateComponents.nanosecond ?? 0) / 1_000_000_000
+    
+    /// The current second plus nanoseconds
+    public var preciseSecond: Double? {
+        Double(dateComponents.second ?? 0) + (Double(dateComponents.nanosecond ?? 0) / 1_000_000_000)
     }
+    
+    /// The current second plus nanoseconds, converted to a rounded, 2-digit, padded `String`
     public var paddedPreciseSecond: String? {
         guard let preciseSecond = preciseSecond else { return nil }
-        return padTimeUnit(preciseSecond)
+        return padTimeUnit(Int(round(preciseSecond)))
     }
-    public var milliseconds: Int? {
+    
+    /*
+     Sub-second
+     -----------------------------------------------
+     */
+    
+    /// The current milliseconds
+    public var millisecond: Int? {
         guard let nanosecond = nanosecond else { return nil }
         return nanosecond / 1_000_000
     }
+    
+    /// The current nanoseconds
     public var nanosecond: Int? { dateComponents.nanosecond }
+    
+    /*
+     Other
+     -----------------------------------------------
+     */
+    
+    /// Every second alternates between tick and tock
     public var tickTock: TickTock? {
         guard let second = dateComponents.second else { return nil }
         return second % 2 == 0 ? .tick : .tock
     }
+    
+    /*
+     Initializers
+     -----------------------------------------------
+     */
     
     /// Initializer without own timer
     public init() {
@@ -154,6 +251,11 @@ public class TimeKeeper: Timed, Updatable {
         })
     }
     
+    /*
+     Timer methods
+     -----------------------------------------------
+     */
+    
     /// Creates a timer
     public func startTimer() {
         startTimer(withTimeInterval: defaultTickInterval)
@@ -170,6 +272,7 @@ public class TimeKeeper: Timed, Updatable {
      */
     public func update() {
         date = Date()
+        print(self.second, self.preciseSecond, self.millisecond, self.nanosecond, self.paddedSecond, self.paddedPreciseSecond)
     }
     
 }

@@ -66,7 +66,7 @@ struct SettingsPanel: View {
     
     /// Makes a string of text describing the current clock precision
     private func getPrecisionText() -> String {
-        let updatesPerSecond = Int(1 / timeEmitter.interval)
+        let updatesPerSecond = Int(round(1 / timeEmitter.interval))
         return "\(updatesPerSecond) \(updatesPerSecond > 1 ? strings.updatesPlu : strings.updatesSing)"
     }
     

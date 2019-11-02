@@ -8,6 +8,9 @@
 
 import Foundation
 
+/**
+ Defines an updatable object
+ */
 protocol Updatable {
     func update() -> Void
 }
