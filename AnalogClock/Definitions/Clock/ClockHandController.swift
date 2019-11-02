@@ -41,7 +41,11 @@ struct ClockHandController: TimeAware {
     var preciseSecond: Double? { getRotation(for: .preciseSecond)}
     var period: Double? { getRotation(for: .period)}
     
-    /// Gets rotation for desired clock hand type (enum of `ClockHandType`)
+    /**
+    Gets rotation for desired clock hand type (enum of `ClockHandType`)
+     - Parameters:
+        - type: The type of clock, 12-hour or 24-hour
+     */
     func getRotation(for type: ClockHandType) -> Double? {
         let rotationInDegrees = getRotationInDegrees(for: type)
         switch unit {
@@ -52,7 +56,11 @@ struct ClockHandController: TimeAware {
         }
     }
     
-    /// Converts degrees to radians
+    /**
+    Converts degrees to radians
+     - Parameters:
+        - degrees: The value in degrees
+     */
     private func convertToRadians(from degrees: Double?) -> Double? {
         guard let rotationInDegrees = degrees else { return nil }
         return rotationInDegrees * Double.pi / 180
@@ -61,7 +69,11 @@ struct ClockHandController: TimeAware {
     /// Full circle in degrees
     private let fullCircle: Double = 360
     
-    /// Gets rotation in degrees  for desired clock hand type (enum of `ClockHandType`)
+    /**
+    Gets rotation in degrees  for desired clock hand type (enum of `ClockHandType`)
+     - Parameters:
+        - type: The type of clock, 12-hour or 24-hour
+     */
     private func getRotationInDegrees(for type: ClockHandType) -> Double? {
         // Unwrap time elements
         guard let hour24 = time.hour24 else { return nil }

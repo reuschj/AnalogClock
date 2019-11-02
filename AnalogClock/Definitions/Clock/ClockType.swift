@@ -8,7 +8,9 @@
 
 import Foundation
 
-// Enum for types of clocks
+/**
+ Enum for types of clocks, 24-hour or 12-hour
+ */
 enum ClockType {
     case twelveHour
     case twentyFourHour

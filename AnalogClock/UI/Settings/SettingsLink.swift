@@ -8,7 +8,11 @@
 
 import SwiftUI
 
+/**
+ The navigation button the user clicks on the navigate to the settings page
+ */
 struct SettingsLink: View {
+    
     var body: some View {
         NavigationLink(destination: SettingsPanel()) {
             Text(strings.settings).padding(.trailing)

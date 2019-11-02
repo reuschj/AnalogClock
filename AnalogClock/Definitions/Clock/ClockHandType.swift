@@ -20,7 +20,11 @@ enum ClockHandType: String {
     case period
     case tickTock
     
-    // Gets current time element from CurrentTimeAndDate instance
+    /**
+    Gets current time string for the hand type from the `TimeKeeper` instance
+     - Parameters:
+        - time: The current time to pull from
+     */
     func getCurrentTime(fromTime time: TimeKeeper?) -> String? {
         guard let time = time else { return nil }
         switch self {

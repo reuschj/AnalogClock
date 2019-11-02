@@ -8,27 +8,34 @@
 
 import SwiftUI
 
+/// A shortcut to use on this page to get the app settings instance
 fileprivate var settings: AppSettings = getAppSettings()
 
+/**
+  A view that allows the user to set all configurable settings of the app
+ */
 struct SettingsPanel: View {
     
     /// This will keep the current time, updated on a regular interval
     @ObservedObject var timeEmitter = getTimeEmitter()
     
+    /// Type of clock, 12 or 24-hour
     private var clockType = Binding<ClockType>(
         get: { settings.clockType },
         set: { settings.clockType = $0 }
     )
     
+    /// If the clock is 24-hour, as opposed to 12-hour
     private var isTwentyFourHour = Binding<Bool>(
         get: { settings.clockType == .twentyFourHour },
         set: { settings.clockType = $0 ? .twentyFourHour : .twelveHour }
     )
     
+    /// How often the emitter updates the current time to the clock
     private var clockPrecision = Binding<ClockPrecision>(
         get: { settings.actualPrecision },
         set: {
-            settings.actualPrecision = $0
+            settings.precision = $0
             getTimeEmitter().precision = $0
         }
     )
@@ -57,8 +64,9 @@ struct SettingsPanel: View {
         set: { settings.analogClockOptions.tickMarks = $0 }
     )
     
+    /// Makes a string of text describing the current clock precision
     private func getPrecisionText() -> String {
-        let updatesPerSecond = Int(1 / timeEmitter.interval)
+        let updatesPerSecond = Int(round(1 / timeEmitter.interval))
         return "\(updatesPerSecond) \(updatesPerSecond > 1 ? strings.updatesPlu : strings.updatesSing)"
     }
     

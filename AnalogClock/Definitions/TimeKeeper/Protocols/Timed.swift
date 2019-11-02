@@ -8,6 +8,9 @@
 
 import Foundation
 
+/**
+ A protocol for an object with a timer
+ */
 public protocol Timed {
     
     /// Starts the time with some default interval

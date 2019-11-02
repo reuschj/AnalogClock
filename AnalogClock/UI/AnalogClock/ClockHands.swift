@@ -8,21 +8,31 @@
 
 import SwiftUI
 
+/**
+ A clock hand with presets for use as an hour hand
+ */
 struct HourHand: View {
-        
+    
+    /// Flag for 24-hour clock hour hand (when `true`), vs. 12-hour clock hour hand (when `false`)
     var twentyFourHour: Bool = false
     
+    /// Sets the color of the hand
     var color: Color = .primary
     
-    var type: ClockHandType { twentyFourHour ? .twentyFourHour : .hour }
+    /// Computed value that gets the clock hand type (24-hour or 12-hour) based on the `twentyFourHour` flag
+    private var type: ClockHandType { twentyFourHour ? .twentyFourHour : .hour }
     
     var body: some View {
         ClockHand(lengthRatio: 0.6, width: 6, type: type, color: color)
     }
 }
 
+/**
+ A clock hand with presets for use as an minute hand
+ */
 struct MinuteHand: View {
         
+    /// Sets the color of the hand
     var color: Color = .primary
     
     var body: some View {
@@ -30,19 +40,31 @@ struct MinuteHand: View {
     }
 }
 
+/**
+ A clock hand with presets for use as an second hand
+ */
 struct SecondHand: View {
     
+    /// Sets the color of the hand
     var color: Color = .primary
     
+    /// Emits the current time and date at regular intervals
     @ObservedObject var timeEmitter: TimeEmitter = getTimeEmitter()
     
-    private var type: ClockHandType { timeEmitter.interval < 1 ? .preciseSecond : .second }
+    /// Global app settings
+    @ObservedObject var settings: AppSettings = getAppSettings()
+    
+    /// Computed value that gets the clock hand type (second or precise second) based on app settings
+    private var type: ClockHandType { settings.precision > ClockPrecision.low ? .preciseSecond : .second }
     
     var body: some View {
         ClockHand(lengthRatio: 0.92, width: 2, type: type, color: color)
     }
 }
 
+/**
+ A generic updatable clock hand that observes a time emitter
+ */
 struct ClockHand: View {
     
     /// Emits the current time and date at regular intervals
@@ -80,6 +102,9 @@ struct ClockHand: View {
     }
 }
 
+/**
+ Used to draw the basic shape of a clock hand
+ */
 struct ClockHandShape: View {
     
     private var lengthRatio: CGFloat

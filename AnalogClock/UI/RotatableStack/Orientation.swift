@@ -11,7 +11,7 @@ import Foundation
 /**
  Enum of screen orientations
  */
-enum Orientation {
+public enum Orientation {
     case portrait
     case landscape
 }

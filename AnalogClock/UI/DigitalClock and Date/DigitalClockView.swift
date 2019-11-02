@@ -10,21 +10,25 @@ import SwiftUI
 
 struct DigitalClockView: View {
     
+    /// Emits the current time and date at regular intervals
     @ObservedObject var timeEmitter: TimeEmitter = getTimeEmitter()
+    
+    /// Type of clock, 12 or 24-hour
     var type: ClockType = ClockType.twelveHour
     
+    /// The emitted time from the `timeEmitter`
     var time: TimeKeeper { timeEmitter.time }
     
     var body: some View {
         HStack {
             Spacer()
             TimeTextBlock(text: type == .twelveHour ? time.hour12String : time.hour24String)
-            DigitalClockSeperator()
+            DigitalClockSeparator()
             TimeTextBlock(text: time.paddedMinute)
-            DigitalClockSeperator()
+            DigitalClockSeparator()
             TimeTextBlock(text: time.paddedSecond)
             if type == .twelveHour {
-                DigitalClockSeperator()
+                DigitalClockSeparator()
                 TimeTextBlock(text: time.periodString)
             }
             Spacer()

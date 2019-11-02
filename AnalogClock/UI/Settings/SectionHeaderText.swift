@@ -8,12 +8,22 @@
 
 import SwiftUI
 
+/**
+ Formats the header text for each section of the settings panel
+ */
 struct SectionHeaderText: View {
     
+    /// The title string to display in the header
     var title: String
     
+    /// If the title string should be changed to all caps
     var capitalized: Bool = true
     
+    /**
+     - Parameters:
+         - title: The title string to display in the header
+         - capitalized: If the title string should be changed to all caps
+     */
     init(_ title: String, capitalized: Bool = true) {
         self.title = title
         self.capitalized = capitalized

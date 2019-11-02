@@ -22,13 +22,21 @@ struct AnalogClockView: View {
     /// Width of clock's outer outline
     var lineWidth: CGFloat = 2
     
-    /// Global app setttings
+    /// Global app settings
     @ObservedObject var settings: AppSettings = getAppSettings()
     
-    /// Gets the size of the clock by reading the parent geometry
+    /**
+     Gets the size of the clock by reading the parent geometry
+    - Parameters:
+        - geometry: Geometry from a `GeometryReader`
+     */
     private func getSize(_ geometry: GeometryProxy) -> CGFloat { min(geometry.size.width, geometry.size.height) }
     
-    /// Renders the clock at the specified size
+    /**
+     Renders the clock at the specified size
+     - Parameters:
+        - size: The diameter of the clock
+     */
     private func renderClock(size: CGFloat) -> some View {
         ZStack {
             Circle()

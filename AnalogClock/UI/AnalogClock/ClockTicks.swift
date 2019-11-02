@@ -24,12 +24,21 @@ struct ClockTicks: View {
     /// Allowable bounds for tick scaling
     private let tickSizeRange: ClosedRange<CGFloat> = 2...10
     
-    /// Calculates a scaled tick size that fits with the clock's diameter
+    /**
+    Calculates a scaled tick size that fits with the clock's diameter
+     - Parameters:
+        - clockDiameter: Diameter of the clock, obtained via geometry
+     */
     private func calculateTickSize(clockDiameter: CGFloat) -> CGFloat {
         limitToRange((clockDiameter / 60), range: tickSizeRange)
     }
     
-    /// Calculates an offset that based on the clock's diameter and scaled tick size
+    /**
+    Calculates an offset that based on the clock's diameter and scaled tick size
+     - Parameters:
+        - clockDiameter: Diameter of the clock, obtained via geometry
+        - tickSize: The length of each tick mark
+     */
     private func calculateOffset(clockDiameter: CGFloat, tickSize: CGFloat) -> CGFloat {
         (clockDiameter / 2) * -1
     }
@@ -41,7 +50,6 @@ struct ClockTicks: View {
         return ZStack {
             ForEach((1...self.steps), id: \.self) {
                 ClockTickMark(tickSize: tickSize, color: self.color)
-//                    .rotationEffect(Angle(degrees: self.increment * -Double($0)))
                     .offset(x: 0, y: offsetAmount)
                     .rotationEffect(Angle(degrees: self.increment * Double($0)))
             }
@@ -66,6 +74,11 @@ struct ClockTickMark: View {
     /// The color to render the number
     var color: Color = .primary
     
+    /**
+    Gets the origin point of the clock (center) for tick marks to display around
+     - Parameters:
+        - geometry: The geometry to of the clock, used to find the center point
+     */
     private func getOrigin(from geometry: GeometryProxy) -> CGPoint {
         let size = min(geometry.size.width, geometry.size.height)
         return CGPoint(x: size / 2, y: size / 2)
