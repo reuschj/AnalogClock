@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import TimeKeeper
 
 /**
  A date display view module
@@ -14,7 +15,7 @@ import SwiftUI
 struct DateDisplayView: View {
     
     /// Emits the current time and date at regular intervals
-    @ObservedObject var timeEmitter: TimeEmitter = getTimeEmitter()
+    @ObservedObject var timeEmitter: ClockTimeEmitter = getTimeEmitter()
     
     /// The emitted time from the `timeEmitter`
     var time: TimeKeeper { timeEmitter.time }

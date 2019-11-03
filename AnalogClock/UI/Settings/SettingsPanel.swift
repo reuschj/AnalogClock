@@ -17,7 +17,7 @@ fileprivate var settings: AppSettings = getAppSettings()
 struct SettingsPanel: View {
     
     /// This will keep the current time, updated on a regular interval
-    @ObservedObject var timeEmitter = getTimeEmitter()
+    @ObservedObject var timeEmitter: ClockTimeEmitter = getTimeEmitter()
     
     /// Type of clock, 12 or 24-hour
     private var clockType = Binding<ClockType>(

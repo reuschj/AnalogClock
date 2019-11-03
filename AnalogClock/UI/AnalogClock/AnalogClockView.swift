@@ -14,7 +14,7 @@ import SwiftUI
 struct AnalogClockView: View {
     
     /// Emits the current time and date at regular intervals
-    var timeEmitter: TimeEmitter = getTimeEmitter()
+    var timeEmitter: ClockTimeEmitter = getTimeEmitter()
     
     /// Type of clock, 12 or 24-hour
     var type: ClockType = ClockType.twelveHour

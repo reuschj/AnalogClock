@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     )
     
     /// Emits current time and date on a regular interval
-    var timeEmitter = TimeEmitter(precision: .low)
+    var timeEmitter = ClockTimeEmitter(precision: .low)
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

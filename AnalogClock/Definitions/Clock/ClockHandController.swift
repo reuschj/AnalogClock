@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import TimeKeeper
 
 /**
  Enum for types of rotation units a clock hand controller can output to

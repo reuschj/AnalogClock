@@ -3,13 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A48100AC2346EE47002D9ED4 /* enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48100AB2346EE47002D9ED4 /* enums.swift */; };
-		A48100AE23470383002D9ED4 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48100AD23470383002D9ED4 /* constants.swift */; };
-		A48100B0234703F5002D9ED4 /* utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48100AF234703F5002D9ED4 /* utilities.swift */; };
+		A481008D236E881B0072E4D2 /* TimeKeeper in Frameworks */ = {isa = PBXBuildFile; productRef = A481008C236E881B0072E4D2 /* TimeKeeper */; };
+		A481008F236E8ADE0072E4D2 /* ClockTimeEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A481008E236E8ADE0072E4D2 /* ClockTimeEmitter.swift */; };
+		A4810091236EB1400072E4D2 /* TimeEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4810090236EB1400072E4D2 /* TimeEmitter.swift */; };
 		A4ADC5B12362C0390019C756 /* strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ADC5B02362C0390019C756 /* strings.swift */; };
 		A4B01A1F2363F4C500AF5D14 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4B01A212363F4C500AF5D14 /* Localizable.strings */; };
 		A4B01A272364115B00AF5D14 /* ClockTicks.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B01A262364115B00AF5D14 /* ClockTicks.swift */; };
@@ -31,12 +31,7 @@
 		A4DFE17E233DCD0100164D30 /* ClockHandController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFE168233DCD0100164D30 /* ClockHandController.swift */; };
 		A4DFE17F233DCD0100164D30 /* ClockType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFE169233DCD0100164D30 /* ClockType.swift */; };
 		A4DFE180233DCD0100164D30 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFE16B233DCD0100164D30 /* AppSettings.swift */; };
-		A4DFE183233DCD0100164D30 /* TimeKeeper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFE16F233DCD0100164D30 /* TimeKeeper.swift */; };
-		A4DFE189233DCD0100164D30 /* TimeAware.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFE178233DCD0100164D30 /* TimeAware.swift */; };
-		A4DFE18A233DCD0100164D30 /* Updatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFE179233DCD0100164D30 /* Updatable.swift */; };
-		A4DFE18B233DCD0100164D30 /* Timed.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFE17A233DCD0100164D30 /* Timed.swift */; };
 		A4DFE18C233DCD0100164D30 /* Ratio.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFE17C233DCD0100164D30 /* Ratio.swift */; };
-		A4DFE1B02342FF0200164D30 /* TimeEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFE1AF2342FF0200164D30 /* TimeEmitter.swift */; };
 		A4F0ADD4236159B500C74EE9 /* SettingsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F0ADD3236159B500C74EE9 /* SettingsPanel.swift */; };
 		A4F0ADD623616E9C00C74EE9 /* SettingsLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F0ADD523616E9C00C74EE9 /* SettingsLink.swift */; };
 		A4FEB0CD23582B3700EA11F9 /* AnalogClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FEB0CC23582B3700EA11F9 /* AnalogClockView.swift */; };
@@ -68,9 +63,8 @@
 
 /* Begin PBXFileReference section */
 		A4707235235EA2EC00EF9F5C /* AnalogClock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AnalogClock.entitlements; sourceTree = "<group>"; };
-		A48100AB2346EE47002D9ED4 /* enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enums.swift; sourceTree = "<group>"; };
-		A48100AD23470383002D9ED4 /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
-		A48100AF234703F5002D9ED4 /* utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utilities.swift; sourceTree = "<group>"; };
+		A481008E236E8ADE0072E4D2 /* ClockTimeEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockTimeEmitter.swift; sourceTree = "<group>"; };
+		A4810090236EB1400072E4D2 /* TimeEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEmitter.swift; sourceTree = "<group>"; };
 		A4ADC5B02362C0390019C756 /* strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = strings.swift; sourceTree = "<group>"; };
 		A4B01A1D2363EDAE00AF5D14 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		A4B01A1E2363EDB900AF5D14 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -105,12 +99,7 @@
 		A4DFE168233DCD0100164D30 /* ClockHandController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockHandController.swift; sourceTree = "<group>"; };
 		A4DFE169233DCD0100164D30 /* ClockType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockType.swift; sourceTree = "<group>"; };
 		A4DFE16B233DCD0100164D30 /* AppSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
-		A4DFE16F233DCD0100164D30 /* TimeKeeper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeKeeper.swift; sourceTree = "<group>"; };
-		A4DFE178233DCD0100164D30 /* TimeAware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeAware.swift; sourceTree = "<group>"; };
-		A4DFE179233DCD0100164D30 /* Updatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Updatable.swift; sourceTree = "<group>"; };
-		A4DFE17A233DCD0100164D30 /* Timed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timed.swift; sourceTree = "<group>"; };
 		A4DFE17C233DCD0100164D30 /* Ratio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ratio.swift; sourceTree = "<group>"; };
-		A4DFE1AF2342FF0200164D30 /* TimeEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEmitter.swift; sourceTree = "<group>"; };
 		A4F0ADD3236159B500C74EE9 /* SettingsPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPanel.swift; sourceTree = "<group>"; };
 		A4F0ADD523616E9C00C74EE9 /* SettingsLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLink.swift; sourceTree = "<group>"; };
 		A4FEB0CC23582B3700EA11F9 /* AnalogClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalogClockView.swift; sourceTree = "<group>"; };
@@ -128,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A481008D236E881B0072E4D2 /* TimeKeeper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,10 +142,11 @@
 			isa = PBXGroup;
 			children = (
 				A4FEB0DA2358335F00EA11F9 /* ClockPrecision.swift */,
-				A4DFE1AF2342FF0200164D30 /* TimeEmitter.swift */,
 				A4DFE167233DCD0100164D30 /* ClockHandType.swift */,
 				A4DFE169233DCD0100164D30 /* ClockType.swift */,
 				A4DFE168233DCD0100164D30 /* ClockHandController.swift */,
+				A481008E236E8ADE0072E4D2 /* ClockTimeEmitter.swift */,
+				A4810090236EB1400072E4D2 /* TimeEmitter.swift */,
 			);
 			path = Clock;
 			sourceTree = "<group>";
@@ -240,8 +231,6 @@
 			isa = PBXGroup;
 			children = (
 				A412921C236BF848008410B5 /* Clock */,
-				A4DFE16D233DCD0100164D30 /* TimeKeeper */,
-				A4DFE176233DCD0100164D30 /* Protocols */,
 				A4DFE16A233DCD0100164D30 /* App */,
 				A4F73E5923504A5A0067525D /* UI */,
 			);
@@ -255,28 +244,6 @@
 				A4FEB0D823582EA500EA11F9 /* Utilities.swift */,
 			);
 			path = App;
-			sourceTree = "<group>";
-		};
-		A4DFE16D233DCD0100164D30 /* TimeKeeper */ = {
-			isa = PBXGroup;
-			children = (
-				A48100AD23470383002D9ED4 /* constants.swift */,
-				A48100AB2346EE47002D9ED4 /* enums.swift */,
-				A4DFE16F233DCD0100164D30 /* TimeKeeper.swift */,
-				A48100AF234703F5002D9ED4 /* utilities.swift */,
-			);
-			path = TimeKeeper;
-			sourceTree = "<group>";
-		};
-		A4DFE176233DCD0100164D30 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				A4DFE178233DCD0100164D30 /* TimeAware.swift */,
-				A4DFE179233DCD0100164D30 /* Updatable.swift */,
-				A4DFE17A233DCD0100164D30 /* Timed.swift */,
-			);
-			name = Protocols;
-			path = TimeKeeper/Protocols;
 			sourceTree = "<group>";
 		};
 		A4DFE17B233DCD0100164D30 /* Utilities */ = {
@@ -355,6 +322,9 @@
 			dependencies = (
 			);
 			name = AnalogClock;
+			packageProductDependencies = (
+				A481008C236E881B0072E4D2 /* TimeKeeper */,
+			);
 			productName = AnalogClock;
 			productReference = A4DFE130233DCAC200164D30 /* AnalogClock.app */;
 			productType = "com.apple.product-type.application";
@@ -430,6 +400,9 @@
 				"pt-BR",
 			);
 			mainGroup = A4DFE127233DCAC200164D30;
+			packageReferences = (
+				A481008B236E881B0072E4D2 /* XCRemoteSwiftPackageReference "TimeKeeper" */,
+			);
 			productRefGroup = A4DFE131233DCAC200164D30 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -475,37 +448,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4DFE134233DCAC200164D30 /* AppDelegate.swift in Sources */,
-				A4DFE18B233DCD0100164D30 /* Timed.swift in Sources */,
 				A4DFE136233DCAC200164D30 /* SceneDelegate.swift in Sources */,
 				A4B01A2B2364BD5700AF5D14 /* MainDisplay.swift in Sources */,
 				A4B60F2E234AE80B00797A3B /* limitToRange.swift in Sources */,
 				A4B01A292364A4AA00AF5D14 /* SectionHeaderText.swift in Sources */,
 				A4F0ADD623616E9C00C74EE9 /* SettingsLink.swift in Sources */,
 				A4B01A2F2364BDBA00AF5D14 /* RotatableStack.swift in Sources */,
-				A48100AC2346EE47002D9ED4 /* enums.swift in Sources */,
-				A48100B0234703F5002D9ED4 /* utilities.swift in Sources */,
 				A4DFE180233DCD0100164D30 /* AppSettings.swift in Sources */,
 				A4B60F2A23484F7100797A3B /* UIMeasurement.swift in Sources */,
-				A4DFE1B02342FF0200164D30 /* TimeEmitter.swift in Sources */,
 				A4F0ADD4236159B500C74EE9 /* SettingsPanel.swift in Sources */,
 				A4B01A272364115B00AF5D14 /* ClockTicks.swift in Sources */,
 				A4B01A2D2364BD8E00AF5D14 /* Orientation.swift in Sources */,
 				A4FEB0DB2358335F00EA11F9 /* ClockPrecision.swift in Sources */,
 				A4FEB0D523582C4900EA11F9 /* DigitalClockView.swift in Sources */,
-				A4DFE18A233DCD0100164D30 /* Updatable.swift in Sources */,
 				A4FEB0D723582C6E00EA11F9 /* DigitalClockDateComponents.swift in Sources */,
 				A4DFE17F233DCD0100164D30 /* ClockType.swift in Sources */,
 				A4ADC5B12362C0390019C756 /* strings.swift in Sources */,
+				A4810091236EB1400072E4D2 /* TimeEmitter.swift in Sources */,
 				A4FEB0D923582EA500EA11F9 /* Utilities.swift in Sources */,
 				A4FEB0D223582C0300EA11F9 /* ClockHands.swift in Sources */,
 				A4DFE18C233DCD0100164D30 /* Ratio.swift in Sources */,
-				A4DFE189233DCD0100164D30 /* TimeAware.swift in Sources */,
+				A481008F236E8ADE0072E4D2 /* ClockTimeEmitter.swift in Sources */,
 				A4DFE138233DCAC200164D30 /* ContentView.swift in Sources */,
-				A48100AE23470383002D9ED4 /* constants.swift in Sources */,
 				A4FEB0CD23582B3700EA11F9 /* AnalogClockView.swift in Sources */,
 				A4DFE17D233DCD0100164D30 /* ClockHandType.swift in Sources */,
 				A4FEB0DE235CCCE300EA11F9 /* DateDisplayView.swift in Sources */,
-				A4DFE183233DCD0100164D30 /* TimeKeeper.swift in Sources */,
 				A4DFE17E233DCD0100164D30 /* ClockHandController.swift in Sources */,
 				A4FEB0D023582BDF00EA11F9 /* ClockNumbers.swift in Sources */,
 			);
@@ -854,6 +821,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A481008B236E881B0072E4D2 /* XCRemoteSwiftPackageReference "TimeKeeper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/reuschj/TimeKeeper.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A481008C236E881B0072E4D2 /* TimeKeeper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A481008B236E881B0072E4D2 /* XCRemoteSwiftPackageReference "TimeKeeper" */;
+			productName = TimeKeeper;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A4DFE128233DCAC200164D30 /* Project object */;
 }
