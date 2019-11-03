@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "RotatableStack",
+        "repositoryURL": "https://github.com/reuschj/RotatableStack.git",
+        "state": {
+          "branch": "master",
+          "revision": "cc52b070ec572c332f942bf43eac7f2af1de4bc1",
+          "version": null
+        }
+      },
+      {
         "package": "TimeKeeper",
         "repositoryURL": "https://github.com/reuschj/TimeKeeper.git",
         "state": {
