@@ -7,11 +7,12 @@
 //
 
 import SwiftUI
+import TimeKeeper
 
 struct DigitalClockView: View {
     
     /// Emits the current time and date at regular intervals
-    @ObservedObject var timeEmitter: TimeEmitter = getTimeEmitter()
+    @ObservedObject var timeEmitter: ClockTimeEmitter = getTimeEmitter()
     
     /// Type of clock, 12 or 24-hour
     var type: ClockType = ClockType.twelveHour

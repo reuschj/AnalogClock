@@ -49,7 +49,7 @@ struct SecondHand: View {
     var color: Color = .primary
     
     /// Emits the current time and date at regular intervals
-    @ObservedObject var timeEmitter: TimeEmitter = getTimeEmitter()
+    @ObservedObject var timeEmitter: ClockTimeEmitter = getTimeEmitter()
     
     /// Global app settings
     @ObservedObject var settings: AppSettings = getAppSettings()
@@ -68,7 +68,7 @@ struct SecondHand: View {
 struct ClockHand: View {
     
     /// Emits the current time and date at regular intervals
-    @ObservedObject var timeEmitter: TimeEmitter = getTimeEmitter()
+    @ObservedObject var timeEmitter: ClockTimeEmitter = getTimeEmitter()
     
     var lengthRatio: CGFloat = 1
     var width: CGFloat = 4
@@ -78,17 +78,17 @@ struct ClockHand: View {
     private var rotationInDegrees: Double {
         switch type {
         case.twentyFourHour:
-            return timeEmitter.handController.hour24 ?? 0
+            return timeEmitter.clockHand.hour24 ?? 0
         case .hour:
-            return timeEmitter.handController.hour ?? 0
+            return timeEmitter.clockHand.hour ?? 0
         case .minute:
-            return timeEmitter.handController.minute ?? 0
+            return timeEmitter.clockHand.minute ?? 0
         case .second:
-            return timeEmitter.handController.second ?? 0
+            return timeEmitter.clockHand.second ?? 0
         case .preciseSecond:
-            return timeEmitter.handController.preciseSecond ?? 0
+            return timeEmitter.clockHand.preciseSecond ?? 0
         case .period:
-            return timeEmitter.handController.period ?? 0
+            return timeEmitter.clockHand.period ?? 0
         default:
             return 0
         }

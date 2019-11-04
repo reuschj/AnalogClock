@@ -21,4 +21,4 @@ func getAppSettings() -> AppSettings { getApp().settings }
 /**
  Gets the time emitter
  */
-func getTimeEmitter() -> TimeEmitter { getApp().timeEmitter }
+func getTimeEmitter() -> ClockTimeEmitter { getApp().timeEmitter }

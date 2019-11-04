@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import TimeKeeper
 
 /**
  Enum holding types of clock hands

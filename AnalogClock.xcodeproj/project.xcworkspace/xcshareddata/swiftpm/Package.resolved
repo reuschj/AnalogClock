@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "RotatableStack",
+        "repositoryURL": "https://github.com/reuschj/RotatableStack.git",
+        "state": {
+          "branch": "master",
+          "revision": "cc52b070ec572c332f942bf43eac7f2af1de4bc1",
+          "version": null
+        }
+      },
+      {
+        "package": "TimeKeeper",
+        "repositoryURL": "https://github.com/reuschj/TimeKeeper.git",
+        "state": {
+          "branch": "master",
+          "revision": "99009333ab314c9c9049e14399c895f2476dbd59",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

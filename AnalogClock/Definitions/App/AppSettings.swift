@@ -20,7 +20,7 @@ class AppSettings: ObservableObject {
     @Published var visibleModules: VisibleModules
     @Published var analogClockOptions: AnalogClockOptions
         
-    /// Gets the acutal precision needed (may be higher than requested precision if tick-tock display is on).
+    /// Gets the actual precision needed (may be higher than requested precision if tick-tock display is on).
     @Published private(set) var actualPrecision: ClockPrecision = .low
     
     /**
@@ -61,7 +61,7 @@ class AppSettings: ObservableObject {
 }
 
 /**
- Structure containing clock modules thats visibliity can be toggled.
+ Structure containing clock modules thats visibility can be toggled.
  */
 struct VisibleModules {
     var analogClock: Bool = true
