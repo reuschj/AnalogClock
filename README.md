@@ -13,7 +13,6 @@ This is a SwiftUI rewrite of an [earlier start](https://github.com/reuschj/Analo
 - A settings panel
 
 #### Coming soon:
-- Settings will be saved to disk
 - An (optional) tick/tock pendulum display
 - An (optional) AM/PM hand for the analog clock
 
