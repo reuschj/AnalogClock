@@ -13,9 +13,15 @@ import SwiftUI
  */
 class AppSettings: ObservableObject {
     
-    @Published var clockType: ClockType = .twelveHour
+    @Published var clockType: ClockType = .twelveHour {
+        didSet { UserDefaults.standard.set(clockType == .twelveHour, forKey: defaultsKeys.twelveHourClock) }
+    }
     @Published var precision: ClockPrecision = .low {
-        didSet { actualPrecision = precision == .low && analogClockOptions.tickTockDisplay ? .medium : precision }
+        didSet {
+            UserDefaults.standard.set(precision.rawValue, forKey: defaultsKeys.timeInterval)
+            actualPrecision = precision == .low && analogClockOptions.tickTockDisplay ? .medium : precision
+            
+        }
     }
     @Published var visibleModules: VisibleModules
     @Published var analogClockOptions: AnalogClockOptions
@@ -58,23 +64,71 @@ class AppSettings: ObservableObject {
         )
         self.precision = precision
     }
+    
+    /**
+     Get user defaults and create new instance
+     */
+    static func getFromDefaults() -> AppSettings {
+        
+        let defaults = UserDefaults.standard
+        
+        // Sets defaults on first run
+        let clockDefaultsAreSet = defaults.bool(forKey: defaultsKeys.clockDefaultsAreSet)
+        if !clockDefaultsAreSet {
+            defaults.set(true, forKey: defaultsKeys.clockDefaultsAreSet)
+            defaults.set(true, forKey: defaultsKeys.twelveHourClock)
+            defaults.set(1.0, forKey: defaultsKeys.timeInterval)
+            defaults.set(true, forKey: defaultsKeys.showAnalogClock)
+            defaults.set(true, forKey: defaultsKeys.showDigitalClock)
+            defaults.set(true, forKey: defaultsKeys.showDateDisplay)
+            defaults.set(true, forKey: defaultsKeys.showTickMarks)
+            defaults.set(false, forKey: defaultsKeys.showPeriodDisplay)
+            defaults.set(false, forKey: defaultsKeys.showTickTockDisplay)
+        }
+        
+        let twelveHourClock = defaults.bool(forKey: defaultsKeys.twelveHourClock)
+        let timeInterval = defaults.double(forKey: defaultsKeys.timeInterval)
+        
+        return AppSettings(
+            clockType: twelveHourClock ? .twelveHour : .twentyFourHour,
+            precision: ClockPrecision.getPrecision(from: timeInterval) ?? .low,
+            showAnalogClock: defaults.bool(forKey: defaultsKeys.showAnalogClock),
+            showDigitalClock: defaults.bool(forKey: defaultsKeys.showDigitalClock),
+            showDateDisplay: defaults.bool(forKey: defaultsKeys.showDateDisplay),
+            showTickMarks: defaults.bool(forKey: defaultsKeys.showTickMarks),
+            showPeriodDisplay: defaults.bool(forKey: defaultsKeys.showPeriodDisplay),
+            showTickTockDisplay: defaults.bool(forKey: defaultsKeys.showTickTockDisplay)
+        )
+    }
 }
 
 /**
  Structure containing clock modules thats visibility can be toggled.
  */
 struct VisibleModules {
-    var analogClock: Bool = true
-    var digitalClock: Bool = true
-    var dateDisplay: Bool = true
+    var analogClock: Bool = true {
+        didSet { UserDefaults.standard.set(analogClock, forKey: defaultsKeys.showAnalogClock) }
+    }
+    var digitalClock: Bool = true {
+        didSet { UserDefaults.standard.set(digitalClock, forKey: defaultsKeys.showDigitalClock) }
+    }
+    var dateDisplay: Bool = true {
+        didSet { UserDefaults.standard.set(dateDisplay, forKey: defaultsKeys.showDateDisplay) }
+    }
 }
 
 /**
  Structure containing analog clock options
  */
 struct AnalogClockOptions {
-    var tickMarks: Bool = false
-    var periodDisplay: Bool = false
-    var tickTockDisplay: Bool = false
+    var tickMarks: Bool = false {
+        didSet { UserDefaults.standard.set(tickMarks, forKey: defaultsKeys.showTickMarks) }
+    }
+    var periodDisplay: Bool = false {
+        didSet { UserDefaults.standard.set(periodDisplay, forKey: defaultsKeys.showPeriodDisplay) }
+    }
+    var tickTockDisplay: Bool = false {
+        didSet { UserDefaults.standard.set(tickTockDisplay, forKey: defaultsKeys.showTickTockDisplay) }
+    }
     
 }

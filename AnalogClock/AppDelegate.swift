@@ -12,16 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     /// Clock settings with defaults
-    var settings = AppSettings(
-        clockType: .twelveHour,
-        precision: .low,
-        showAnalogClock: true,
-        showDigitalClock: true,
-        showDateDisplay: true,
-        showTickMarks: true,
-        showPeriodDisplay: false,
-        showTickTockDisplay: false
-    )
+    var settings = AppSettings.getFromDefaults()
     
     /// Emits current time and date on a regular interval
     var timeEmitter = ClockTimeEmitter(precision: .low)
