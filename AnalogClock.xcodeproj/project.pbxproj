@@ -17,6 +17,7 @@
 		A4B01A2B2364BD5700AF5D14 /* MainDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B01A2A2364BD5700AF5D14 /* MainDisplay.swift */; };
 		A4B60F2A23484F7100797A3B /* UIMeasurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B60F2923484F7100797A3B /* UIMeasurement.swift */; };
 		A4B60F2E234AE80B00797A3B /* limitToRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B60F2D234AE80B00797A3B /* limitToRange.swift */; };
+		A4D03B12237FC0E30004BD4A /* PeriodDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D03B11237FC0E30004BD4A /* PeriodDisplayView.swift */; };
 		A4DFE134233DCAC200164D30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFE133233DCAC200164D30 /* AppDelegate.swift */; };
 		A4DFE136233DCAC200164D30 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFE135233DCAC200164D30 /* SceneDelegate.swift */; };
 		A4DFE138233DCAC200164D30 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFE137233DCAC200164D30 /* ContentView.swift */; };
@@ -76,6 +77,7 @@
 		A4B01A2A2364BD5700AF5D14 /* MainDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDisplay.swift; sourceTree = "<group>"; };
 		A4B60F2923484F7100797A3B /* UIMeasurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMeasurement.swift; sourceTree = "<group>"; };
 		A4B60F2D234AE80B00797A3B /* limitToRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = limitToRange.swift; sourceTree = "<group>"; };
+		A4D03B11237FC0E30004BD4A /* PeriodDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodDisplayView.swift; sourceTree = "<group>"; };
 		A4DFE130233DCAC200164D30 /* AnalogClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnalogClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4DFE133233DCAC200164D30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4DFE135233DCAC200164D30 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 				A4FEB0CF23582BDF00EA11F9 /* ClockNumbers.swift */,
 				A4FEB0D123582C0300EA11F9 /* ClockHands.swift */,
 				A4B01A262364115B00AF5D14 /* ClockTicks.swift */,
+				A4D03B11237FC0E30004BD4A /* PeriodDisplayView.swift */,
 			);
 			path = AnalogClock;
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 				A4B01A272364115B00AF5D14 /* ClockTicks.swift in Sources */,
 				A4FEB0DB2358335F00EA11F9 /* ClockPrecision.swift in Sources */,
 				A4FEB0D523582C4900EA11F9 /* DigitalClockView.swift in Sources */,
+				A4D03B12237FC0E30004BD4A /* PeriodDisplayView.swift in Sources */,
 				A4FEB0D723582C6E00EA11F9 /* DigitalClockDateComponents.swift in Sources */,
 				A4DFE17F233DCD0100164D30 /* ClockType.swift in Sources */,
 				A4ADC5B12362C0390019C756 /* strings.swift in Sources */,
