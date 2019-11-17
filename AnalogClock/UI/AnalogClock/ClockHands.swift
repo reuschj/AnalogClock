@@ -63,6 +63,22 @@ struct SecondHand: View {
 }
 
 /**
+ A clock hand with presets for use as an period hand
+ */
+struct PeriodHand: View {
+    
+    /// Sets the color of the hand
+    var color: Color = .secondary
+    
+    /// Emits the current time and date at regular intervals
+    @ObservedObject var timeEmitter: ClockTimeEmitter = getTimeEmitter()
+
+    var body: some View {
+        ClockHand(lengthRatio: 0.95, width: 2, type: .period, color: color)
+    }
+}
+
+/**
  A generic updatable clock hand that observes a time emitter
  */
 struct ClockHand: View {
@@ -88,7 +104,7 @@ struct ClockHand: View {
         case .preciseSecond:
             return timeEmitter.clockHand.preciseSecond ?? 0
         case .period:
-            return timeEmitter.clockHand.period ?? 0
+            return (timeEmitter.clockHand.period ?? 0) * ClockHand.periodRotationDelta
         default:
             return 0
         }
@@ -100,6 +116,9 @@ struct ClockHand: View {
             .scaledToFit()
             .rotationEffect(Angle(degrees: rotationInDegrees))
     }
+    
+    static let periodRotationDelta: Double = 55
+    static var periodRotationOffset: Angle { Angle(degrees:  -periodRotationDelta / 2) }
 }
 
 /**
