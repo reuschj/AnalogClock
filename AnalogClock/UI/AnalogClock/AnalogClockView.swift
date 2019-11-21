@@ -53,6 +53,9 @@ struct AnalogClockView: View {
             HourHand(twentyFourHour: type == .twentyFourHour, color: .accentColor)
             MinuteHand(color: .primary)
             SecondHand(color: .secondary)
+            if settings.analogClockOptions.periodDisplay && type == .twelveHour {
+                PeriodDisplayView(color: .gray)
+            }
         }
         .frame(width: size, height: size, alignment: .center)
     }

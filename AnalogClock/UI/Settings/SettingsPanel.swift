@@ -64,6 +64,12 @@ struct SettingsPanel: View {
         set: { settings.analogClockOptions.tickMarks = $0 }
     )
     
+    /// Show the tick marks
+    private var showPeriodDisplay = Binding<Bool>(
+        get: { settings.analogClockOptions.periodDisplay },
+        set: { settings.analogClockOptions.periodDisplay = $0 }
+    )
+    
     /// Makes a string of text describing the current clock precision
     private func getPrecisionText() -> String {
         let updatesPerSecond = Int(round(1 / timeEmitter.interval))
@@ -106,6 +112,9 @@ struct SettingsPanel: View {
                 Section(header: SectionHeaderText(strings.otherOptions)) {
                     Toggle(isOn: showTickMarks) {
                         Text(strings.showTickMarks)
+                    }
+                    Toggle(isOn: showPeriodDisplay) {
+                        Text(strings.showPeriodDisplay)
                     }
                 }
             }.navigationBarTitle(strings.settings)

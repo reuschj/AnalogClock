@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A41ECDB7238116F700AF9932 /* PeriodDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41ECDB6238116F600AF9932 /* PeriodDisplayView.swift */; };
 		A481008D236E881B0072E4D2 /* TimeKeeper in Frameworks */ = {isa = PBXBuildFile; productRef = A481008C236E881B0072E4D2 /* TimeKeeper */; };
 		A481008F236E8ADE0072E4D2 /* ClockTimeEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A481008E236E8ADE0072E4D2 /* ClockTimeEmitter.swift */; };
 		A4810094236F3B090072E4D2 /* RotatableStack in Frameworks */ = {isa = PBXBuildFile; productRef = A4810093236F3B090072E4D2 /* RotatableStack */; };
@@ -61,6 +62,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A41ECDB6238116F600AF9932 /* PeriodDisplayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodDisplayView.swift; sourceTree = "<group>"; };
 		A4707235235EA2EC00EF9F5C /* AnalogClock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AnalogClock.entitlements; sourceTree = "<group>"; };
 		A481008E236E8ADE0072E4D2 /* ClockTimeEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockTimeEmitter.swift; sourceTree = "<group>"; };
 		A4ADC5B02362C0390019C756 /* strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = strings.swift; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 		A4FEB0CE23582BC500EA11F9 /* AnalogClock */ = {
 			isa = PBXGroup;
 			children = (
+				A41ECDB6238116F600AF9932 /* PeriodDisplayView.swift */,
 				A4FEB0CC23582B3700EA11F9 /* AnalogClockView.swift */,
 				A4FEB0CF23582BDF00EA11F9 /* ClockNumbers.swift */,
 				A4FEB0D123582C0300EA11F9 /* ClockHands.swift */,
@@ -450,6 +453,7 @@
 				A4B01A272364115B00AF5D14 /* ClockTicks.swift in Sources */,
 				A4FEB0DB2358335F00EA11F9 /* ClockPrecision.swift in Sources */,
 				A4FEB0D523582C4900EA11F9 /* DigitalClockView.swift in Sources */,
+				A41ECDB7238116F700AF9932 /* PeriodDisplayView.swift in Sources */,
 				A4FEB0D723582C6E00EA11F9 /* DigitalClockDateComponents.swift in Sources */,
 				A4DFE17F233DCD0100164D30 /* ClockType.swift in Sources */,
 				A4ADC5B12362C0390019C756 /* strings.swift in Sources */,

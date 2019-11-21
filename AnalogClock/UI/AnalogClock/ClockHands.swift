@@ -63,6 +63,22 @@ struct SecondHand: View {
 }
 
 /**
+ A clock hand with presets for use as an period hand
+ */
+struct PeriodHand: View {
+    
+    /// Sets the color of the hand
+    var color: Color = .secondary
+    
+    /// Emits the current time and date at regular intervals
+    @ObservedObject var timeEmitter: ClockTimeEmitter = getTimeEmitter()
+
+    var body: some View {
+        ClockHand(lengthRatio: 0.95, width: 2, type: .period, color: color, overhangRatio: 0.2, notchMultiplier: 2.5)
+    }
+}
+
+/**
  A generic updatable clock hand that observes a time emitter
  */
 struct ClockHand: View {
@@ -74,6 +90,9 @@ struct ClockHand: View {
     var width: CGFloat = 4
     var type: ClockHandType = .hour
     var color: Color = .primary
+    var overhangRatio: CGFloat = 0.1
+    var hasPivotNotch: Bool = true
+    var notchMultiplier: CGFloat = 2
     
     private var rotationInDegrees: Double {
         switch type {
@@ -88,18 +107,21 @@ struct ClockHand: View {
         case .preciseSecond:
             return timeEmitter.clockHand.preciseSecond ?? 0
         case .period:
-            return timeEmitter.clockHand.period ?? 0
+            return (timeEmitter.clockHand.period ?? 0) * ClockHand.periodRotationDelta
         default:
             return 0
         }
     }
     
     var body: some View {
-        ClockHandShape(lengthRatio: lengthRatio, width: width)
+        ClockHandShape(lengthRatio: lengthRatio, width: width, overhangRatio: overhangRatio, hasPivotNotch: hasPivotNotch, notchMultiplier: notchMultiplier)
             .foregroundColor(color)
             .scaledToFit()
             .rotationEffect(Angle(degrees: rotationInDegrees))
     }
+    
+    static let periodRotationDelta: Double = 55
+    static var periodRotationOffset: Angle { Angle(degrees:  -periodRotationDelta / 2) }
 }
 
 /**
@@ -110,13 +132,17 @@ struct ClockHandShape: View {
     private var lengthRatio: CGFloat
     private var width: CGFloat
     private var overhangRatio: CGFloat
+    private var hasPivotNotch: Bool = true
+    private var notchMultiplier: CGFloat = 2
     
     private let ratioRange: ClosedRange<CGFloat> = 0...1.0
     
-    init(lengthRatio: CGFloat = 1.0, width: CGFloat = 4, overhangRatio: CGFloat = 0.1) {
+    init(lengthRatio: CGFloat = 1.0, width: CGFloat = 4, overhangRatio: CGFloat = 0.1, hasPivotNotch: Bool = true, notchMultiplier: CGFloat = 2) {
         self.lengthRatio = limitToRange(lengthRatio, range: ratioRange)
         self.width = width
         self.overhangRatio = limitToRange(overhangRatio, range: ratioRange)
+        self.hasPivotNotch = hasPivotNotch
+        self.notchMultiplier = notchMultiplier
     }
     
     private func getLength(clockDiameter: CGFloat) -> CGFloat {
@@ -129,6 +155,12 @@ struct ClockHandShape: View {
         return (halfRadius * lengthRatio) - (halfRadius * overhangRatio)
     }
     
+    private func getPivotNotch(diameter: CGFloat) -> some View {
+        Circle()
+            .frame(width: diameter, height: diameter, alignment: .center)
+            .scaledToFit()
+    }
+    
     func renderClockHand(clockDiameter: CGFloat) -> some View {
         let length = getLength(clockDiameter: clockDiameter)
         let offset = getOffset(clockDiameter: clockDiameter)
@@ -136,6 +168,7 @@ struct ClockHandShape: View {
             .frame(width: width, height: length, alignment: .bottom)
             .offset(x: 0, y: offset)
             .rotationEffect(Angle(degrees: 180))
+            .overlay(ZStack { if hasPivotNotch { getPivotNotch(diameter: width * notchMultiplier) } })
     }
     
     var body: some View {
