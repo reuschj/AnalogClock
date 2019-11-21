@@ -8,8 +8,12 @@
 
 import SwiftUI
 
+/**
+ Displays the period (AM/PM) on an analog clock with small hand that points to AM or PM
+ */
 struct PeriodDisplayView: View {
     
+    /// Color of period text _and_ hand
     var color: Color = .primary
     
     /// Allowable bounds for font scaling
@@ -49,15 +53,21 @@ struct PeriodDisplayView: View {
     }
 }
 
+/**
+ Small hand that points to the period (AM/PM) on an analog clock
+ */
 struct PeriodDisplay: View {
     
+    /// Size of the AM/PM font
     var fontSize: CGFloat
     
+    /// Color of period text _and_ hand
     var color: Color
     
     /// Emits the current time and date at regular intervals
     @ObservedObject var timeEmitter: ClockTimeEmitter = getTimeEmitter()
     
+    /// Calculates hand size based on font size
     var handFrameSize: (height: CGFloat, width: CGFloat) {
         (height: fontSize * 4, width: fontSize * 4)
     }

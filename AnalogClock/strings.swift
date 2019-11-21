@@ -23,5 +23,6 @@ let strings = (
     updatesSing: NSLocalizedString("updatesSing", comment: ""),
     updatesPlu: NSLocalizedString("updatesPlu", comment: ""),
     otherOptions: NSLocalizedString("otherOptions", comment: ""),
-    showTickMarks: NSLocalizedString("showTickMarks", comment: "")
+    showTickMarks: NSLocalizedString("showTickMarks", comment: ""),
+    showPeriodDisplay: NSLocalizedString("showPeriodDisplay", comment: "")
 )
