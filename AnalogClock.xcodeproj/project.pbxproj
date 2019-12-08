@@ -257,7 +257,6 @@
 				A4FEB0D323582C3A00EA11F9 /* DigitalClock and Date */,
 				A4F0ADD22361597F00C74EE9 /* Settings */,
 				A4B01A2A2364BD5700AF5D14 /* MainDisplay.swift */,
-				A409FC48239CAFDB0029A523 /* types.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -275,6 +274,7 @@
 		A4F73E5923504A5A0067525D /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				A409FC48239CAFDB0029A523 /* types.swift */,
 				A4B60F2923484F7100797A3B /* UIMeasurement.swift */,
 			);
 			path = UI;

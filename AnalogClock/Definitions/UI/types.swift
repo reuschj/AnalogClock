@@ -6,7 +6,7 @@
 //  Copyright © 2019 Justin Reusch. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
 
 typealias ClockSize = (height: CGFloat, width: CGFloat)
 typealias OffsetAmount = (x: CGFloat, y: CGFloat)

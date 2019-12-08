@@ -127,7 +127,7 @@ struct SettingsPanel: View {
                     }
                 }
             }.navigationBarTitle(strings.settings)
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

@@ -17,7 +17,8 @@ struct ContentView: View {
         
         NavigationView {
             MainDisplay()
-        }.environment(\.horizontalSizeClass, .compact)
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
