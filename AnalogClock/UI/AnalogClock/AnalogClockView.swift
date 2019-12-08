@@ -49,13 +49,13 @@ struct AnalogClockView: View {
                 ClockTicks(color: .gray, steps: 60)
                 ClockTicks(color: .secondary, steps: 12)
             }
+            if settings.analogClockOptions.periodDisplay && type == .twelveHour {
+                PeriodDisplayView(color: .gray, fontColor: .primary)
+            }
             // Add hands
             HourHand(twentyFourHour: type == .twentyFourHour, color: .accentColor)
             MinuteHand(color: .primary)
             SecondHand(color: .secondary)
-            if settings.analogClockOptions.periodDisplay && type == .twelveHour {
-                PeriodDisplayView(color: .gray)
-            }
             if settings.analogClockOptions.tickTockDisplay {
                 TickTockDisplayView(color: .gray)
             }

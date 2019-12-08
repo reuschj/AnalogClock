@@ -20,6 +20,7 @@ enum ClockHandType: String {
     case preciseSecond
     case period
     case tickTock
+    case tickTockPendulum
     
     /**
     Gets current time string for the hand type from the `TimeKeeper` instance
@@ -45,6 +46,10 @@ enum ClockHandType: String {
         case .tickTock:
             guard let tickTock = time.tickTock else { return nil }
             return tickTock.rawValue
+        case .tickTockPendulum:
+            guard let tickTock = time.tickTock else { return nil }
+            return tickTock.rawValue
         }
+        
     }
 }

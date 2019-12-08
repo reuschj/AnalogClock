@@ -42,6 +42,7 @@ struct ClockHandController: TimeAware {
     var preciseSecond: Double? { getRotation(for: .preciseSecond)}
     var period: Double? { getRotation(for: .period)}
     var tickTock: Double? { getRotation(for: .tickTock)}
+    var tickTockPendulum: Double? { getRotation(for: .tickTockPendulum)}
     
     /**
     Gets rotation for desired clock hand type (enum of `ClockHandType`)
@@ -88,7 +89,8 @@ struct ClockHandController: TimeAware {
         // These are with fractions added from smaller increments
         let nanoseconds = Double(nanosecond)
         let seconds = Double(second)
-        let preciseSeconds = Double(second) + nanoseconds / 1_000_000_000
+        let percentOfSecond = nanoseconds / 1_000_000_000
+        let preciseSeconds = Double(second) + percentOfSecond
         let minutes = Double(minute) + preciseSeconds / 60
         let hours = Double(hour) + minutes / 60
         let hours24 = Double(hour24) + minutes / 60
@@ -96,29 +98,36 @@ struct ClockHandController: TimeAware {
         let period24: Double = hours24 / 24
         // Return the final calculation depending on the type
         switch type {
-            case .twentyFourHour:
-                return (period24 * fullCircle).truncatingRemainder(dividingBy: fullCircle)
-            case .hour:
-                return (period12 * fullCircle).truncatingRemainder(dividingBy: fullCircle)
-            case .minute:
-                return ((minutes / 60) * fullCircle).truncatingRemainder(dividingBy: fullCircle)
-            case .second:
-                return ((seconds / 60) * 360).truncatingRemainder(dividingBy: fullCircle)
-            case .preciseSecond:
-                return ((preciseSeconds / 60) * 360).truncatingRemainder(dividingBy: fullCircle)
-            case .period:
-                switch period {
-                    case .pm:
-                        return 1
-                    default:
-                        return 0
+        case .twentyFourHour:
+            return (period24 * fullCircle).truncatingRemainder(dividingBy: fullCircle)
+        case .hour:
+            return (period12 * fullCircle).truncatingRemainder(dividingBy: fullCircle)
+        case .minute:
+            return ((minutes / 60) * fullCircle).truncatingRemainder(dividingBy: fullCircle)
+        case .second:
+            return ((seconds / 60) * 360).truncatingRemainder(dividingBy: fullCircle)
+        case .preciseSecond:
+            return ((preciseSeconds / 60) * 360).truncatingRemainder(dividingBy: fullCircle)
+        case .period:
+            switch period {
+            case .pm:
+                return 1
+            default:
+                return 0
             }
-            case .tickTock:
-                switch tickTock {
-                    case .tock:
-                        return 1
-                    default:
-                        return 0
+        case .tickTock:
+            switch tickTock {
+            case .tock:
+                return 1
+            default:
+                return 0
+            }
+        case.tickTockPendulum:
+            switch tickTock {
+            case .tock:
+                return 1 - percentOfSecond
+            default:
+                return 0 + percentOfSecond
             }
         }
     }

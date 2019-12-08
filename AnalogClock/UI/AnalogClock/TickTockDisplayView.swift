@@ -40,7 +40,6 @@ struct TickTockDisplayView: View {
         let offsetAmount = calculateOffset(clockDiameter: clockDiameter)
         let size = calculateSize(clockDiameter: clockDiameter)
         return TickTockDisplay(color: color, size: size, offset: offsetAmount)
-//            .offset(x: offsetAmount.x, y: offsetAmount.y)
     }
     
     var body: some View {
@@ -58,8 +57,10 @@ struct TickTockDisplay: View {
     /// Color of pendulum
     var color: Color
     
+    /// Size of the tick tock pendulum
     var size: ClockSize
     
+    /// Offset of pendulum from center of the clock
     var offset: OffsetAmount
     
     /// Emits the current time and date at regular intervals
@@ -68,10 +69,13 @@ struct TickTockDisplay: View {
     var body: some View {
         Circle()
             .frame(width: size.width, height: size.height, alignment: .center)
+            .overlay(Rectangle()
+                .frame(width: 2, height: size.height * 2, alignment: .center)
+                .offset(x: 0, y: -size.height)
+            )
             .foregroundColor(color)
-//            .rotationEffect(ClockHand.tickTockRotationOffset)
             .offset(x: offset.x, y: offset.y)
-            .rotationEffect(Angle(degrees: (timeEmitter.clockHand.tickTock ?? 0) * ClockHand.tickTockRotationDelta) + ClockHand.tickTockRotationOffset)
+            .rotationEffect(Angle(degrees: (timeEmitter.clockHand.tickTockPendulum ?? 0) * ClockHand.tickTockRotationDelta) + ClockHand.tickTockRotationOffset)
     }
 }
 
