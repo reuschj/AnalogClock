@@ -82,8 +82,8 @@ class AppSettings: ObservableObject {
             defaults.set(true, forKey: defaultsKeys.showDigitalClock)
             defaults.set(true, forKey: defaultsKeys.showDateDisplay)
             defaults.set(true, forKey: defaultsKeys.showTickMarks)
-            defaults.set(false, forKey: defaultsKeys.showPeriodDisplay)
-            defaults.set(false, forKey: defaultsKeys.showTickTockDisplay)
+            defaults.set(true, forKey: defaultsKeys.showPeriodDisplay)
+            defaults.set(true, forKey: defaultsKeys.showTickTockDisplay)
         }
         
         let twelveHourClock = defaults.bool(forKey: defaultsKeys.twelveHourClock)
@@ -98,6 +98,7 @@ class AppSettings: ObservableObject {
             showTickMarks: defaults.bool(forKey: defaultsKeys.showTickMarks),
             showPeriodDisplay: defaults.bool(forKey: defaultsKeys.showPeriodDisplay),
             showTickTockDisplay: defaults.bool(forKey: defaultsKeys.showTickTockDisplay)
+
         )
     }
 }

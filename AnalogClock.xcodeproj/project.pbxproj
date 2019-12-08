@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A409FC47239C3D8B0029A523 /* TickTockDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A409FC46239C3D8B0029A523 /* TickTockDisplayView.swift */; };
+		A409FC49239CAFDB0029A523 /* types.swift in Sources */ = {isa = PBXBuildFile; fileRef = A409FC48239CAFDB0029A523 /* types.swift */; };
 		A41ECDB7238116F700AF9932 /* PeriodDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41ECDB6238116F600AF9932 /* PeriodDisplayView.swift */; };
 		A481008D236E881B0072E4D2 /* TimeKeeper in Frameworks */ = {isa = PBXBuildFile; productRef = A481008C236E881B0072E4D2 /* TimeKeeper */; };
 		A481008F236E8ADE0072E4D2 /* ClockTimeEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A481008E236E8ADE0072E4D2 /* ClockTimeEmitter.swift */; };
@@ -62,6 +64,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A409FC46239C3D8B0029A523 /* TickTockDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickTockDisplayView.swift; sourceTree = "<group>"; };
+		A409FC48239CAFDB0029A523 /* types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = types.swift; sourceTree = "<group>"; };
 		A41ECDB6238116F600AF9932 /* PeriodDisplayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodDisplayView.swift; sourceTree = "<group>"; };
 		A4707235235EA2EC00EF9F5C /* AnalogClock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AnalogClock.entitlements; sourceTree = "<group>"; };
 		A481008E236E8ADE0072E4D2 /* ClockTimeEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockTimeEmitter.swift; sourceTree = "<group>"; };
@@ -270,6 +274,7 @@
 		A4F73E5923504A5A0067525D /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				A409FC48239CAFDB0029A523 /* types.swift */,
 				A4B60F2923484F7100797A3B /* UIMeasurement.swift */,
 			);
 			path = UI;
@@ -283,6 +288,7 @@
 				A4FEB0CF23582BDF00EA11F9 /* ClockNumbers.swift */,
 				A4FEB0D123582C0300EA11F9 /* ClockHands.swift */,
 				A4B01A262364115B00AF5D14 /* ClockTicks.swift */,
+				A409FC46239C3D8B0029A523 /* TickTockDisplayView.swift */,
 			);
 			path = AnalogClock;
 			sourceTree = "<group>";
@@ -449,6 +455,7 @@
 				A4F0ADD623616E9C00C74EE9 /* SettingsLink.swift in Sources */,
 				A4DFE180233DCD0100164D30 /* AppSettings.swift in Sources */,
 				A4B60F2A23484F7100797A3B /* UIMeasurement.swift in Sources */,
+				A409FC47239C3D8B0029A523 /* TickTockDisplayView.swift in Sources */,
 				A4F0ADD4236159B500C74EE9 /* SettingsPanel.swift in Sources */,
 				A4B01A272364115B00AF5D14 /* ClockTicks.swift in Sources */,
 				A4FEB0DB2358335F00EA11F9 /* ClockPrecision.swift in Sources */,
@@ -465,6 +472,7 @@
 				A4FEB0CD23582B3700EA11F9 /* AnalogClockView.swift in Sources */,
 				A4DFE17D233DCD0100164D30 /* ClockHandType.swift in Sources */,
 				A4FEB0DE235CCCE300EA11F9 /* DateDisplayView.swift in Sources */,
+				A409FC49239CAFDB0029A523 /* types.swift in Sources */,
 				A4DFE17E233DCD0100164D30 /* ClockHandController.swift in Sources */,
 				A4FEB0D023582BDF00EA11F9 /* ClockNumbers.swift in Sources */,
 			);

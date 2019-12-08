@@ -25,4 +25,5 @@
 "updatesPlu" = "cập nhật mỗi giây 1 lần";
 "otherOptions" = "Sự lựa chọn khác";
 "showTickMarks" = "Hiển thị nhãn hiệu";
-"showPeriodDisplay" = "Hiển thị thời gian";
+"showPeriodDisplay" = "Hiển thị sáng / chiều";
+"showTickTockDisplay" = "Hiển thị con lắc";

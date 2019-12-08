@@ -25,4 +25,5 @@
 "updatesPlu" = "updates per second";
 "otherOptions" = "Other options";
 "showTickMarks" = "Show tick marks";
-"showPeriodDisplay" = "Show period display";
+"showPeriodDisplay" = "Show period (AM/PM) hand";
+"showTickTockDisplay" = "Show pendulum";

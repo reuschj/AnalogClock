@@ -13,16 +13,21 @@ import SwiftUI
  */
 struct PeriodDisplayView: View {
     
-    /// Color of period text _and_ hand
+    /// Color of period hand
     var color: Color = .primary
+    
+    /// Color of period text
+    var fontColor: Color? = nil
     
     /// Allowable bounds for font scaling
     private let fontRange: ClosedRange<CGFloat> = 10...30
     
+    private var actualFontColor: Color { fontColor ?? color }
+    
     /**
      Calculates a scaled font size that fits with the clock's diameter
      - Parameters:
-     - clockDiameter: Diameter of the clock, obtained via geometry
+        - clockDiameter: Diameter of the clock, obtained via geometry
      */
     private func calculateFontSize(clockDiameter: CGFloat) -> CGFloat {
         limitToRange((clockDiameter / 30), range: fontRange)
@@ -42,7 +47,7 @@ struct PeriodDisplayView: View {
     private func positionPeriodDisplay(clockDiameter: CGFloat) -> some View {
         let fontSize = calculateFontSize(clockDiameter: clockDiameter)
         let offsetAmount = calculateOffset(clockDiameter: clockDiameter, fontSize: fontSize)
-        return PeriodDisplay(fontSize: fontSize, color: color)
+        return PeriodDisplay(fontSize: fontSize, color: color, fontColor: actualFontColor)
             .offset(x: offsetAmount.x, y: offsetAmount.y)
     }
     
@@ -61,15 +66,19 @@ struct PeriodDisplay: View {
     /// Size of the AM/PM font
     var fontSize: CGFloat
     
-    /// Color of period text _and_ hand
+    /// Color of period hand
     var color: Color
+    
+    /// Color of period text
+    var fontColor: Color
     
     /// Emits the current time and date at regular intervals
     @ObservedObject var timeEmitter: ClockTimeEmitter = getTimeEmitter()
     
     /// Calculates hand size based on font size
-    var handFrameSize: (height: CGFloat, width: CGFloat) {
-        (height: fontSize * 4, width: fontSize * 4)
+    var handFrameSize: ClockSize {
+        let multiplier: CGFloat = 4
+        return (height: fontSize * multiplier, width: fontSize * multiplier)
     }
     
     var body: some View {
@@ -77,10 +86,10 @@ struct PeriodDisplay: View {
             HStack {
                 Text(timeEmitter.time.calendar.amSymbol)
                     .font(.system(size: fontSize))
-                    .foregroundColor(color)
+                    .foregroundColor(fontColor)
                 Text(timeEmitter.time.calendar.pmSymbol)
                     .font(.system(size: fontSize))
-                    .foregroundColor(color)
+                    .foregroundColor(fontColor)
             }
             PeriodHand(color: color)
                 .rotationEffect(ClockHand.periodRotationOffset)

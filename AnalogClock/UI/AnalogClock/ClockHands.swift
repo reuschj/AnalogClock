@@ -74,7 +74,7 @@ struct PeriodHand: View {
     @ObservedObject var timeEmitter: ClockTimeEmitter = getTimeEmitter()
 
     var body: some View {
-        ClockHand(lengthRatio: 0.95, width: 2, type: .period, color: color, overhangRatio: 0.2, notchMultiplier: 2.5)
+        ClockHand(lengthRatio: 0.95, width: 3, type: .period, color: color, overhangRatio: 0.25, notchMultiplier: 3)
     }
 }
 
@@ -108,8 +108,10 @@ struct ClockHand: View {
             return timeEmitter.clockHand.preciseSecond ?? 0
         case .period:
             return (timeEmitter.clockHand.period ?? 0) * ClockHand.periodRotationDelta
-        default:
-            return 0
+        case .tickTock:
+            return (timeEmitter.clockHand.tickTock ?? 0) * ClockHand.tickTockRotationDelta
+        case .tickTockPendulum:
+            return (timeEmitter.clockHand.tickTockPendulum ?? 0) * ClockHand.tickTockRotationDelta
         }
     }
     
@@ -122,6 +124,9 @@ struct ClockHand: View {
     
     static let periodRotationDelta: Double = 55
     static var periodRotationOffset: Angle { Angle(degrees:  -periodRotationDelta / 2) }
+    
+    static let tickTockRotationDelta: Double = 15
+    static var tickTockRotationOffset: Angle { Angle(degrees:  -tickTockRotationDelta / 2) }
 }
 
 /**
