@@ -56,6 +56,9 @@ struct AnalogClockView: View {
             if settings.analogClockOptions.periodDisplay && type == .twelveHour {
                 PeriodDisplayView(color: .gray)
             }
+            if settings.analogClockOptions.tickTockDisplay {
+                TickTockDisplayView(color: .gray)
+            }
         }
         .frame(width: size, height: size, alignment: .center)
     }

@@ -41,6 +41,7 @@ struct ClockHandController: TimeAware {
     var second: Double? { getRotation(for: .second)}
     var preciseSecond: Double? { getRotation(for: .preciseSecond)}
     var period: Double? { getRotation(for: .period)}
+    var tickTock: Double? { getRotation(for: .tickTock)}
     
     /**
     Gets rotation for desired clock hand type (enum of `ClockHandType`)

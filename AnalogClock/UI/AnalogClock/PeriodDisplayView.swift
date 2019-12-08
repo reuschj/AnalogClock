@@ -22,7 +22,7 @@ struct PeriodDisplayView: View {
     /**
      Calculates a scaled font size that fits with the clock's diameter
      - Parameters:
-     - clockDiameter: Diameter of the clock, obtained via geometry
+        - clockDiameter: Diameter of the clock, obtained via geometry
      */
     private func calculateFontSize(clockDiameter: CGFloat) -> CGFloat {
         limitToRange((clockDiameter / 30), range: fontRange)
@@ -68,7 +68,7 @@ struct PeriodDisplay: View {
     @ObservedObject var timeEmitter: ClockTimeEmitter = getTimeEmitter()
     
     /// Calculates hand size based on font size
-    var handFrameSize: (height: CGFloat, width: CGFloat) {
+    var handFrameSize: ClockSize {
         (height: fontSize * 4, width: fontSize * 4)
     }
     

@@ -82,22 +82,33 @@ class AppSettings: ObservableObject {
             defaults.set(true, forKey: defaultsKeys.showDigitalClock)
             defaults.set(true, forKey: defaultsKeys.showDateDisplay)
             defaults.set(true, forKey: defaultsKeys.showTickMarks)
-            defaults.set(false, forKey: defaultsKeys.showPeriodDisplay)
-            defaults.set(false, forKey: defaultsKeys.showTickTockDisplay)
+            defaults.set(true, forKey: defaultsKeys.showPeriodDisplay)
+            defaults.set(true, forKey: defaultsKeys.showTickTockDisplay)
         }
         
         let twelveHourClock = defaults.bool(forKey: defaultsKeys.twelveHourClock)
         let timeInterval = defaults.double(forKey: defaultsKeys.timeInterval)
         
+//        return AppSettings(
+//            clockType: twelveHourClock ? .twelveHour : .twentyFourHour,
+//            precision: ClockPrecision.getPrecision(from: timeInterval) ?? .low,
+//            showAnalogClock: defaults.bool(forKey: defaultsKeys.showAnalogClock),
+//            showDigitalClock: defaults.bool(forKey: defaultsKeys.showDigitalClock),
+//            showDateDisplay: defaults.bool(forKey: defaultsKeys.showDateDisplay),
+//            showTickMarks: defaults.bool(forKey: defaultsKeys.showTickMarks),
+//            showPeriodDisplay: defaults.bool(forKey: defaultsKeys.showPeriodDisplay),
+//            showTickTockDisplay: defaults.bool(forKey: defaultsKeys.showTickTockDisplay)
+//
+//        )
         return AppSettings(
-            clockType: twelveHourClock ? .twelveHour : .twentyFourHour,
-            precision: ClockPrecision.getPrecision(from: timeInterval) ?? .low,
-            showAnalogClock: defaults.bool(forKey: defaultsKeys.showAnalogClock),
-            showDigitalClock: defaults.bool(forKey: defaultsKeys.showDigitalClock),
-            showDateDisplay: defaults.bool(forKey: defaultsKeys.showDateDisplay),
-            showTickMarks: defaults.bool(forKey: defaultsKeys.showTickMarks),
-            showPeriodDisplay: defaults.bool(forKey: defaultsKeys.showPeriodDisplay),
-            showTickTockDisplay: defaults.bool(forKey: defaultsKeys.showTickTockDisplay)
+            clockType: .twelveHour,
+            precision: .high,
+            showAnalogClock: true,
+            showDigitalClock: true,
+            showDateDisplay: true,
+            showPeriodDisplay: true,
+            showTickTockDisplay: true
+            
         )
     }
 }

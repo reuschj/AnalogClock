@@ -108,8 +108,8 @@ struct ClockHand: View {
             return timeEmitter.clockHand.preciseSecond ?? 0
         case .period:
             return (timeEmitter.clockHand.period ?? 0) * ClockHand.periodRotationDelta
-        default:
-            return 0
+        case .tickTock:
+            return (timeEmitter.clockHand.tickTock ?? 0) * ClockHand.tickTockRotationDelta
         }
     }
     
@@ -122,6 +122,9 @@ struct ClockHand: View {
     
     static let periodRotationDelta: Double = 55
     static var periodRotationOffset: Angle { Angle(degrees:  -periodRotationDelta / 2) }
+    
+    static let tickTockRotationDelta: Double = 55
+    static var tickTockRotationOffset: Angle { Angle(degrees:  -tickTockRotationDelta / 2) }
 }
 
 /**
