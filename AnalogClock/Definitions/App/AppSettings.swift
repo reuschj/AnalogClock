@@ -18,8 +18,8 @@ class AppSettings: ObservableObject {
     }
     @Published var precision: ClockPrecision = .low {
         didSet {
-            UserDefaults.standard.set(precision.rawValue, forKey: defaultsKeys.timeInterval)
-            actualPrecision = precision == .low && analogClockOptions.tickTockDisplay ? .medium : precision
+            UserDefaults.standard.set(precision.timeInterval, forKey: defaultsKeys.timeInterval)
+            actualPrecision = (precision.timeInterval >= 1.0) && analogClockOptions.tickTockDisplay ? .medium : precision
             
         }
     }
@@ -91,7 +91,7 @@ class AppSettings: ObservableObject {
         
         return AppSettings(
             clockType: twelveHourClock ? .twelveHour : .twentyFourHour,
-            precision: ClockPrecision.getPrecision(from: timeInterval) ?? .low,
+            precision: ClockPrecision.getPrecision(from: timeInterval),
             showAnalogClock: defaults.bool(forKey: defaultsKeys.showAnalogClock),
             showDigitalClock: defaults.bool(forKey: defaultsKeys.showDigitalClock),
             showDateDisplay: defaults.bool(forKey: defaultsKeys.showDateDisplay),

@@ -13,14 +13,23 @@ import SwiftUI
  */
 struct HourHand: View {
     
-    /// Flag for 24-hour clock hour hand (when `true`), vs. 12-hour clock hour hand (when `false`)
-    var twentyFourHour: Bool = false
+    /// Clock type (12-hour, 24-hour or decimal)
+    var clockType: ClockType = .twelveHour
     
     /// Sets the color of the hand
     var color: Color = .primary
     
-    /// Computed value that gets the clock hand type (24-hour or 12-hour) based on the `twentyFourHour` flag
-    private var type: ClockHandType { twentyFourHour ? .twentyFourHour : .hour }
+    /// Computed value that gets the clock hand type (12-hour, 24-hour or decimal)
+    private var type: ClockHandType {
+        switch clockType {
+        case .twelveHour:
+            return .hour(base: .twelve)
+        case .twentyFourHour:
+            return .hour(base: .twentyFour)
+        case .decimal:
+            return .hour(base: .decimal)
+        }
+    }
     
     var body: some View {
         ClockHand(lengthRatio: 0.6, width: 6, type: type, color: color)
@@ -31,12 +40,25 @@ struct HourHand: View {
  A clock hand with presets for use as an minute hand
  */
 struct MinuteHand: View {
+    
+    /// Clock type (12-hour, 24-hour or decimal)
+    var clockType: ClockType = .twelveHour
         
     /// Sets the color of the hand
     var color: Color = .primary
     
+    /// Computed value that gets the clock hand type (12-hour, 24-hour or decimal)
+    private var type: ClockHandType {
+        switch clockType {
+        case .twelveHour, .twentyFourHour:
+            return .minute(base: .standard)
+        case .decimal:
+            return .minute(base: .decimal)
+        }
+    }
+    
     var body: some View {
-        ClockHand(lengthRatio: 0.85, width: 4, type: .minute, color: color)
+        ClockHand(lengthRatio: 0.85, width: 4, type: type, color: color)
     }
 }
 
@@ -44,6 +66,9 @@ struct MinuteHand: View {
  A clock hand with presets for use as an second hand
  */
 struct SecondHand: View {
+    
+    /// Clock type (12-hour, 24-hour or decimal)
+    var clockType: ClockType = .twelveHour
     
     /// Sets the color of the hand
     var color: Color = .primary
@@ -54,8 +79,16 @@ struct SecondHand: View {
     /// Global app settings
     @ObservedObject var settings: AppSettings = getAppSettings()
     
-    /// Computed value that gets the clock hand type (second or precise second) based on app settings
-    private var type: ClockHandType { settings.precision > ClockPrecision.low ? .preciseSecond : .second }
+    /// Computed value that gets the clock hand type (12-hour, 24-hour or decimal)
+    private var type: ClockHandType {
+        let isPrecise: Bool = settings.precision > ClockPrecision.low
+        switch clockType {
+        case .twelveHour, .twentyFourHour:
+            return .second(base: .standard, precise: isPrecise)
+        case .decimal:
+            return .second(base: .decimal, precise: isPrecise)
+        }
+    }
     
     var body: some View {
         ClockHand(lengthRatio: 0.92, width: 2, type: type, color: color)
@@ -88,7 +121,7 @@ struct ClockHand: View {
     
     var lengthRatio: CGFloat = 1
     var width: CGFloat = 4
-    var type: ClockHandType = .hour
+    var type: ClockHandType = .hour(base: .twelve)
     var color: Color = .primary
     var overhangRatio: CGFloat = 0.1
     var hasPivotNotch: Bool = true
@@ -96,16 +129,22 @@ struct ClockHand: View {
     
     private var rotationInDegrees: Double {
         switch type {
-        case.twentyFourHour:
-            return timeEmitter.clockHand.hour24 ?? 0
-        case .hour:
-            return timeEmitter.clockHand.hour ?? 0
-        case .minute:
-            return timeEmitter.clockHand.minute ?? 0
-        case .second:
-            return timeEmitter.clockHand.second ?? 0
-        case .preciseSecond:
-            return timeEmitter.clockHand.preciseSecond ?? 0
+        case .hour(let base):
+            switch base {
+            case .twelve: return timeEmitter.clockHand.hour ?? 0
+            case .twentyFour: return timeEmitter.clockHand.hour24 ?? 0
+            case .decimal: return timeEmitter.clockHand.hourDecimal ?? 0
+            }
+        case .minute(let base):
+            switch base {
+            case .standard: return timeEmitter.clockHand.minute ?? 0
+            case .decimal: return timeEmitter.clockHand.minuteDecimal ?? 0
+            }
+        case .second(let base, let precise):
+            switch base {
+            case .standard: return precise ? (timeEmitter.clockHand.preciseSecond ?? 0) : (timeEmitter.clockHand.second ?? 0)
+            case .decimal: return precise ? (timeEmitter.clockHand.preciseSecondDecimal ?? 0) : (timeEmitter.clockHand.secondDecimal ?? 0)
+            }
         case .period:
             return (timeEmitter.clockHand.period ?? 0) * ClockHand.periodRotationDelta
         default:

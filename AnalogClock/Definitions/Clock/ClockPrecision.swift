@@ -7,41 +7,115 @@
 //
 
 import Foundation
+import DecimalTime
 
-enum ClockPrecision: TimeInterval, CaseIterable, Comparable, Equatable {
+/// 1 update per second
+fileprivate let lowInterval: TimeInterval = 1.0
+
+/// 1 update per second
+fileprivate let lowDecimalInterval: TimeInterval = 1.0.timeInterval
+
+/// 23.967 updates per second
+fileprivate let mediumInterval: TimeInterval = 0.04170837504
+
+/// 29.97 updates per second
+fileprivate let highInterval: TimeInterval = 0.03336670003
+
+/// 59.94 updates per second
+fileprivate let veryHighInterval: TimeInterval = 0.01668335002
+
+/// Enum of clock precision options
+enum ClockPrecision: Comparable, Equatable, Hashable {
+            
+    // Presets -------------- /
     
-    typealias RawValue = TimeInterval
-    
-    /// 1 update per second
-    case low = 1.0
+    /// 1 update per second (defined by clock type)
+    case low
     
     /// 23.967 updates per second
-    case medium = 0.04170837504
+    case medium
     
     /// 29.97 updates per second
-    case high = 0.03336670003
+    case high
     
     /// 59.94 updates per second
-    case veryHigh = 0.01668335002
+    case veryHigh
+    
+    // Custom  -------------- /
+    
+    /// Takes a custom interval input
+    case custom(interval: TimeInterval = 1.0)
+    
+    /// Gets time interval for precision
+    var timeInterval: TimeInterval {
+        switch self {
+        case .low:
+            return lowInterval
+        case .medium:
+            return mediumInterval
+        case .high:
+            return highInterval
+        case .veryHigh:
+            return veryHighInterval
+        case .custom(interval: let interval):
+            return interval
+        }
+    }
+    
+    /// Gets decimal time interval for precision
+    var decimalTimeInterval: DecimalTimeInterval {
+        switch self {
+        case .low:
+            return 1.0
+        default:
+            return self.timeInterval.decimalTimeInterval
+        }
+    }
     
     /**
-     Looks up clock precision case based on given interval. Returns `nil` if no nearby value is found.
-        - Parameters:
-            - interval: A time interval to look up in seconds
+     Gives an time interval for updates based on clock type
+     - Parameter clockType: Clock type (12-hour, 24-hour or decimal)
      */
-    static func getPrecision(from interval: TimeInterval) -> ClockPrecision? {
-        var matchedCase: ClockPrecision? = nil
-        let _ = ClockPrecision.allCases.map {
-            let rounded = { Int(round($0 * 100)) }
-            if rounded($0.rawValue) == rounded(interval) {
-                matchedCase = $0
+    func getUpdateInterval(for clockType: ClockType = .twelveHour) -> TimeInterval {
+        switch clockType {
+        case .twelveHour, .twentyFourHour:
+            return self.timeInterval
+        case .decimal:
+            switch self {
+            case .low:
+                return self.decimalTimeInterval.timeInterval
+            default:
+                return self.timeInterval
             }
         }
-        return matchedCase
+    }
+    
+    /**
+    Looks up clock precision case based on given interval. Returns `nil` if no nearby value is found.
+    - Parameter interval: A time interval to look up in seconds
+    */
+    static func getPrecision(from interval: TimeInterval) -> ClockPrecision {
+        switch interval {
+        case lowInterval, lowDecimalInterval:
+            return .low
+        case mediumInterval:
+            return .medium
+        case highInterval:
+            return .high
+        case veryHighInterval:
+            return .veryHigh
+        default:
+            return .custom(interval: interval)
+        }
     }
     
     /// Function to compare two clock precisions
-    static func < (lhs: ClockPrecision, rhs: ClockPrecision) -> Bool {
-        lhs.rawValue > rhs.rawValue
+    static func <(lhs: ClockPrecision, rhs: ClockPrecision) -> Bool {
+        lhs.timeInterval > rhs.timeInterval
+    }
+    
+    /// Function to test equality of two clock precisions
+    static func ==(lhs: ClockPrecision, rhs: ClockPrecision) -> Bool {
+        lhs.timeInterval == rhs.timeInterval
     }
 }

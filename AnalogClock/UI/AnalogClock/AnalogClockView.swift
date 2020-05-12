@@ -16,14 +16,20 @@ struct AnalogClockView: View {
     /// Emits the current time and date at regular intervals
     var timeEmitter: ClockTimeEmitter = getTimeEmitter()
     
-    /// Type of clock, 12 or 24-hour
-    var type: ClockType = ClockType.twelveHour
+    /// Type of clock, 12-hour, 24-hour or decimal
+    var type: ClockType = .twelveHour
     
     /// Width of clock's outer outline
     var lineWidth: CGFloat = 2
     
     /// Global app settings
     @ObservedObject var settings: AppSettings = getAppSettings()
+    
+    /// Amount of major (hour) tick marks to show
+    private var majorSteps: Int { type == .decimal ? 10 : 12 }
+    
+    /// Amount of minor (minute/second) tick marks to show
+    private var minorSteps: Int { type == .decimal ? 100 : 60 }
     
     /**
      Gets the size of the clock by reading the parent geometry
@@ -46,13 +52,13 @@ struct AnalogClockView: View {
             ClockNumbers(type: type, color: .primary)
             // Add tick marks
             if settings.analogClockOptions.tickMarks {
-                ClockTicks(color: .gray, steps: 60)
-                ClockTicks(color: .secondary, steps: 12)
+                ClockTicks(color: .gray, steps: minorSteps)
+                ClockTicks(color: .secondary, steps: majorSteps)
             }
             // Add hands
-            HourHand(twentyFourHour: type == .twentyFourHour, color: .accentColor)
-            MinuteHand(color: .primary)
-            SecondHand(color: .secondary)
+            HourHand(clockType: type, color: .accentColor)
+            MinuteHand(clockType: type, color: .primary)
+            SecondHand(clockType: type, color: .secondary)
             if settings.analogClockOptions.periodDisplay && type == .twelveHour {
                 PeriodDisplayView(color: .gray)
             }

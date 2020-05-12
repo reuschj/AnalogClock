@@ -20,46 +20,48 @@ class ClockTimeEmitter: IntervalEmitter {
     /// Outputs hand rotation to emit in degrees or radians
     @Published var clockHand: ClockHandController!
     
-    /// The time interval on which to emit the current time and hand rotations
-    public var interval: TimeInterval {
+    /// Clock type (12-hour, 24-hour or decimal)
+    public var clockType: ClockType = .twelveHour {
         didSet { updateTimerInterval(to: interval) }
     }
     
-    /// Computed getter/setter for clock precision
-    var precision: ClockPrecision? {
-        get { ClockPrecision.getPrecision(from: interval) }
-        set {
-            if let newValue = newValue {
-                interval = newValue.rawValue
-            }
-        }
+    /// The time interval on which to emit the current time and hand rotations
+    public var interval: TimeInterval {
+        get { precision.getUpdateInterval(for: clockType) }
+        set { precision = ClockPrecision.getPrecision(from: newValue) }
+    }
+    
+    /// Clock precision setting from low to very high (or custom)
+    var precision: ClockPrecision = .low {
+        didSet { updateTimerInterval(to: interval) }
     }
     
     /// A timer that will drive the updates
     public var timer: Timer!
-
+    
     /**
-     Initializer specifying the interval directly
-     - Parameters:
-         - interval: The interval which the emitter will update the current time and date
-         - rotationOutput: The desired rotation output unit, degrees or radians
+     An initializer specifying a clock precision enum value instead of interval
+     - Parameter precision: The precision at which the emitter will update the current time and date
+     - Parameter rotationOutput: The desired rotation output unit, degrees or radians
+     - Parameter clockType: Clock type (12-hour, 24-hour or decimal)
      */
-    init(updatedEvery interval: TimeInterval = defaultTickInterval, rotationOutput: RotationUnit = .degrees) {
+    init(precision: ClockPrecision = .low, rotationOutput: RotationUnit = .degrees, clockType: ClockType = .twelveHour) {
         self.timer = nil
-        self.interval = interval
+        self.clockType = clockType
+        self.precision = precision
         self.time = TimeKeeper()
         self.clockHand = ClockHandController(using: time, output: rotationOutput)
         self.startTimer()
     }
-    
+
     /**
-     An initializer specifying a clock precision enum value instead of interval
-     - Parameters:
-         - precision: The precision at which the emitter will update the current time and date
-         - rotationOutput: The desired rotation output unit, degrees or radians
+     Initializer specifying the interval directly
+     - Parameter interval: The interval which the emitter will update the current time and date
+     - Parameter rotationOutput: The desired rotation output unit, degrees or radians
+     - Parameter clockType: Clock type (12-hour, 24-hour or decimal)
      */
-    convenience init(precision: ClockPrecision = .low, rotationOutput: RotationUnit = .degrees) {
-        self.init(updatedEvery: precision.rawValue, rotationOutput: rotationOutput)
+    convenience init(updatedEvery interval: TimeInterval = defaultTickInterval, rotationOutput: RotationUnit = .degrees, clockType: ClockType = .twelveHour) {
+        self.init(precision: ClockPrecision.getPrecision(from: interval), rotationOutput: rotationOutput, clockType: clockType)
     }
     
     /// Updates the time and emits

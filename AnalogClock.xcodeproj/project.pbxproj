@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A41ECDB7238116F700AF9932 /* PeriodDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41ECDB6238116F600AF9932 /* PeriodDisplayView.swift */; };
+		A46C8770246B0DC700C188F1 /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C876F246B0DC700C188F1 /* TimeInterval.swift */; };
 		A481008D236E881B0072E4D2 /* TimeKeeper in Frameworks */ = {isa = PBXBuildFile; productRef = A481008C236E881B0072E4D2 /* TimeKeeper */; };
 		A481008F236E8ADE0072E4D2 /* ClockTimeEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A481008E236E8ADE0072E4D2 /* ClockTimeEmitter.swift */; };
 		A4810094236F3B090072E4D2 /* RotatableStack in Frameworks */ = {isa = PBXBuildFile; productRef = A4810093236F3B090072E4D2 /* RotatableStack */; };
@@ -63,6 +64,7 @@
 
 /* Begin PBXFileReference section */
 		A41ECDB6238116F600AF9932 /* PeriodDisplayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodDisplayView.swift; sourceTree = "<group>"; };
+		A46C876F246B0DC700C188F1 /* TimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
 		A4707235235EA2EC00EF9F5C /* AnalogClock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AnalogClock.entitlements; sourceTree = "<group>"; };
 		A481008E236E8ADE0072E4D2 /* ClockTimeEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockTimeEmitter.swift; sourceTree = "<group>"; };
 		A4ADC5B02362C0390019C756 /* strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = strings.swift; sourceTree = "<group>"; };
@@ -150,6 +152,14 @@
 			path = Clock;
 			sourceTree = "<group>";
 		};
+		A46C876E246B0D7900C188F1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A46C876F246B0DC700C188F1 /* TimeInterval.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		A4DFE127233DCAC200164D30 = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +187,7 @@
 				A4707235235EA2EC00EF9F5C /* AnalogClock.entitlements */,
 				A4DFE1AE2342FE8F00164D30 /* UI */,
 				A4DFE165233DCD0100164D30 /* Definitions */,
+				A46C876E246B0D7900C188F1 /* Extensions */,
 				A4DFE17B233DCD0100164D30 /* Utilities */,
 				A4DFE133233DCAC200164D30 /* AppDelegate.swift */,
 				A4DFE135233DCAC200164D30 /* SceneDelegate.swift */,
@@ -461,6 +472,7 @@
 				A4FEB0D223582C0300EA11F9 /* ClockHands.swift in Sources */,
 				A4DFE18C233DCD0100164D30 /* Ratio.swift in Sources */,
 				A481008F236E8ADE0072E4D2 /* ClockTimeEmitter.swift in Sources */,
+				A46C8770246B0DC700C188F1 /* TimeInterval.swift in Sources */,
 				A4DFE138233DCAC200164D30 /* ContentView.swift in Sources */,
 				A4FEB0CD23582B3700EA11F9 /* AnalogClockView.swift in Sources */,
 				A4DFE17D233DCD0100164D30 /* ClockHandType.swift in Sources */,
@@ -625,6 +637,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -821,8 +834,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/reuschj/TimeKeeper.git";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.0;
 			};
 		};
 		A4810092236F3B090072E4D2 /* XCRemoteSwiftPackageReference "RotatableStack" */ = {

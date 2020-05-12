@@ -9,9 +9,10 @@
 import Foundation
 
 /**
- Enum for types of clocks, 24-hour or 12-hour
+ Enum for types of clocks, 12-hour, 24-hour or decimal
  */
-enum ClockType {
-    case twelveHour
-    case twentyFourHour
+enum ClockType: Int {
+    case twelveHour = 12
+    case twentyFourHour = 24
+    case decimal = 10
 }
