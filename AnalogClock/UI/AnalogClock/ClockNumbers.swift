@@ -51,13 +51,19 @@ struct ClockNumbers: View {
         (clockDiameter / 2 - fontSize) * -1
     }
     
+    /**
+      Converts decimal clock 10 to a zero or passes through original
+     - Parameter input: The original input
+     */
+    private func getNumber(_ input: Int) -> Int { type == .decimal && input == 10 ? 0 : input }
+    
     /// Positions the clock numbers around the inner edge of the clock
     private func positionClockNumbers(clockDiameter: CGFloat) -> some View {
         let fontSize = calculateFontSize(clockDiameter: clockDiameter)
         let offsetAmount = calculateOffset(clockDiameter: clockDiameter, fontSize: fontSize)
         return ZStack {
             ForEach((1...self.steps), id: \.self) {
-                ClockNumber(number: $0, fontSize: fontSize, color: self.color)
+                ClockNumber(number: self.getNumber($0), fontSize: fontSize, color: self.color)
                     .rotationEffect(Angle(degrees: self.increment * -Double($0)))
                     .offset(x: 0, y: offsetAmount)
                     .rotationEffect(Angle(degrees: self.increment * Double($0)))

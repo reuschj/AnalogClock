@@ -26,5 +26,6 @@ let strings = (
     updatesPlu: NSLocalizedString("updatesPlu", comment: ""),
     otherOptions: NSLocalizedString("otherOptions", comment: ""),
     showTickMarks: NSLocalizedString("showTickMarks", comment: ""),
-    showPeriodDisplay: NSLocalizedString("showPeriodDisplay", comment: "")
+    showPeriodDisplay: NSLocalizedString("showPeriodDisplay", comment: ""),
+    showTickTockDisplay: NSLocalizedString("showTickTockDisplay", comment: "")
 )

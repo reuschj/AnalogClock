@@ -55,12 +55,15 @@ struct AnalogClockView: View {
                 ClockTicks(color: .gray, steps: minorSteps)
                 ClockTicks(color: .secondary, steps: majorSteps)
             }
+            if settings.analogClockOptions.periodDisplay && type == .twelveHour {
+                PeriodDisplayView(color: .gray, fontColor: .primary)
+            }
             // Add hands
             HourHand(clockType: type, color: .accentColor)
             MinuteHand(clockType: type, color: .primary)
             SecondHand(clockType: type, color: .secondary)
-            if settings.analogClockOptions.periodDisplay && type == .twelveHour {
-                PeriodDisplayView(color: .gray)
+            if settings.analogClockOptions.tickTockDisplay {
+                TickTockDisplayView(color: .gray)
             }
         }
         .frame(width: size, height: size, alignment: .center)

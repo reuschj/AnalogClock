@@ -30,7 +30,7 @@ struct SettingsPanel: View {
     
     /// How often the emitter updates the current time to the clock
     private var clockPrecision = Binding<ClockPrecision>(
-        get: { settings.actualPrecision },
+        get: { settings.precision },
         set: {
             settings.precision = $0
             getTimeEmitter().precision = settings.actualPrecision
@@ -61,10 +61,16 @@ struct SettingsPanel: View {
         set: { settings.analogClockOptions.tickMarks = $0 }
     )
     
-    /// Show the tick marks
+    /// Show the AM/PM period display
     private var showPeriodDisplay = Binding<Bool>(
         get: { settings.analogClockOptions.periodDisplay },
         set: { settings.analogClockOptions.periodDisplay = $0 }
+    )
+    
+    /// Show the tick/tock pendulum
+    private var showTickTockDisplay = Binding<Bool>(
+        get: { settings.analogClockOptions.tickTockDisplay },
+        set: { settings.analogClockOptions.tickTockDisplay = $0 }
     )
     
     /// Makes a string of text describing the current clock precision
@@ -118,9 +124,12 @@ struct SettingsPanel: View {
                     Toggle(isOn: showPeriodDisplay) {
                         Text(strings.showPeriodDisplay)
                     }
+                    Toggle(isOn: showTickTockDisplay) {
+                        Text(strings.showTickTockDisplay)
+                    }
                 }
             }.navigationBarTitle(strings.settings)
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

@@ -27,4 +27,5 @@
 "updatesPlu" = "atualizações por segundo";
 "otherOptions" = "Outras opções";
 "showTickMarks" = "Mostrar marcas";
-"showPeriodDisplay" = "Mostrar período";
+"showPeriodDisplay" = "Mostrar mão período (AM/PM)";
+"showTickTockDisplay" = "Mostrar pêndulo";

@@ -25,7 +25,7 @@ fileprivate let highInterval: TimeInterval = 0.03336670003
 fileprivate let veryHighInterval: TimeInterval = 0.01668335002
 
 /// Enum of clock precision options
-enum ClockPrecision: Comparable, Equatable, Hashable {
+enum ClockPrecision: Comparable, Equatable, Hashable, CustomStringConvertible {
             
     // Presets -------------- /
     
@@ -117,5 +117,23 @@ enum ClockPrecision: Comparable, Equatable, Hashable {
     /// Function to test equality of two clock precisions
     static func ==(lhs: ClockPrecision, rhs: ClockPrecision) -> Bool {
         lhs.timeInterval == rhs.timeInterval
+    }
+    
+    /// String description
+    var description: String {
+        var type: String
+        switch self {
+        case .low:
+            type = strings.low
+        case .medium:
+            type = strings.medium
+        case .high:
+            type = strings.high
+        case .veryHigh:
+            type = "Very High"
+        case .custom(interval: let interval):
+            type = "Custom(\(interval) seconds)"
+        }
+        return "ClockPrecision(\(type))"
     }
 }
