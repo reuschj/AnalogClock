@@ -14,12 +14,12 @@ import SwiftUI
 class AppSettings: ObservableObject {
     
     @Published var clockType: ClockType = .twelveHour {
-        didSet { UserDefaults.standard.set(clockType == .twelveHour, forKey: defaultsKeys.twelveHourClock) }
+        didSet { UserDefaults.standard.set(clockType.base, forKey: defaultsKeys.clockType) }
     }
     @Published var precision: ClockPrecision = .low {
         didSet {
-            UserDefaults.standard.set(precision.rawValue, forKey: defaultsKeys.timeInterval)
-            actualPrecision = precision == .low && analogClockOptions.tickTockDisplay ? .medium : precision
+            UserDefaults.standard.set(precision.timeInterval, forKey: defaultsKeys.timeInterval)
+            actualPrecision = (precision.timeInterval >= ClockPrecision.medium.timeInterval) && analogClockOptions.tickTockDisplay ? .medium : precision
             
         }
     }
@@ -76,7 +76,7 @@ class AppSettings: ObservableObject {
         let clockDefaultsAreSet = defaults.bool(forKey: defaultsKeys.clockDefaultsAreSet)
         if !clockDefaultsAreSet {
             defaults.set(true, forKey: defaultsKeys.clockDefaultsAreSet)
-            defaults.set(true, forKey: defaultsKeys.twelveHourClock)
+            defaults.set(12, forKey: defaultsKeys.clockType)
             defaults.set(1.0, forKey: defaultsKeys.timeInterval)
             defaults.set(true, forKey: defaultsKeys.showAnalogClock)
             defaults.set(true, forKey: defaultsKeys.showDigitalClock)
@@ -86,12 +86,12 @@ class AppSettings: ObservableObject {
             defaults.set(true, forKey: defaultsKeys.showTickTockDisplay)
         }
         
-        let twelveHourClock = defaults.bool(forKey: defaultsKeys.twelveHourClock)
+        let clockBase: Int = defaults.integer(forKey: defaultsKeys.clockType)
         let timeInterval = defaults.double(forKey: defaultsKeys.timeInterval)
         
         return AppSettings(
-            clockType: twelveHourClock ? .twelveHour : .twentyFourHour,
-            precision: ClockPrecision.getPrecision(from: timeInterval) ?? .low,
+            clockType: ClockType.getFromBase(base: clockBase) ?? .twelveHour,
+            precision: ClockPrecision.getPrecision(from: timeInterval),
             showAnalogClock: defaults.bool(forKey: defaultsKeys.showAnalogClock),
             showDigitalClock: defaults.bool(forKey: defaultsKeys.showDigitalClock),
             showDateDisplay: defaults.bool(forKey: defaultsKeys.showDateDisplay),

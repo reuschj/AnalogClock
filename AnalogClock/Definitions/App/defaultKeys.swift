@@ -13,7 +13,7 @@ import Foundation
  */
 let defaultsKeys = (
     clockDefaultsAreSet: "analogClockKeys_clockDefaultsAreSet",
-    twelveHourClock: "analogClockKeys_twelveHourClock",
+    clockType: "analogClockKeys_clockType",
     timeInterval: "analogClockKeys_timeInterval",
     showAnalogClock: "analogClockKeys_showAnalogClock",
     showDigitalClock: "analogClockKeys_showDigitalClock",

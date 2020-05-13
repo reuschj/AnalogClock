@@ -22,21 +22,18 @@ struct SettingsPanel: View {
     /// Type of clock, 12 or 24-hour
     private var clockType = Binding<ClockType>(
         get: { settings.clockType },
-        set: { settings.clockType = $0 }
-    )
-    
-    /// If the clock is 24-hour, as opposed to 12-hour
-    private var isTwentyFourHour = Binding<Bool>(
-        get: { settings.clockType == .twentyFourHour },
-        set: { settings.clockType = $0 ? .twentyFourHour : .twelveHour }
+        set: {
+            settings.clockType = $0
+            getTimeEmitter().clockType = $0
+        }
     )
     
     /// How often the emitter updates the current time to the clock
     private var clockPrecision = Binding<ClockPrecision>(
-        get: { settings.actualPrecision },
+        get: { settings.precision },
         set: {
             settings.precision = $0
-            getTimeEmitter().precision = $0
+            getTimeEmitter().precision = settings.actualPrecision
         }
     )
     
@@ -98,9 +95,14 @@ struct SettingsPanel: View {
                 }
                 
                 Section(header: SectionHeaderText(strings.clockType)) {
-                    Toggle(isOn: isTwentyFourHour) {
-                        Text(strings.twentyFourHour)
-                    }
+                    Picker(
+                        selection: clockType,
+                        label: Text(strings.clockType),
+                        content: {
+                            Text(strings.twelveHour).tag(ClockType.twelveHour)
+                            Text(strings.twentyFourHour).tag(ClockType.twentyFourHour)
+                            Text(strings.decimal).tag(ClockType.decimal)
+                    }).pickerStyle(SegmentedPickerStyle())
                 }
                 
                 Section(header: SectionHeaderText(strings.precision)) {

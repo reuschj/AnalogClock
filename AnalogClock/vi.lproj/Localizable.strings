@@ -16,7 +16,9 @@
 "settings" = "Cài đặt";
 "showModules" = "Hiển thị các mô-đun";
 "clockType" = "Loại đồng hồ";
+"twelveHour" = "12-giờ";
 "twentyFourHour" = "24-giờ";
+"decimal" = "Số thập phân";
 "precision" = "Độ chính xác";
 "low" = "Thấp";
 "medium" = "Trung bình";

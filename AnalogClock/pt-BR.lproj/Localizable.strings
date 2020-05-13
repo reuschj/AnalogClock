@@ -16,7 +16,9 @@
 "settings" = "Configurações";
 "showModules" = "Mostrar módulos";
 "clockType" = "Tipo de relógio";
+"twelveHour" = "12-hora";
 "twentyFourHour" = "24-hora";
+"decimal" = "Decimal";
 "precision" = "Precisão";
 "low" = "Baixo";
 "medium" = "Médio";

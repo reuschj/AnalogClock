@@ -13,17 +13,21 @@ import SwiftUI
  */
 struct ClockNumbers: View {
     
-    /// Type of clock, 12-hour or 24-hour (value of `ClockType` enum)
+    /// Type of clock, 12-hour, 24-hour or decimal (value of `ClockType` enum)
     var type: ClockType = .twelveHour
     
     /// Color of clock numbers
     var color: Color = .primary
     
-    /// Flag for 24-hour clock vs. 12-hour clock
+    /// Flag for 24-hour clock vs. 12-hour clock or decimal
     private var twentyFourHour: Bool { type == .twentyFourHour }
     
+    /// Flag for decimal clock vs. 12- or 24-hour clock
+    private var isDecimal: Bool { type == .decimal }
+    
     /// Amount of clock numbers to display
-    private var steps: Int { twentyFourHour ? 24 : 12 }
+    private var steps: Int { type.rawValue }
+    
     /// Angle between each clock number
     private var increment: Double { 360 / Double(steps) }
     
@@ -32,22 +36,26 @@ struct ClockNumbers: View {
     
     /**
     Calculates a scaled font size that fits with the clock's diameter
-     - Parameters:
-         - clockDiameter: Diameter of the clock, obtained via geometry
-     */
+    - Parameter clockDiameter: Diameter of the clock, obtained via geometry
+    */
     private func calculateFontSize(clockDiameter: CGFloat) -> CGFloat {
         limitToRange((clockDiameter / 22), range: fontRange)
     }
     
     /**
      Calculates an offset that based on the clock's diameter and scaled font size
-     - Parameters:
-        - clockDiameter: Diameter of the clock, obtained via geometry
-        - fontSize: The size of the font, obtained from `calculateFontSize`
+     - Parameter clockDiameter: Diameter of the clock, obtained via geometry
+     - Parameter fontSize: The size of the font, obtained from `calculateFontSize`
      */
     private func calculateOffset(clockDiameter: CGFloat, fontSize: CGFloat) -> CGFloat {
         (clockDiameter / 2 - fontSize) * -1
     }
+    
+    /**
+      Converts decimal clock 10 to a zero or passes through original
+     - Parameter input: The original input
+     */
+    private func getNumber(_ input: Int) -> Int { type == .decimal && input == 10 ? 0 : input }
     
     /// Positions the clock numbers around the inner edge of the clock
     private func positionClockNumbers(clockDiameter: CGFloat) -> some View {
@@ -55,7 +63,7 @@ struct ClockNumbers: View {
         let offsetAmount = calculateOffset(clockDiameter: clockDiameter, fontSize: fontSize)
         return ZStack {
             ForEach((1...self.steps), id: \.self) {
-                ClockNumber(number: $0, fontSize: fontSize, color: self.color)
+                ClockNumber(number: self.getNumber($0), fontSize: fontSize, color: self.color)
                     .rotationEffect(Angle(degrees: self.increment * -Double($0)))
                     .offset(x: 0, y: offsetAmount)
                     .rotationEffect(Angle(degrees: self.increment * Double($0)))

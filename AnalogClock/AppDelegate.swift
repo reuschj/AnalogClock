@@ -15,10 +15,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var settings = AppSettings.getFromDefaults()
     
     /// Emits current time and date on a regular interval
-    var timeEmitter = ClockTimeEmitter(precision: .low)
+    var timeEmitter = ClockTimeEmitter(
+        precision: .low,
+        rotationOutput: .degrees,
+        clockType: .twelveHour
+    )
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        timeEmitter.clockType = settings.clockType
         timeEmitter.precision = settings.actualPrecision
         return true
     }
