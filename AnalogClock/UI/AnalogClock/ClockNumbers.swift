@@ -19,11 +19,8 @@ struct ClockNumbers: View {
     /// Color of clock numbers
     var color: Color = .primary
     
-    /// Flag for 24-hour clock vs. 12-hour clock or decimal
-    private var twentyFourHour: Bool { type == .twentyFourHour }
-    
-    /// Flag for decimal clock vs. 12- or 24-hour clock
-    private var isDecimal: Bool { type == .decimal }
+    /// Multiplier for font size (compared to clock diameter
+    var fontScaler: CGFloat = (1 / 22)
     
     /// Amount of clock numbers to display
     private var steps: Int { type.rawValue }
@@ -39,7 +36,7 @@ struct ClockNumbers: View {
     - Parameter clockDiameter: Diameter of the clock, obtained via geometry
     */
     private func calculateFontSize(clockDiameter: CGFloat) -> CGFloat {
-        limitToRange((clockDiameter / 22), range: fontRange)
+        limitToRange((clockDiameter * fontScaler), range: fontRange)
     }
     
     /**
@@ -63,7 +60,7 @@ struct ClockNumbers: View {
         let offsetAmount = calculateOffset(clockDiameter: clockDiameter, fontSize: fontSize)
         return ZStack {
             ForEach((1...self.steps), id: \.self) {
-                ClockNumber(number: self.getNumber($0), fontSize: fontSize, color: self.color)
+                ClockNumber(number: self.getNumber($0), fontName: CustomFonts.MajorMonoDisplay.regular, fontSize: fontSize, color: self.color)
                     .rotationEffect(Angle(degrees: self.increment * -Double($0)))
                     .offset(x: 0, y: offsetAmount)
                     .rotationEffect(Angle(degrees: self.increment * Double($0)))
@@ -86,15 +83,26 @@ struct ClockNumber: View {
     /// The number to render
     var number: Int
     
+    var fontName: String?
+    
     /// The font size to render the number
     var fontSize: CGFloat = 16
     
     /// The color to render the number
     var color: Color = .primary
     
+    /// Resolves the font (or defaults to the system font
+    private var font: Font {
+        if let fontName = fontName {
+            return Font.custom(fontName, size: fontSize)
+        } else {
+            return .system(size: fontSize)
+        }
+    }
+    
     var body: some View {
         return Text("\(number)")
-            .font(.system(size: fontSize))
+            .font(font)
             .foregroundColor(color)
     }
 }

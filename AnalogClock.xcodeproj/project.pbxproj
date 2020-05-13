@@ -11,6 +11,17 @@
 		A409FC49239CAFDB0029A523 /* types.swift in Sources */ = {isa = PBXBuildFile; fileRef = A409FC48239CAFDB0029A523 /* types.swift */; };
 		A41ECDB7238116F700AF9932 /* PeriodDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41ECDB6238116F600AF9932 /* PeriodDisplayView.swift */; };
 		A46C8770246B0DC700C188F1 /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C876F246B0DC700C188F1 /* TimeInterval.swift */; };
+		A46C8774246BA1BF00C188F1 /* MajorMonoDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A46C8773246BA1BF00C188F1 /* MajorMonoDisplay-Regular.ttf */; };
+		A46C877A246BA2A100C188F1 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A46C8776246BA2A000C188F1 /* Montserrat-Medium.ttf */; };
+		A46C877B246BA2A100C188F1 /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A46C8777246BA2A000C188F1 /* Montserrat-Thin.ttf */; };
+		A46C877C246BA2A100C188F1 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A46C8778246BA2A100C188F1 /* Montserrat-Regular.ttf */; };
+		A46C877D246BA2A100C188F1 /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A46C8779246BA2A100C188F1 /* Montserrat-Light.ttf */; };
+		A46C8781246BA39900C188F1 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A46C877E246BA39900C188F1 /* Montserrat-Black.ttf */; };
+		A46C8782246BA39900C188F1 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A46C877F246BA39900C188F1 /* Montserrat-Bold.ttf */; };
+		A46C8783246BA39900C188F1 /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A46C8780246BA39900C188F1 /* Montserrat-Italic.ttf */; };
+		A46C8786246BAC5B00C188F1 /* CustomFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C8785246BAC5B00C188F1 /* CustomFonts.swift */; };
+		A46C8788246BAD0700C188F1 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C8787246BAD0700C188F1 /* Utility.swift */; };
+		A46C878B246BB18D00C188F1 /* ClockTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C878A246BB18D00C188F1 /* ClockTheme.swift */; };
 		A481008D236E881B0072E4D2 /* TimeKeeper in Frameworks */ = {isa = PBXBuildFile; productRef = A481008C236E881B0072E4D2 /* TimeKeeper */; };
 		A481008F236E8ADE0072E4D2 /* ClockTimeEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A481008E236E8ADE0072E4D2 /* ClockTimeEmitter.swift */; };
 		A4810094236F3B090072E4D2 /* RotatableStack in Frameworks */ = {isa = PBXBuildFile; productRef = A4810093236F3B090072E4D2 /* RotatableStack */; };
@@ -69,6 +80,17 @@
 		A409FC48239CAFDB0029A523 /* types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = types.swift; sourceTree = "<group>"; };
 		A41ECDB6238116F600AF9932 /* PeriodDisplayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodDisplayView.swift; sourceTree = "<group>"; };
 		A46C876F246B0DC700C188F1 /* TimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
+		A46C8773246BA1BF00C188F1 /* MajorMonoDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MajorMonoDisplay-Regular.ttf"; sourceTree = "<group>"; };
+		A46C8776246BA2A000C188F1 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
+		A46C8777246BA2A000C188F1 /* Montserrat-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Thin.ttf"; sourceTree = "<group>"; };
+		A46C8778246BA2A100C188F1 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		A46C8779246BA2A100C188F1 /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.ttf"; sourceTree = "<group>"; };
+		A46C877E246BA39900C188F1 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.ttf"; sourceTree = "<group>"; };
+		A46C877F246BA39900C188F1 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		A46C8780246BA39900C188F1 /* Montserrat-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Italic.ttf"; sourceTree = "<group>"; };
+		A46C8785246BAC5B00C188F1 /* CustomFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFonts.swift; sourceTree = "<group>"; };
+		A46C8787246BAD0700C188F1 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		A46C878A246BB18D00C188F1 /* ClockTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockTheme.swift; sourceTree = "<group>"; };
 		A4707235235EA2EC00EF9F5C /* AnalogClock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AnalogClock.entitlements; sourceTree = "<group>"; };
 		A481008E236E8ADE0072E4D2 /* ClockTimeEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockTimeEmitter.swift; sourceTree = "<group>"; };
 		A4ADC5B02362C0390019C756 /* strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = strings.swift; sourceTree = "<group>"; };
@@ -164,9 +186,58 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		A46C8771246BA18A00C188F1 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				A46C8775246BA27B00C188F1 /* Montserrat */,
+				A46C8772246BA19D00C188F1 /* MajorMonoDisplay */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		A46C8772246BA19D00C188F1 /* MajorMonoDisplay */ = {
+			isa = PBXGroup;
+			children = (
+				A46C8773246BA1BF00C188F1 /* MajorMonoDisplay-Regular.ttf */,
+			);
+			path = MajorMonoDisplay;
+			sourceTree = "<group>";
+		};
+		A46C8775246BA27B00C188F1 /* Montserrat */ = {
+			isa = PBXGroup;
+			children = (
+				A46C8779246BA2A100C188F1 /* Montserrat-Light.ttf */,
+				A46C8776246BA2A000C188F1 /* Montserrat-Medium.ttf */,
+				A46C8778246BA2A100C188F1 /* Montserrat-Regular.ttf */,
+				A46C8777246BA2A000C188F1 /* Montserrat-Thin.ttf */,
+				A46C877E246BA39900C188F1 /* Montserrat-Black.ttf */,
+				A46C877F246BA39900C188F1 /* Montserrat-Bold.ttf */,
+				A46C8780246BA39900C188F1 /* Montserrat-Italic.ttf */,
+			);
+			path = Montserrat;
+			sourceTree = "<group>";
+		};
+		A46C8784246BAC0D00C188F1 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				A46C8785246BAC5B00C188F1 /* CustomFonts.swift */,
+				A46C8787246BAD0700C188F1 /* Utility.swift */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		A46C8789246BB17000C188F1 /* Themes */ = {
+			isa = PBXGroup;
+			children = (
+				A46C878A246BB18D00C188F1 /* ClockTheme.swift */,
+			);
+			path = Themes;
+			sourceTree = "<group>";
+		};
 		A4DFE127233DCAC200164D30 = {
 			isa = PBXGroup;
 			children = (
+				A46C8771246BA18A00C188F1 /* Fonts */,
 				A4DFE163233DCB2600164D30 /* README.md */,
 				A4DFE132233DCAC200164D30 /* AnalogClock */,
 				A4DFE149233DCAC400164D30 /* AnalogClockTests */,
@@ -264,6 +335,8 @@
 		A4DFE1AE2342FE8F00164D30 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				A46C8789246BB17000C188F1 /* Themes */,
+				A46C8784246BAC0D00C188F1 /* Fonts */,
 				A4FEB0CE23582BC500EA11F9 /* AnalogClock */,
 				A4FEB0D323582C3A00EA11F9 /* DigitalClock and Date */,
 				A4F0ADD22361597F00C74EE9 /* Settings */,
@@ -429,10 +502,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A46C877C246BA2A100C188F1 /* Montserrat-Regular.ttf in Resources */,
+				A46C8781246BA39900C188F1 /* Montserrat-Black.ttf in Resources */,
 				A4B01A1F2363F4C500AF5D14 /* Localizable.strings in Resources */,
+				A46C8783246BA39900C188F1 /* Montserrat-Italic.ttf in Resources */,
+				A46C8774246BA1BF00C188F1 /* MajorMonoDisplay-Regular.ttf in Resources */,
+				A46C877D246BA2A100C188F1 /* Montserrat-Light.ttf in Resources */,
 				A4DFE140233DCAC400164D30 /* LaunchScreen.storyboard in Resources */,
 				A4DFE13D233DCAC400164D30 /* Preview Assets.xcassets in Resources */,
+				A46C877A246BA2A100C188F1 /* Montserrat-Medium.ttf in Resources */,
 				A4DFE13A233DCAC400164D30 /* Assets.xcassets in Resources */,
+				A46C8782246BA39900C188F1 /* Montserrat-Bold.ttf in Resources */,
+				A46C877B246BA2A100C188F1 /* Montserrat-Thin.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,10 +561,13 @@
 				A4DFE18C233DCD0100164D30 /* Ratio.swift in Sources */,
 				A481008F236E8ADE0072E4D2 /* ClockTimeEmitter.swift in Sources */,
 				A46C8770246B0DC700C188F1 /* TimeInterval.swift in Sources */,
+				A46C8786246BAC5B00C188F1 /* CustomFonts.swift in Sources */,
 				A4DFE138233DCAC200164D30 /* ContentView.swift in Sources */,
 				A4FEB0CD23582B3700EA11F9 /* AnalogClockView.swift in Sources */,
+				A46C878B246BB18D00C188F1 /* ClockTheme.swift in Sources */,
 				A4DFE17D233DCD0100164D30 /* ClockHandType.swift in Sources */,
 				A4FEB0DE235CCCE300EA11F9 /* DateDisplayView.swift in Sources */,
+				A46C8788246BAD0700C188F1 /* Utility.swift in Sources */,
 				A409FC49239CAFDB0029A523 /* types.swift in Sources */,
 				A4DFE17E233DCD0100164D30 /* ClockHandController.swift in Sources */,
 				A4FEB0D023582BDF00EA11F9 /* ClockNumbers.swift in Sources */,
