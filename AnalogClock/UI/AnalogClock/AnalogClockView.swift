@@ -19,11 +19,11 @@ struct AnalogClockView: View {
     /// Type of clock, 12-hour, 24-hour or decimal
     var type: ClockType = .twelveHour
     
-    /// Width of clock's outer outline
-    var lineWidth: CGFloat = 2
-    
     /// Global app settings
     @ObservedObject var settings: AppSettings = getAppSettings()
+    
+    private var theme: AnalogClockTheme { settings.theme.analog }
+    private var colors: AnalogClockColorTheme { theme.colors }
     
     /// Amount of major (hour) tick marks to show
     private var majorSteps: Int { type == .decimal ? 10 : 12 }
@@ -33,40 +33,42 @@ struct AnalogClockView: View {
     
     /**
      Gets the size of the clock by reading the parent geometry
-    - Parameters:
-        - geometry: Geometry from a `GeometryReader`
+    - Parameter geometry: Geometry from a `GeometryReader`
      */
-    private func getSize(_ geometry: GeometryProxy) -> CGFloat { min(geometry.size.width, geometry.size.height) }
+    private func getSize(_ geometry: GeometryProxy) -> ClockSize {
+        let size = min(geometry.size.width, geometry.size.height)
+        return (height: size, width: size)
+    }
     
     /**
      Renders the clock at the specified size
-     - Parameters:
-        - size: The diameter of the clock
+     - Parameter size: The diameter of the clock
      */
-    private func renderClock(size: CGFloat) -> some View {
+    private func renderClock(size: ClockSize) -> some View {
         ZStack {
             Circle()
-                .foregroundColor(.clear)
-                .overlay(Circle()
-                    .stroke(Color.secondary, lineWidth: lineWidth))
-            ClockNumbers(type: type, color: .primary)
+                .foregroundColor(colors.clockBackground ?? .clear)
+                .overlay(colors.clockOutline.map {
+                    Circle().stroke($0, lineWidth: theme.clockOutlineWidth)
+                })
+            ClockNumbers(type: type, color: colors.clockNumbers)
             // Add tick marks
             if settings.analogClockOptions.tickMarks {
-                ClockTicks(color: .gray, steps: minorSteps)
-                ClockTicks(color: .secondary, steps: majorSteps)
+                ClockTicks(color: colors.clockMinorTicks, steps: minorSteps)
+                ClockTicks(color: colors.clockMajorTicks, steps: majorSteps)
             }
             if settings.analogClockOptions.periodDisplay && type == .twelveHour {
-                PeriodDisplayView(color: .gray, fontColor: .primary)
+                PeriodDisplayView(color: colors.periodHand, fontColor: colors.periodText)
             }
             // Add hands
-            HourHand(clockType: type, color: .accentColor)
-            MinuteHand(clockType: type, color: .primary)
-            SecondHand(clockType: type, color: .secondary)
+            HourHand(clockType: type, color: colors.hourHand)
+            MinuteHand(clockType: type, color: colors.minuteHand)
+            SecondHand(clockType: type, color: colors.secondHand)
             if settings.analogClockOptions.tickTockDisplay {
-                TickTockDisplayView(color: .gray)
+                TickTockDisplayView(color: colors.pendulum)
             }
         }
-        .frame(width: size, height: size, alignment: .center)
+        .frame(width: size.width, height: size.height, alignment: .center)
     }
     
     var body: some View {

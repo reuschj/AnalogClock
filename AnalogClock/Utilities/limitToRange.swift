@@ -1,5 +1,5 @@
 //
-//  limitToRange.swift
+//  limit.swift
 //  AnalogClock
 //
 //  Created by Justin Reusch on 10/6/19.
@@ -11,7 +11,7 @@ import Foundation
 /**
  Limits a value to a closed range
  */
-func limitToRange<T>(_ value: T, range: ClosedRange<T>) -> T where T: Comparable {
+func limit<T>(_ value: T, to range: ClosedRange<T>) -> T where T: Comparable {
     if value < range.lowerBound {
         return range.lowerBound
     } else if value > range.upperBound {

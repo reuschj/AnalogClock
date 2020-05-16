@@ -36,7 +36,7 @@ struct ClockNumbers: View {
     - Parameter clockDiameter: Diameter of the clock, obtained via geometry
     */
     private func calculateFontSize(clockDiameter: CGFloat) -> CGFloat {
-        limitToRange((clockDiameter * fontScaler), range: fontRange)
+        limit((clockDiameter * fontScaler), to: fontRange)
     }
     
     /**

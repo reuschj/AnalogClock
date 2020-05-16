@@ -30,7 +30,7 @@ struct PeriodDisplayView: View {
         - clockDiameter: Diameter of the clock, obtained via geometry
      */
     private func calculateFontSize(clockDiameter: CGFloat) -> CGFloat {
-        limitToRange((clockDiameter / 30), range: fontRange)
+        limit((clockDiameter / 30), to: fontRange)
     }
     
     /**

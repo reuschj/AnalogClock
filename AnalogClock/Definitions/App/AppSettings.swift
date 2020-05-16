@@ -13,6 +13,9 @@ import SwiftUI
  */
 class AppSettings: ObservableObject {
     
+    @Published var theme: ClockTheme = .defaultTheme {
+        didSet { UserDefaults.standard.set(theme.key, forKey: defaultsKeys.theme) }
+    }
     @Published var clockType: ClockType = .twelveHour {
         didSet { UserDefaults.standard.set(clockType.base, forKey: defaultsKeys.clockType) }
     }
@@ -31,6 +34,7 @@ class AppSettings: ObservableObject {
     
     /**
     - Parameters:
+        - theme: Visual theme for the clock
         - clockType: Choose between a 12-hour or 24-hour clock
         - precision: Precision at which the clock updates
         - showAnalogClock: Flag for analog clock module visibility
@@ -41,6 +45,7 @@ class AppSettings: ObservableObject {
         - showTickTockDisplay: Flag for tick tock pendulum visibility on the analog clock
      */
     init(
+        theme: ClockTheme = .defaultTheme,
         clockType: ClockType = .twelveHour,
         precision: ClockPrecision = .low,
         showAnalogClock: Bool = true,
@@ -50,6 +55,7 @@ class AppSettings: ObservableObject {
         showPeriodDisplay: Bool = false,
         showTickTockDisplay: Bool = false
     ) {
+        self.theme = theme
         self.actualPrecision = .low
         self.clockType = clockType
         self.visibleModules = VisibleModules(
@@ -75,6 +81,7 @@ class AppSettings: ObservableObject {
         // Sets defaults on first run
         let clockDefaultsAreSet = defaults.bool(forKey: defaultsKeys.clockDefaultsAreSet)
         if !clockDefaultsAreSet {
+            defaults.set("default_theme", forKey: defaultsKeys.theme)
             defaults.set(true, forKey: defaultsKeys.clockDefaultsAreSet)
             defaults.set(12, forKey: defaultsKeys.clockType)
             defaults.set(1.0, forKey: defaultsKeys.timeInterval)
@@ -86,10 +93,12 @@ class AppSettings: ObservableObject {
             defaults.set(true, forKey: defaultsKeys.showTickTockDisplay)
         }
         
+        let themeKey: String? = defaults.string(forKey: defaultsKeys.theme) // TODO Use this
         let clockBase: Int = defaults.integer(forKey: defaultsKeys.clockType)
         let timeInterval = defaults.double(forKey: defaultsKeys.timeInterval)
         
         return AppSettings(
+            theme: .defaultTheme, // TODO Lookup theme from key
             clockType: ClockType.getFromBase(base: clockBase) ?? .twelveHour,
             precision: ClockPrecision.getPrecision(from: timeInterval),
             showAnalogClock: defaults.bool(forKey: defaultsKeys.showAnalogClock),

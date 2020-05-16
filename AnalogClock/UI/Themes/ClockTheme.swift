@@ -35,6 +35,15 @@ struct UIScale {
         self.init((fontSize / 100), of: scaleBase)
     }
     
+    func getSize(within containerSize: CGFloat, limitedTo range: ClosedRange<CGFloat>? = nil) -> CGFloat {
+        let scaled = containerSize * percent
+        guard let range = range else { return scaled }
+        if range.contains(scaled) { return scaled }
+        if scaled > range.upperBound { return range.upperBound }
+        if scaled < range.upperBound { return range.lowerBound }
+        return scaled
+    }
+    
     enum ScaleBase {
         case screenWidth
         case screenHeight
@@ -55,77 +64,129 @@ struct UIScale {
     }
 }
 
-struct ThemeColor {
-    var light: Color = .primary
-    var dark: Color = .primary
-    
-    init(light: Color = .primary, dark: Color = .primary) {
-        self.light = light
-        self.dark = dark
-    }
-    
-    init(_ color: Color) {
-        self.init(light: color, dark: color)
-    }
-    
-    enum Variation {
-        case light(Color)
-        case dark(Color)
-    }
-}
-
 struct AnalogClockColorTheme {
     // Backgrounds
-    var appBackground: ThemeColor? = nil
-    var clockBackground: ThemeColor? = nil
+    var appBackground: Color? = nil
+    var clockBackground: Color? = nil
     // Clock
-    var clockOutline: ThemeColor? = ThemeColor()
-    var clockNumbers: ThemeColor = ThemeColor()
-    var clockMajorTicks: ThemeColor? = ThemeColor()
-    var clockMinorTicks: ThemeColor? = ThemeColor()
+    var clockOutline: Color? = .primary
+    var clockNumbers: Color = .primary
+    var clockMajorTicks: Color = .primary
+    var clockMinorTicks: Color = .primary
     // Hands
-    var hourHand: ThemeColor = ThemeColor()
-    var minuteHand: ThemeColor = ThemeColor()
-    var secondHand: ThemeColor = ThemeColor()
+    var hourHand: Color = .primary
+    var minuteHand: Color = .primary
+    var secondHand: Color = .primary
     // Period hand
-    var periodHand: ThemeColor = ThemeColor()
-    var periodText: ThemeColor = ThemeColor(.gray)
+    var periodHand: Color = .primary
+    var periodText: Color = .gray
     // Tick tock pendulum
-    var pendulum: ThemeColor = ThemeColor(.gray)
+    var pendulum: Color = .gray
 }
 
-struct ClockFont {
-    var fontName: String?
-    var scale: UIScale?
+protocol ClockFont {
+    func getFont(within containerSize: CGFloat, limitedTo range: ClosedRange<CGFloat>?) -> Font
+}
+
+struct FixedClockFont: ClockFont {
     var font: Font
     
-//    init(fontName: String, scale: UIScale) {
-//        self.fontName = fontName
-//        self.scale = scale
-//        self.font = Font.custom(fontName, size: <#T##CGFloat#>)
-//    }
+    init(_ font: Font) {
+        self.font = font
+    }
+    
+    func getFont(within containerSize: CGFloat = 0, limitedTo range: ClosedRange<CGFloat>? = nil) -> Font { font }
+}
+
+struct FlexClockFont: ClockFont {
+    var fontName: String?
+    var scale: UIScale
+    
+    init(name fontName: String? = nil, scale: UIScale) {
+        self.fontName = fontName
+        self.scale = scale
+    }
+    
+    func getFont(within containerSize: CGFloat, limitedTo range: ClosedRange<CGFloat>? = nil) -> Font {
+        let size = scale.getSize(within: containerSize, limitedTo: range)
+        guard let fontName = fontName else {
+            return .system(size: size)
+        }
+        return Font.custom(fontName, size: size)
+    }
+}
+
+struct ClockHandDimensions {
+    var lengthRatio: CGFloat = 1
+    var width: CGFloat = 4
+    var outlineWidth: CGFloat = 0.5
 }
 
 struct DigitalClockColorTheme {
-    var timeDigits: ThemeColor = ThemeColor()
-    var timeSeparators: ThemeColor = ThemeColor(.gray)
-    var dateText: ThemeColor = ThemeColor()
+    var timeDigits: Color = .primary
+    var timeSeparators: Color = .gray
+    var dateText: Color = .primary
 }
 
 struct AnalogClockTheme {
     var colors: AnalogClockColorTheme = AnalogClockColorTheme()
-    var clockNumbers: ClockFont
-    var periodText: ClockFont
+    var clockOutlineWidth: CGFloat = 1
+    var clockNumbers: ClockFont = FixedClockFont(.body)
+    var handOverhangRatio: CGFloat = 0.1
+    var hourHand: ClockHandDimensions = ClockHandDimensions(lengthRatio: 0.6, width: 6, outlineWidth: 1)
+    var minuteHand: ClockHandDimensions = ClockHandDimensions(lengthRatio: 0.84, width: 4, outlineWidth: 1)
+    var secondHand: ClockHandDimensions = ClockHandDimensions(lengthRatio: 0.92, width: 3, outlineWidth: 1)
+    var periodHand: ClockHandDimensions = ClockHandDimensions(lengthRatio: 0.95, width: 3, outlineWidth: 1)
+    var periodText: ClockFont = FixedClockFont(.caption)
 }
 
 struct DigitalClockTheme {
     var colors: DigitalClockColorTheme = DigitalClockColorTheme()
-    var timeDigits: ClockFont
-    var timeSeparators: ClockFont
-    var dateText: ClockFont
+    var timeDigits: ClockFont = FixedClockFont(.title)
+    var timeSeparators: ClockFont = FixedClockFont(.title)
+    var dateText: ClockFont = FixedClockFont(.body)
 }
 
 struct ClockTheme {
-    var analog: AnalogClockTheme
-    var digital: DigitalClockTheme
+    var key: String
+    var analog: AnalogClockTheme = AnalogClockTheme()
+    var digital: DigitalClockTheme = DigitalClockTheme()
+    
+    static let defaultTheme = ClockTheme(
+        key: "default_theme",
+        analog: AnalogClockTheme(
+            colors: AnalogClockColorTheme(
+                appBackground: nil,
+                clockBackground: nil,
+                clockOutline: .secondary,
+                clockNumbers: .primary,
+                clockMajorTicks: .secondary,
+                clockMinorTicks: .gray,
+                hourHand: .accentColor,
+                minuteHand: .primary,
+                secondHand: .secondary,
+                periodHand: .gray,
+                periodText: .primary,
+                pendulum: .gray
+            ),
+            clockOutlineWidth: 2,
+            clockNumbers: FlexClockFont(scale: UIScale(oneOver: 22, of: .clockDiameter)),
+            handOverhangRatio: 0.1,
+            hourHand: ClockHandDimensions(lengthRatio: 0.6, width: 6, outlineWidth: 1),
+            minuteHand: ClockHandDimensions(lengthRatio: 0.84, width: 4, outlineWidth: 1),
+            secondHand: ClockHandDimensions(lengthRatio: 0.92, width: 3, outlineWidth: 1),
+            periodHand: ClockHandDimensions(lengthRatio: 0.95, width: 3, outlineWidth: 1),
+            periodText: FlexClockFont(scale: UIScale(oneOver: 30, of: .clockDiameter))
+        ),
+        digital: DigitalClockTheme(
+            colors: DigitalClockColorTheme(
+                timeDigits: .primary,
+                timeSeparators: .secondary,
+                dateText: .secondary
+            ),
+            timeDigits: FixedClockFont(.title),
+            timeSeparators: FixedClockFont(.body),
+            dateText: FixedClockFont(.body)
+        )
+    )
 }
