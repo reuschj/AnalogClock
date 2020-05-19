@@ -70,7 +70,7 @@ struct SettingsPanel: View {
     /// Show the tick/tock pendulum
     private var showTickTockDisplay = Binding<Bool>(
         get: { settings.analogClockOptions.tickTockDisplay },
-        set: { settings.analogClockOptions.tickTockDisplay = $0 }
+        set: { settings.tickTockDisplay = $0 }
     )
     
     /// Makes a string of text describing the current clock precision

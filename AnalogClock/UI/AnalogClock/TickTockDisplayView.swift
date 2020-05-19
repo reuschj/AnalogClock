@@ -75,7 +75,7 @@ struct TickTockDisplay: View {
             )
             .foregroundColor(color)
             .offset(x: offset.x, y: offset.y)
-            .rotationEffect(Angle(degrees: (timeEmitter.clockHand.tickTockPendulum ?? 0) * ClockHand.tickTockRotationDelta) + ClockHand.tickTockRotationOffset)
+            .rotationEffect(Angle(degrees: (timeEmitter.clockHand.tickTockPendulum ?? 0) * ClockHandConstants.Rotation.tickTockDelta) + ClockHandConstants.Rotation.tickTockOffset)
     }
 }
 

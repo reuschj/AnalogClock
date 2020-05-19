@@ -67,4 +67,17 @@ struct DigitalClockView: View {
             Spacer()
         }
     }
+    
+    struct Theme {
+        var colors: Colors = Colors()
+        var timeDigits: ClockFont = FixedClockFont(.title)
+        var timeSeparators: ClockFont = FixedClockFont(.title)
+        var dateText: ClockFont = FixedClockFont(.body)
+        
+        struct Colors {
+            var timeDigits: Color = .primary
+            var timeSeparators: Color = .gray
+            var dateText: Color = .primary
+        }
+    }
 }

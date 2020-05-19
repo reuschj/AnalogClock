@@ -91,8 +91,8 @@ struct PeriodDisplay: View {
                     .font(.system(size: fontSize))
                     .foregroundColor(fontColor)
             }
-            PeriodHand(color: color)
-                .rotationEffect(ClockHand.periodRotationOffset)
+            ClockHand.Period()
+                .rotationEffect(ClockHandConstants.Rotation.periodOffset)
                 .frame(width: handFrameSize.width, height: handFrameSize.height, alignment: .center)
                 .offset(x: 0, y: -handFrameSize.height / 4)
         }

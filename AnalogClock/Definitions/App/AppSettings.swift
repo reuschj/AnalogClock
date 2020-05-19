@@ -22,15 +22,27 @@ class AppSettings: ObservableObject {
     @Published var precision: ClockPrecision = .low {
         didSet {
             UserDefaults.standard.set(precision.timeInterval, forKey: defaultsKeys.timeInterval)
-            actualPrecision = (precision.timeInterval >= ClockPrecision.medium.timeInterval) && analogClockOptions.tickTockDisplay ? .medium : precision
+            updateActualPrecision()
             
         }
     }
     @Published var visibleModules: VisibleModules
     @Published var analogClockOptions: AnalogClockOptions
+    
+    @Published var tickTockDisplay: Bool = false {
+        didSet {
+            analogClockOptions.tickTockDisplay = tickTockDisplay
+            updateActualPrecision()
+        }
+    }
         
     /// Gets the actual precision needed (may be higher than requested precision if tick-tock display is on).
     @Published private(set) var actualPrecision: ClockPrecision = .low
+    
+    /// Updates the actual precision
+    private func updateActualPrecision() {
+        actualPrecision = (precision.timeInterval >= ClockPrecision.medium.timeInterval) && analogClockOptions.tickTockDisplay ? .medium : precision
+    }
     
     /**
     - Parameters:
@@ -65,9 +77,9 @@ class AppSettings: ObservableObject {
         )
         self.analogClockOptions = AnalogClockOptions(
             tickMarks: showTickMarks,
-            periodDisplay: showPeriodDisplay,
-            tickTockDisplay: showTickTockDisplay
+            periodDisplay: showPeriodDisplay
         )
+        self.tickTockDisplay = showTickTockDisplay
         self.precision = precision
     }
     
@@ -140,5 +152,4 @@ struct AnalogClockOptions {
     var tickTockDisplay: Bool = false {
         didSet { UserDefaults.standard.set(tickTockDisplay, forKey: defaultsKeys.showTickTockDisplay) }
     }
-    
 }

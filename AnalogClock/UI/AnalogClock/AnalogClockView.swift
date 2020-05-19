@@ -22,8 +22,10 @@ struct AnalogClockView: View {
     /// Global app settings
     @ObservedObject var settings: AppSettings = getAppSettings()
     
-    private var theme: AnalogClockTheme { settings.theme.analog }
-    private var colors: AnalogClockColorTheme { theme.colors }
+    private var theme: Theme { settings.theme.analog }
+    private var colors: Theme.Colors { theme.colors }
+    
+    private var shape: ClockShape { theme.shape }
     
     /// Amount of major (hour) tick marks to show
     private var majorSteps: Int { type == .decimal ? 10 : 12 }
@@ -46,11 +48,12 @@ struct AnalogClockView: View {
      */
     private func renderClock(size: ClockSize) -> some View {
         ZStack {
-            Circle()
-                .foregroundColor(colors.clockBackground ?? .clear)
-                .overlay(colors.clockOutline.map {
-                    Circle().stroke($0, lineWidth: theme.clockOutlineWidth)
-                })
+            shape.circle.map { circle in
+                StrokedShape(foreground: colors.clock.fill ?? .clear, outlineColor: colors.clock.outline, outlineWidth: theme.outlineWidth) { circle }
+            }
+            shape.square.map { square in
+                StrokedShape(foreground: colors.clock.fill ?? .clear, outlineColor: colors.clock.outline, outlineWidth: theme.outlineWidth) { square }
+            }
             ClockNumbers(type: type, color: colors.clockNumbers)
             // Add tick marks
             if settings.analogClockOptions.tickMarks {
@@ -58,14 +61,14 @@ struct AnalogClockView: View {
                 ClockTicks(color: colors.clockMajorTicks, steps: majorSteps)
             }
             if settings.analogClockOptions.periodDisplay && type == .twelveHour {
-                PeriodDisplayView(color: colors.periodHand, fontColor: colors.periodText)
+                PeriodDisplayView(color: colors.periodHand.fill ?? .primary, fontColor: colors.periodText)
             }
             // Add hands
-            HourHand(clockType: type, color: colors.hourHand)
-            MinuteHand(clockType: type, color: colors.minuteHand)
-            SecondHand(clockType: type, color: colors.secondHand)
+            ClockHand.Hour(dimensions: theme.hourHand, colorTheme: colors, clockType: type)
+            ClockHand.Minute(dimensions: theme.minuteHand, colorTheme: colors, clockType: type)
+            ClockHand.Second(dimensions: theme.secondHand, colorTheme: colors, clockType: type)
             if settings.analogClockOptions.tickTockDisplay {
-                TickTockDisplayView(color: colors.pendulum)
+                TickTockDisplayView(color: colors.tickTockHand.fill ?? .primary)
             }
         }
         .frame(width: size.width, height: size.height, alignment: .center)
@@ -74,6 +77,34 @@ struct AnalogClockView: View {
     var body: some View {
         GeometryReader { geometry in
             self.renderClock(size: self.getSize(geometry))
+        }
+    }
+    
+    struct Theme {
+        var shape: ClockShape = .circle
+        var colors: Colors = Colors()
+        var outlineWidth: CGFloat = 1
+        var numbers: ClockFont = FixedClockFont(.body)
+        var hourHand: ClockHand.Dimensions = ClockHand.Hour.defaultDimensions
+        var minuteHand: ClockHand.Dimensions = ClockHand.Minute.defaultDimensions
+        var secondHand: ClockHand.Dimensions = ClockHand.Second.defaultDimensions
+        var periodHand: ClockHand.Dimensions = ClockHand.Period.defaultDimensions
+        var periodText: ClockFont = FixedClockFont(.caption)
+        
+        struct Colors {
+            var clock: ClockElementColor = ClockElementColor(fill: nil, outline: .primary)
+            var clockNumbers: Color = .primary
+            var clockMajorTicks: Color = .primary
+            var clockMinorTicks: Color = .primary
+            // Hands
+            var hourHand: ClockElementColor = ClockElementColor(fill: .primary)
+            var minuteHand: ClockElementColor = ClockElementColor(fill: .primary)
+            var secondHand: ClockElementColor = ClockElementColor(fill: .primary)
+            // Period hand
+            var periodHand: ClockElementColor = ClockElementColor(fill: .primary)
+            var periodText: Color = .secondary
+            // Tick tock pendulum
+            var tickTockHand: ClockElementColor = ClockElementColor(fill: .secondary)
         }
     }
 }
