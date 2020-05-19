@@ -20,7 +20,7 @@ struct ClockNumbers: View {
     var color: Color = .primary
     
     /// Multiplier for font size (compared to clock diameter
-    var fontScaler: CGFloat = (1 / 22)
+    var fontScaler: CGFloat = (1 / 16)
     
     /// Amount of clock numbers to display
     private var steps: Int { type.rawValue }
