@@ -95,13 +95,15 @@ struct PeriodDisplay: View {
     private var actualFontColor: Color { fontColor ?? color ?? outlineColor ?? .gray }
     
     /// Calculates hand size based on font size
-    var handFrameSize: ClockSize {
+    private var handFrameSize: ClockSize {
         let multiplier: CGFloat = 4
         return (
             height: fontSize * multiplier,
             width: fontSize * multiplier
         )
     }
+    
+    private var pivotDiameter: CGFloat { fontSize * 0.75 }
     
     var body: some View {
         VStack {
@@ -118,8 +120,24 @@ struct PeriodDisplay: View {
                 colorTheme: colorTheme,
                 timeEmitter: timeEmitter
             )
+                .overlay(
+                    StrokedShape(
+                        foreground: colorTheme.periodHand.fill,
+                        outlineColor: colorTheme.periodHand.outline,
+                        outlineWidth: dimensions.outlineWidth
+                    ) { Circle() }
+                        .frame(
+                            width: pivotDiameter,
+                            height: pivotDiameter,
+                            alignment: .bottom
+                        )
+                )
                 .rotationEffect(ClockHandConstants.Rotation.periodOffset)
-                .frame(width: handFrameSize.width, height: handFrameSize.height, alignment: .center)
+                .frame(
+                    width: handFrameSize.width,
+                    height: handFrameSize.height,
+                    alignment: .center
+                )
                 .offset(x: 0, y: -handFrameSize.height / 4)
         }
     }
