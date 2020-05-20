@@ -231,6 +231,44 @@ struct ClockHand: View {
     }
     
     /**
+     The pivot for clock hands
+     */
+    struct Pivot: View {
+        
+        /// Sets hand dimensions
+        var shape: Shape.Pivot = .circle
+        
+        var scale: UIScale = UIScale(oneOver: 20, of: .clockDiameter)
+        
+        var outlineWidth: CGFloat = 1
+        
+        /// Sets the color theme
+        var colorTheme: AnalogClockView.Theme.Colors = AnalogClockView.Theme.Colors()
+        
+        private func renderPivot(clockDiameter: CGFloat) -> some View {
+            let size = scale.getSize(within: clockDiameter)
+            return ZStack {
+                shape.circle.map { circle in
+                    StrokedShape(foreground: colorTheme.pivot.fill, outlineColor: colorTheme.pivot.outline, outlineWidth: outlineWidth) { circle }
+                }
+                shape.roundedRectangle.map { roundedRectangle in
+                    StrokedShape(foreground: colorTheme.pivot.fill, outlineColor: colorTheme.pivot.outline, outlineWidth: outlineWidth) { roundedRectangle }
+                }
+                shape.square.map { square in
+                    StrokedShape(foreground: colorTheme.pivot.fill, outlineColor: colorTheme.pivot.outline, outlineWidth: outlineWidth) { square }
+                }
+            }
+                .frame(width: size, height: size, alignment: .center)
+        }
+        
+        var body: some View {
+            GeometryReader { geometry in
+                self.renderPivot(clockDiameter: geometry.size.width)
+            }
+        }
+    }
+    
+    /**
      Used to draw the basic shape of a clock hand
      */
     struct Positioner: View {
@@ -328,6 +366,39 @@ struct ClockHand: View {
                 return Ellipse()
             default:
                 return nil
+            }
+        }
+        
+        enum Pivot {
+            case circle
+            case roundedRectangle(cornerRadius: CGFloat, style: RoundedCornerStyle = .circular)
+            case square
+            
+            var circle: Circle? {
+                switch self {
+                case .circle:
+                    return Circle()
+                default:
+                    return nil
+                }
+            }
+            
+            var roundedRectangle: RoundedRectangle? {
+                switch self {
+                case .roundedRectangle(cornerRadius: let radius, style: let style):
+                    return RoundedRectangle(cornerRadius: radius, style: style)
+                default:
+                    return nil
+                }
+            }
+            
+            var square: Rectangle? {
+                switch self {
+                case .square:
+                    return Rectangle()
+                default:
+                    return nil
+                }
             }
         }
     }

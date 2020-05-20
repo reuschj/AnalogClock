@@ -48,30 +48,77 @@ struct AnalogClockView: View {
      */
     private func renderClock(size: ClockSize) -> some View {
         ZStack {
+            // Clock outline --------------------- /
             shape.circle.map { circle in
-                StrokedShape(foreground: colors.clock.fill ?? .clear, outlineColor: colors.clock.outline, outlineWidth: theme.outlineWidth) { circle }
+                StrokedShape(
+                    foreground: colors.clock.fill ?? .clear,
+                    outlineColor: colors.clock.outline,
+                    outlineWidth: theme.outlineWidth
+                ) { circle }
             }
             shape.square.map { square in
-                StrokedShape(foreground: colors.clock.fill ?? .clear, outlineColor: colors.clock.outline, outlineWidth: theme.outlineWidth) { square }
+                StrokedShape(
+                    foreground: colors.clock.fill ?? .clear,
+                    outlineColor: colors.clock.outline,
+                    outlineWidth: theme.outlineWidth
+                ) { square }
             }
-            ClockNumbers(type: type, color: colors.clockNumbers)
-            // Add tick marks
+            // Clock numbers --------------------- /
+            ClockNumbers(
+                type: type,
+                clockFont: theme.numbers,
+                color: colors.clockNumbers
+            )
+            // Add tick marks --------------------- /
             if settings.analogClockOptions.tickMarks {
-                ClockTicks(color: colors.clockMinorTicks, steps: minorSteps)
+                ClockTicks(
+                    color: colors.clockMinorTicks,
+                    steps: minorSteps
+                )
                 ClockTicks(color: colors.clockMajorTicks, steps: majorSteps)
             }
             if settings.analogClockOptions.periodDisplay && type == .twelveHour {
-                PeriodDisplayView(color: colors.periodHand.fill ?? .primary, fontColor: colors.periodText)
+                PeriodDisplayView(
+                    dimensions: theme.periodHand,
+                    colorTheme: colors,
+                    font: theme.periodText
+                )
             }
-            // Add hands
-            ClockHand.Hour(dimensions: theme.hourHand, colorTheme: colors, clockType: type)
-            ClockHand.Minute(dimensions: theme.minuteHand, colorTheme: colors, clockType: type)
-            ClockHand.Second(dimensions: theme.secondHand, colorTheme: colors, clockType: type)
+            // Hands --------------------- /
+            ClockHand.Hour(
+                dimensions: theme.hourHand,
+                colorTheme: colors,
+                clockType: type
+            )
+            ClockHand.Minute(
+                dimensions: theme.minuteHand,
+                colorTheme: colors,
+                clockType: type
+            )
+            ClockHand.Second(
+                dimensions: theme.secondHand,
+                colorTheme: colors,
+                clockType: type
+            )
+            // Pivot --------------------- /
+            ClockHand.Pivot(
+                shape: theme.pivotShape,
+                scale: theme.pivotScale,
+                outlineWidth: theme.pivotOutlineWidth,
+                colorTheme: colors
+            )
+            // Tick Tock --------------------- /
             if settings.analogClockOptions.tickTockDisplay {
-                TickTockDisplayView(color: colors.tickTockHand.fill ?? .primary)
+                TickTockDisplayView(
+                    color: colors.tickTockHand.fill ?? .primary
+                )
             }
         }
-        .frame(width: size.width, height: size.height, alignment: .center)
+            .frame(
+                width: size.width,
+                height: size.height,
+                alignment: .center
+            )
     }
     
     var body: some View {
@@ -84,12 +131,15 @@ struct AnalogClockView: View {
         var shape: ClockShape = .circle
         var colors: Colors = Colors()
         var outlineWidth: CGFloat = 1
-        var numbers: ClockFont = FixedClockFont(.body)
+        var numbers: FlexClockFont = FlexClockFont(scale: UIScale(oneOver: 16, of: .clockDiameter))
         var hourHand: ClockHand.Dimensions = ClockHand.Hour.defaultDimensions
         var minuteHand: ClockHand.Dimensions = ClockHand.Minute.defaultDimensions
         var secondHand: ClockHand.Dimensions = ClockHand.Second.defaultDimensions
         var periodHand: ClockHand.Dimensions = ClockHand.Period.defaultDimensions
-        var periodText: ClockFont = FixedClockFont(.caption)
+        var periodText: FlexClockFont = FlexClockFont(scale: UIScale(oneOver: 30, of: .clockDiameter))
+        var pivotScale: UIScale = UIScale(oneOver: 25, of: .clockDiameter)
+        var pivotShape: ClockHand.Shape.Pivot = .circle
+        var pivotOutlineWidth: CGFloat = 1
         
         struct Colors {
             var clock: ClockElementColor = ClockElementColor(fill: nil, outline: .primary)
@@ -102,9 +152,11 @@ struct AnalogClockView: View {
             var secondHand: ClockElementColor = ClockElementColor(fill: .primary)
             // Period hand
             var periodHand: ClockElementColor = ClockElementColor(fill: .primary)
-            var periodText: Color = .secondary
+            var periodText: Color? = .secondary
             // Tick tock pendulum
             var tickTockHand: ClockElementColor = ClockElementColor(fill: .secondary)
+            // Pivot
+            var pivot: ClockElementColor = ClockElementColor(fill: .primary)
         }
     }
 }

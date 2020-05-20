@@ -111,8 +111,12 @@ struct FlexClockFont: ClockFont {
         self.scale = scale
     }
     
+    func getFontSize(within containerSize: CGFloat, limitedTo range: ClosedRange<CGFloat>? = nil) -> CGFloat {
+        scale.getSize(within: containerSize, limitedTo: range)
+    }
+    
     func getFont(within containerSize: CGFloat, limitedTo range: ClosedRange<CGFloat>? = nil) -> Font {
-        let size = scale.getSize(within: containerSize, limitedTo: range)
+        let size = getFontSize(within: containerSize, limitedTo: range)
         guard let fontName = fontName else {
             return .system(size: size)
         }
@@ -215,15 +219,19 @@ struct ClockTheme {
                 secondHand: ClockElementColor(fill: .secondary),
                 periodHand: ClockElementColor(fill: .gray),
                 periodText: .primary,
-                tickTockHand: ClockElementColor(fill: .gray)
+                tickTockHand: ClockElementColor(fill: .gray),
+                pivot: ClockElementColor(fill: .accentColor)
             ),
             outlineWidth: 2,
-            numbers: FlexClockFont(scale: UIScale(oneOver: 22, of: .clockDiameter)),
+            numbers: FlexClockFont(scale: UIScale(oneOver: 16, of: .clockDiameter)),
             hourHand: ClockHand.Hour.defaultDimensions,
             minuteHand: ClockHand.Minute.defaultDimensions,
             secondHand: ClockHand.Second.defaultDimensions,
             periodHand: ClockHand.Period.defaultDimensions,
-            periodText: FlexClockFont(scale: UIScale(oneOver: 30, of: .clockDiameter))
+            periodText: FlexClockFont(scale: UIScale(oneOver: 30, of: .clockDiameter)),
+            pivotScale: UIScale(oneOver: 25, of: .clockDiameter),
+            pivotShape: .circle,
+            pivotOutlineWidth: 1
         ),
         digital: DigitalClockView.Theme(
             colors: DigitalClockView.Theme.Colors(
