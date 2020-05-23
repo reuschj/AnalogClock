@@ -21,7 +21,7 @@
 		A46C8783246BA39900C188F1 /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A46C8780246BA39900C188F1 /* Montserrat-Italic.ttf */; };
 		A46C8786246BAC5B00C188F1 /* CustomFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C8785246BAC5B00C188F1 /* CustomFonts.swift */; };
 		A46C8788246BAD0700C188F1 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C8787246BAD0700C188F1 /* Utility.swift */; };
-		A46C878B246BB18D00C188F1 /* ClockTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C878A246BB18D00C188F1 /* ClockTheme.swift */; };
+		A46C878B246BB18D00C188F1 /* ClockThemeSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C878A246BB18D00C188F1 /* ClockThemeSettings.swift */; };
 		A46C878E246C5CCF00C188F1 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C878D246C5CCF00C188F1 /* Color.swift */; };
 		A46C8790246D138500C188F1 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C878F246D138500C188F1 /* Font.swift */; };
 		A481008D236E881B0072E4D2 /* TimeKeeper in Frameworks */ = {isa = PBXBuildFile; productRef = A481008C236E881B0072E4D2 /* TimeKeeper */; };
@@ -92,7 +92,7 @@
 		A46C8780246BA39900C188F1 /* Montserrat-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Italic.ttf"; sourceTree = "<group>"; };
 		A46C8785246BAC5B00C188F1 /* CustomFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFonts.swift; sourceTree = "<group>"; };
 		A46C8787246BAD0700C188F1 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
-		A46C878A246BB18D00C188F1 /* ClockTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockTheme.swift; sourceTree = "<group>"; };
+		A46C878A246BB18D00C188F1 /* ClockThemeSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockThemeSettings.swift; sourceTree = "<group>"; };
 		A46C878D246C5CCF00C188F1 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		A46C878F246D138500C188F1 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		A4707235235EA2EC00EF9F5C /* AnalogClock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AnalogClock.entitlements; sourceTree = "<group>"; };
@@ -233,7 +233,7 @@
 		A46C8789246BB17000C188F1 /* Themes */ = {
 			isa = PBXGroup;
 			children = (
-				A46C878A246BB18D00C188F1 /* ClockTheme.swift */,
+				A46C878A246BB18D00C188F1 /* ClockThemeSettings.swift */,
 			);
 			path = Themes;
 			sourceTree = "<group>";
@@ -580,7 +580,7 @@
 				A46C8786246BAC5B00C188F1 /* CustomFonts.swift in Sources */,
 				A4DFE138233DCAC200164D30 /* ContentView.swift in Sources */,
 				A4FEB0CD23582B3700EA11F9 /* AnalogClockView.swift in Sources */,
-				A46C878B246BB18D00C188F1 /* ClockTheme.swift in Sources */,
+				A46C878B246BB18D00C188F1 /* ClockThemeSettings.swift in Sources */,
 				A4DFE17D233DCD0100164D30 /* ClockHandType.swift in Sources */,
 				A4FEB0DE235CCCE300EA11F9 /* DateDisplayView.swift in Sources */,
 				A46C8788246BAD0700C188F1 /* Utility.swift in Sources */,

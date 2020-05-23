@@ -105,12 +105,12 @@ class AppSettings: ObservableObject {
             defaults.set(true, forKey: defaultsKeys.showTickTockDisplay)
         }
         
-        let themeKey: String? = defaults.string(forKey: defaultsKeys.theme) // TODO Use this
+        let themeKey: String? = defaults.string(forKey: defaultsKeys.theme)
         let clockBase: Int = defaults.integer(forKey: defaultsKeys.clockType)
         let timeInterval = defaults.double(forKey: defaultsKeys.timeInterval)
         
         return AppSettings(
-            theme: .defaultTheme, // TODO Lookup theme from key
+            theme: themeKey.map { ClockTheme.allThemes[$0] ?? .defaultTheme } ?? .defaultTheme,
             clockType: ClockType.getFromBase(base: clockBase) ?? .twelveHour,
             precision: ClockPrecision.getPrecision(from: timeInterval),
             showAnalogClock: defaults.bool(forKey: defaultsKeys.showAnalogClock),

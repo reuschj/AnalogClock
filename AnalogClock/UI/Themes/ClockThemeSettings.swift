@@ -197,15 +197,35 @@ enum ClockShape {
     }
 }
 
-
-struct ClockTheme {
-    var key: String
-    var appBackground: Color? = nil
-    var analog: AnalogClockView.Theme = AnalogClockView.Theme()
-    var digital: DigitalClockView.Theme = DigitalClockView.Theme()
+class ClockTheme: Hashable {
     
-    static let defaultTheme = ClockTheme(
-        key: "default_theme",
+    var key: String
+    
+    var settings: Settings
+    
+    init(as key: String, _ settings: Settings) {
+        self.key = key
+        self.settings = settings
+        Self.allThemes[key] = self
+    }
+    
+    struct Settings {
+        var appBackground: Color? = nil
+        var analog: AnalogClockView.Theme = AnalogClockView.Theme()
+        var digital: DigitalClockView.Theme = DigitalClockView.Theme()
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(key)
+    }
+    
+    static func == (lhs: ClockTheme, rhs: ClockTheme) -> Bool {
+        lhs.key == rhs.key
+    }
+    
+    static private(set) var allThemes: [String:ClockTheme] = [:]
+    
+    static let defaultTheme = ClockTheme(as: "default_theme", Settings(
         appBackground: nil,
         analog: AnalogClockView.Theme(
             shape: .circle,
@@ -243,5 +263,5 @@ struct ClockTheme {
             timeSeparators: FixedClockFont(.body),
             dateText: FixedClockFont(.body)
         )
-    )
+    ))
 }

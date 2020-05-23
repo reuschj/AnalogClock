@@ -19,6 +19,12 @@ struct SettingsPanel: View {
     /// This will keep the current time, updated on a regular interval
     @ObservedObject var timeEmitter: ClockTimeEmitter = getTimeEmitter()
     
+    /// Theme to use
+    private var theme = Binding<ClockTheme>(
+        get: { settings.theme },
+        set: { settings.theme = $0 }
+    )
+    
     /// Type of clock, 12 or 24-hour
     private var clockType = Binding<ClockType>(
         get: { settings.clockType },
@@ -82,6 +88,15 @@ struct SettingsPanel: View {
     var body: some View {
         NavigationView {
             Form {
+                Section(header: SectionHeaderText("Themes")) { // TODO Replace hardcodes
+                    Picker(
+                        selection: theme,
+                        label: Text("Themes"),// TODO Replace hardcodes
+                        content: {
+                            Text("Default").tag(ClockTheme.defaultTheme)
+                            Text("Other").tag(ClockTheme.defaultTheme)
+                        }).pickerStyle(WheelPickerStyle())
+                }
                 Section(header: SectionHeaderText(strings.showModules)) {
                     Toggle(isOn: showAnalogClock) {
                         Text(strings.analogClock)

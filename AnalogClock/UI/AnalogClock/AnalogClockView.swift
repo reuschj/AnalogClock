@@ -22,7 +22,7 @@ struct AnalogClockView: View {
     /// Global app settings
     @ObservedObject var settings: AppSettings = getAppSettings()
     
-    private var theme: Theme { settings.theme.analog }
+    private var theme: Theme { settings.theme.settings.analog }
     private var colors: Theme.Colors { theme.colors }
     
     private var shape: ClockShape { theme.shape }
