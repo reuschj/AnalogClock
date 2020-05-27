@@ -13,7 +13,7 @@ import SwiftUI
  */
 class AppSettings: ObservableObject {
     
-    @Published var theme: ClockTheme = .defaultTheme {
+    @Published var theme: ClockTheme = .standardTheme {
         didSet { UserDefaults.standard.set(theme.key, forKey: defaultsKeys.theme) }
     }
     @Published var clockType: ClockType = .twelveHour {
@@ -57,7 +57,7 @@ class AppSettings: ObservableObject {
         - showTickTockDisplay: Flag for tick tock pendulum visibility on the analog clock
      */
     init(
-        theme: ClockTheme = .defaultTheme,
+        theme: ClockTheme = .standardTheme,
         clockType: ClockType = .twelveHour,
         precision: ClockPrecision = .low,
         showAnalogClock: Bool = true,
@@ -81,6 +81,7 @@ class AppSettings: ObservableObject {
         )
         self.tickTockDisplay = showTickTockDisplay
         self.precision = precision
+        ClockTheme.loadThemes()
     }
     
     /**
@@ -110,7 +111,7 @@ class AppSettings: ObservableObject {
         let timeInterval = defaults.double(forKey: defaultsKeys.timeInterval)
         
         return AppSettings(
-            theme: themeKey.map { ClockTheme.allThemes[$0] ?? .defaultTheme } ?? .defaultTheme,
+            theme: themeKey.map { ClockTheme.themes[$0] ?? .standardTheme } ?? .standardTheme,
             clockType: ClockType.getFromBase(base: clockBase) ?? .twelveHour,
             precision: ClockPrecision.getPrecision(from: timeInterval),
             showAnalogClock: defaults.bool(forKey: defaultsKeys.showAnalogClock),

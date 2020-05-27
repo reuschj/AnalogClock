@@ -84,67 +84,66 @@ struct SettingsPanel: View {
         let updatesPerSecond = Int(round(1 / timeEmitter.interval))
         return "\(updatesPerSecond) \(updatesPerSecond > 1 ? strings.updatesPlu : strings.updatesSing)"
     }
-    
+  
     var body: some View {
-        NavigationView {
-            Form {
-                Section(header: SectionHeaderText("Themes")) { // TODO Replace hardcodes
-                    Picker(
-                        selection: theme,
-                        label: Text("Themes"),// TODO Replace hardcodes
-                        content: {
-                            Text("Default").tag(ClockTheme.defaultTheme)
-                            Text("Other").tag(ClockTheme.defaultTheme)
-                        }).pickerStyle(WheelPickerStyle())
+        Form {
+            Section {
+                Picker(
+                    strings.theme,
+                    selection: theme,
+                    content: {
+                        ForEach(ClockTheme.themes.values.sorted(by: <), id: \.key) {
+                            Text($0.label).tag($0)
+                        }
+                }).pickerStyle(DefaultPickerStyle())
+            }
+            Section(header: SectionHeaderText(strings.showModules)) {
+                Toggle(isOn: showAnalogClock) {
+                    Text(strings.analogClock)
                 }
-                Section(header: SectionHeaderText(strings.showModules)) {
-                    Toggle(isOn: showAnalogClock) {
-                        Text(strings.analogClock)
-                    }
-                    Toggle(isOn: showDigitalClock) {
-                        Text(strings.digitalClock)
-                    }
-                    Toggle(isOn: showDateDisplay) {
-                        Text(strings.dateDisplay)
-                    }
+                Toggle(isOn: showDigitalClock) {
+                    Text(strings.digitalClock)
                 }
-                
-                Section(header: SectionHeaderText(strings.clockType)) {
-                    Picker(
-                        selection: clockType,
-                        label: Text(strings.clockType),
-                        content: {
-                            Text(strings.twelveHour).tag(ClockType.twelveHour)
-                            Text(strings.twentyFourHour).tag(ClockType.twentyFourHour)
-                            Text(strings.decimal).tag(ClockType.decimal)
-                    }).pickerStyle(SegmentedPickerStyle())
+                Toggle(isOn: showDateDisplay) {
+                    Text(strings.dateDisplay)
                 }
-                
-                Section(header: SectionHeaderText(strings.precision)) {
-                    Text(getPrecisionText())
-                    Picker(
-                        selection: clockPrecision,
-                        label: Text(strings.precision),
-                        content: {
-                            Text(strings.low).tag(ClockPrecision.low)
-                            Text(strings.medium).tag(ClockPrecision.medium)
-                            Text(strings.high).tag(ClockPrecision.high)
-                    }).pickerStyle(SegmentedPickerStyle())
+            }
+            
+            Section(header: SectionHeaderText(strings.clockType)) {
+                Picker(
+                    selection: clockType,
+                    label: Text(strings.clockType),
+                    content: {
+                        Text(strings.twelveHour).tag(ClockType.twelveHour)
+                        Text(strings.twentyFourHour).tag(ClockType.twentyFourHour)
+                        Text(strings.decimal).tag(ClockType.decimal)
+                }).pickerStyle(SegmentedPickerStyle())
+            }
+            
+            Section(header: SectionHeaderText(strings.precision)) {
+                Text(getPrecisionText())
+                Picker(
+                    selection: clockPrecision,
+                    label: Text(strings.precision),
+                    content: {
+                        Text(strings.low).tag(ClockPrecision.low)
+                        Text(strings.medium).tag(ClockPrecision.medium)
+                        Text(strings.high).tag(ClockPrecision.high)
+                }).pickerStyle(SegmentedPickerStyle())
+            }
+            
+            Section(header: SectionHeaderText(strings.otherOptions)) {
+                Toggle(isOn: showTickMarks) {
+                    Text(strings.showTickMarks)
                 }
-                
-                Section(header: SectionHeaderText(strings.otherOptions)) {
-                    Toggle(isOn: showTickMarks) {
-                        Text(strings.showTickMarks)
-                    }
-                    Toggle(isOn: showPeriodDisplay) {
-                        Text(strings.showPeriodDisplay)
-                    }
-                    Toggle(isOn: showTickTockDisplay) {
-                        Text(strings.showTickTockDisplay)
-                    }
+                Toggle(isOn: showPeriodDisplay) {
+                    Text(strings.showPeriodDisplay)
                 }
-            }.navigationBarTitle(strings.settings)
-        }.navigationViewStyle(StackNavigationViewStyle())
+                Toggle(isOn: showTickTockDisplay) {
+                    Text(strings.showTickTockDisplay)
+                }
+            }
+        }.navigationBarTitle(strings.settings)
     }
 }
 

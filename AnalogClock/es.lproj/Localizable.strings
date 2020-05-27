@@ -29,3 +29,6 @@
 "showTickMarks" = "Mostrar marcas";
 "showPeriodDisplay" = "Mostrar mano período (AM/PM)";
 "showTickTockDisplay" = "Mostrar péndulo";
+"theme" = "Tema";
+"standard" = "Estándar";
+"impact" = "Impacto";

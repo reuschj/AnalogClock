@@ -197,16 +197,28 @@ enum ClockShape {
     }
 }
 
-class ClockTheme: Hashable {
+class ClockTheme: Hashable, Comparable {
     
     var key: String
     
+    var label: String
+    
+    var sortClass: Int8? = nil
+    
     var settings: Settings
     
-    init(as key: String, _ settings: Settings) {
+    init(
+        key: String,
+        label: String,
+        sortClass: Int8? = nil,
+        _ settings: Settings
+    ) {
         self.key = key
+        self.label = label
+        self.sortClass = sortClass
         self.settings = settings
-        Self.allThemes[key] = self
+        Self.themes[key] = self
+        print("Created a new theme with label \"\(label)\" and key \"\(key)\"")
     }
     
     struct Settings {
@@ -220,15 +232,74 @@ class ClockTheme: Hashable {
     }
     
     static func == (lhs: ClockTheme, rhs: ClockTheme) -> Bool {
-        lhs.key == rhs.key
+        (lhs.key == rhs.key) && (lhs.label == rhs.label)
     }
     
-    static private(set) var allThemes: [String:ClockTheme] = [:]
+    static func < (lhs: ClockTheme, rhs: ClockTheme) -> Bool {
+        let left = lhs.sortClass ?? Int8.max
+        let right = rhs.sortClass ?? Int8.max
+        guard left == right else { return left < right }
+        return lhs.key < rhs.key
+    }
     
-    static let defaultTheme = ClockTheme(as: "default_theme", Settings(
+    static private(set) var themes: [String:ClockTheme] = [:]
+    
+    static func loadThemes() {
+        let themeList: [ClockTheme] = [.standardTheme, .altTheme]
+        _ = themeList.map { themes[$0.key] = $0 }
+    }
+    
+    static let standardTheme = ClockTheme(
+        key: "standard_theme",
+        label: strings.standard,
+        sortClass: 0,
+        Settings(
         appBackground: nil,
         analog: AnalogClockView.Theme(
             shape: .circle,
+            colors: AnalogClockView.Theme.Colors(
+                clock: ClockElementColor(outline: .secondary),
+                clockNumbers: .primary,
+                clockMajorTicks: .secondary,
+                clockMinorTicks: .gray,
+                hourHand: ClockElementColor(fill: .accentColor),
+                minuteHand: ClockElementColor(fill: .primary),
+                secondHand: ClockElementColor(fill: .secondary),
+                periodHand: ClockElementColor(fill: .gray),
+                periodText: .primary,
+                tickTockHand: ClockElementColor(fill: .gray),
+                pivot: ClockElementColor(fill: .accentColor)
+            ),
+            outlineWidth: 2,
+            numbers: FlexClockFont(scale: UIScale(oneOver: 16, of: .clockDiameter)),
+            hourHand: ClockHand.Hour.defaultDimensions,
+            minuteHand: ClockHand.Minute.defaultDimensions,
+            secondHand: ClockHand.Second.defaultDimensions,
+            periodHand: ClockHand.Period.defaultDimensions,
+            periodText: FlexClockFont(scale: UIScale(oneOver: 30, of: .clockDiameter)),
+            pivotScale: UIScale(oneOver: 25, of: .clockDiameter),
+            pivotShape: .circle,
+            pivotOutlineWidth: 1
+        ),
+        digital: DigitalClockView.Theme(
+            colors: DigitalClockView.Theme.Colors(
+                timeDigits: .primary,
+                timeSeparators: .secondary,
+                dateText: .secondary
+            ),
+            timeDigits: FixedClockFont(.title),
+            timeSeparators: FixedClockFont(.body),
+            dateText: FixedClockFont(.body)
+        )
+    ))
+    
+    static let altTheme = ClockTheme(
+        key: "impact_Theme",
+        label: strings.impact,
+        Settings(
+        appBackground: nil,
+        analog: AnalogClockView.Theme(
+            shape: .square,
             colors: AnalogClockView.Theme.Colors(
                 clock: ClockElementColor(outline: .secondary),
                 clockNumbers: .primary,
