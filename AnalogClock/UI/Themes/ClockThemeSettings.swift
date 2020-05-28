@@ -225,6 +225,7 @@ class ClockTheme: Hashable, Comparable {
         var appBackground: Color? = nil
         var analog: AnalogClockView.Theme = AnalogClockView.Theme()
         var digital: DigitalClockView.Theme = DigitalClockView.Theme()
+        var date: DateDisplayView.Theme = DateDisplayView.Theme()
     }
     
     func hash(into hasher: inout Hasher) {
@@ -254,85 +255,109 @@ class ClockTheme: Hashable, Comparable {
         label: strings.standard,
         sortClass: 0,
         Settings(
-        appBackground: nil,
-        analog: AnalogClockView.Theme(
-            shape: .circle,
-            colors: AnalogClockView.Theme.Colors(
-                clock: ClockElementColor(outline: .secondary),
-                clockNumbers: .primary,
-                clockMajorTicks: .secondary,
-                clockMinorTicks: .gray,
-                hourHand: ClockElementColor(fill: .accentColor),
-                minuteHand: ClockElementColor(fill: .primary),
-                secondHand: ClockElementColor(fill: .secondary),
-                periodHand: ClockElementColor(fill: .gray),
-                periodText: .primary,
-                tickTockHand: ClockElementColor(fill: .gray),
-                pivot: ClockElementColor(fill: .accentColor)
+            appBackground: nil,
+            analog: AnalogClockView.Theme(
+                shape: .circle,
+                colors: AnalogClockView.Theme.Colors(
+                    clock: ClockElementColor(outline: .secondary),
+                    clockNumbers: .primary,
+                    clockMajorTicks: .secondary,
+                    clockMinorTicks: .gray,
+                    hourHand: ClockElementColor(fill: .accentColor),
+                    minuteHand: ClockElementColor(fill: .primary),
+                    secondHand: ClockElementColor(fill: .secondary),
+                    periodHand: ClockElementColor(fill: .gray),
+                    periodText: .primary,
+                    tickTockHand: ClockElementColor(fill: .gray),
+                    pivot: ClockElementColor(fill: .accentColor)
+                ),
+                outlineWidth: 2,
+                numbers: FlexClockFont(scale: UIScale(oneOver: 16, of: .clockDiameter)),
+                hourHand: ClockHand.Hour.defaultDimensions,
+                minuteHand: ClockHand.Minute.defaultDimensions,
+                secondHand: ClockHand.Second.defaultDimensions,
+                periodHand: ClockHand.Period.defaultDimensions,
+                periodText: FlexClockFont(scale: UIScale(oneOver: 30, of: .clockDiameter)),
+                pivotScale: UIScale(oneOver: 25, of: .clockDiameter),
+                pivotShape: .circle,
+                pivotOutlineWidth: 1
             ),
-            outlineWidth: 2,
-            numbers: FlexClockFont(scale: UIScale(oneOver: 16, of: .clockDiameter)),
-            hourHand: ClockHand.Hour.defaultDimensions,
-            minuteHand: ClockHand.Minute.defaultDimensions,
-            secondHand: ClockHand.Second.defaultDimensions,
-            periodHand: ClockHand.Period.defaultDimensions,
-            periodText: FlexClockFont(scale: UIScale(oneOver: 30, of: .clockDiameter)),
-            pivotScale: UIScale(oneOver: 25, of: .clockDiameter),
-            pivotShape: .circle,
-            pivotOutlineWidth: 1
-        ),
-        digital: DigitalClockView.Theme(
-            colors: DigitalClockView.Theme.Colors(
-                timeDigits: .primary,
-                timeSeparators: .secondary,
-                dateText: .secondary
+            digital: DigitalClockView.Theme(
+                colors: DigitalClockView.Theme.Colors(
+                    timeDigits: .primary,
+                    timeSeparators: .secondary
+                ),
+                timeDigits: FixedClockFont(.title),
+                timeSeparators: FixedClockFont(.body),
+                separatorCharacter: ":"
             ),
-            timeDigits: FixedClockFont(.title),
-            timeSeparators: FixedClockFont(.body),
-            dateText: FixedClockFont(.body)
+            date: DateDisplayView.Theme(
+                colors: DateDisplayView.Theme.Colors(
+                    dateText: .secondary
+                ),
+                dateText: FixedClockFont(.body)
+            )
         )
-    ))
+    )
     
     static let altTheme = ClockTheme(
         key: "impact_Theme",
         label: strings.impact,
         Settings(
-        appBackground: nil,
-        analog: AnalogClockView.Theme(
-            shape: .square,
-            colors: AnalogClockView.Theme.Colors(
-                clock: ClockElementColor(outline: .secondary),
-                clockNumbers: .primary,
-                clockMajorTicks: .secondary,
-                clockMinorTicks: .gray,
-                hourHand: ClockElementColor(fill: .accentColor),
-                minuteHand: ClockElementColor(fill: .primary),
-                secondHand: ClockElementColor(fill: .secondary),
-                periodHand: ClockElementColor(fill: .gray),
-                periodText: .primary,
-                tickTockHand: ClockElementColor(fill: .gray),
-                pivot: ClockElementColor(fill: .accentColor)
+            appBackground: nil,
+            analog: AnalogClockView.Theme(
+                shape: .circle,
+                colors: AnalogClockView.Theme.Colors(
+                    clock: ClockElementColor(fill: .impact10, outline: .impact75),
+                    clockNumbers: .impact,
+                    clockMajorTicks: .secondary,
+                    clockMinorTicks: .gray,
+                    hourHand: ClockElementColor(fill: .impact10, outline: .impact),
+                    minuteHand: ClockElementColor(fill: .impact10, outline: .impact75),
+                    secondHand: ClockElementColor(fill: .impact10, outline: .impact75),
+                    periodHand: ClockElementColor(fill: .impact50),
+                    periodText: .impact75,
+                    tickTockHand: ClockElementColor(fill: .gray),
+                    pivot: ClockElementColor(fill: .impact90)
+                ),
+                outlineWidth: 2,
+                numbers: FlexClockFont(
+                    name: CustomFonts.MajorMonoDisplay.regular,
+                    scale: UIScale(oneOver: 12, of: .clockDiameter)
+                ),
+                hourHand: ClockHand.Hour.defaultDimensions,
+                minuteHand: ClockHand.Minute.defaultDimensions,
+                secondHand: ClockHand.Second.defaultDimensions,
+                periodHand: ClockHand.Period.defaultDimensions,
+                periodText: FlexClockFont(scale: UIScale(oneOver: 30, of: .clockDiameter)),
+                pivotScale: UIScale(oneOver: 25, of: .clockDiameter),
+                pivotShape: .circle,
+                pivotOutlineWidth: 1
             ),
-            outlineWidth: 2,
-            numbers: FlexClockFont(scale: UIScale(oneOver: 16, of: .clockDiameter)),
-            hourHand: ClockHand.Hour.defaultDimensions,
-            minuteHand: ClockHand.Minute.defaultDimensions,
-            secondHand: ClockHand.Second.defaultDimensions,
-            periodHand: ClockHand.Period.defaultDimensions,
-            periodText: FlexClockFont(scale: UIScale(oneOver: 30, of: .clockDiameter)),
-            pivotScale: UIScale(oneOver: 25, of: .clockDiameter),
-            pivotShape: .circle,
-            pivotOutlineWidth: 1
-        ),
-        digital: DigitalClockView.Theme(
-            colors: DigitalClockView.Theme.Colors(
-                timeDigits: .primary,
-                timeSeparators: .secondary,
-                dateText: .secondary
+            digital: DigitalClockView.Theme(
+                colors: DigitalClockView.Theme.Colors(
+                    timeDigits: .impact,
+                    timeSeparators: .impact25
+                ),
+                timeDigits: FlexClockFont(
+                    name: CustomFonts.MajorMonoDisplay.regular,
+                    scale: UIScale(oneOver: 12, of: .screenWidth)
+                ),
+                timeSeparators: FlexClockFont(
+                    name: CustomFonts.MajorMonoDisplay.regular,
+                    scale: UIScale(oneOver: 24, of: .screenWidth)
+                ),
+                separatorCharacter: ":"
             ),
-            timeDigits: FixedClockFont(.title),
-            timeSeparators: FixedClockFont(.body),
-            dateText: FixedClockFont(.body)
+            date: DateDisplayView.Theme(
+                colors: DateDisplayView.Theme.Colors(
+                    dateText: .impact25
+                ),
+                dateText: FlexClockFont(
+                    name: CustomFonts.Montserrat.medium,
+                    scale: UIScale(oneOver: 16, of: .screenWidth)
+                )
+            )
         )
-    ))
+    )
 }

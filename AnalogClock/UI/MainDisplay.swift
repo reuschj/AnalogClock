@@ -33,7 +33,8 @@ struct MainDisplay: View {
                         Spacer()
                     }
                     if self.settings.visibleModules.dateDisplay {
-                        DateDisplayView(color: .secondary).padding()
+                        DateDisplayView()
+                            .padding()
                         Spacer()
                     }
                 }

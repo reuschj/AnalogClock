@@ -88,8 +88,7 @@ struct SettingsPanel: View {
     var body: some View {
         Form {
             Section {
-                Picker(
-                    strings.theme,
+                Picker(strings.theme,
                     selection: theme,
                     content: {
                         ForEach(ClockTheme.themes.values.sorted(by: <), id: \.key) {

@@ -10,6 +10,7 @@ import SwiftUI
 
 extension Color {
     static let impact = Color("Impact")
+    static let impact10 = Color("Impact10")
     static let impact25 = Color("Impact25")
     static let impact50 = Color("Impact50")
     static let impact75 = Color("Impact75")
