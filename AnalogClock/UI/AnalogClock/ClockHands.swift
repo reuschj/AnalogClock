@@ -137,7 +137,15 @@ struct ClockHand: View {
             ClockHand(dimensions, colorTheme: colorTheme, type: type)
         }
         
-        static var defaultDimensions: Dimensions { Dimensions(shape: .roundedRectangle(cornerRadius: 6), lengthRatio: 0.6, width: 6, outlineWidth: ClockHandConstants.Defaults.outlineWidth, overhangRatio: ClockHandConstants.Defaults.overhangRatio) }
+        static var defaultDimensions: Dimensions { Self.getDefaultDimensions() }
+        
+        static func getDefaultDimensions(
+            shape: Shape = .roundedRectangle(cornerRadius: 6),
+            lengthRatio: CGFloat = 0.6,
+            width: CGFloat = 6,
+            outlineWidth: CGFloat = ClockHandConstants.Defaults.outlineWidth,
+            overhangRatio: CGFloat = ClockHandConstants.Defaults.overhangRatio
+        ) -> Dimensions { Dimensions(shape: shape, lengthRatio: lengthRatio, width: width, outlineWidth: outlineWidth, overhangRatio: overhangRatio) }
     }
     
     /**
@@ -168,7 +176,15 @@ struct ClockHand: View {
             ClockHand(dimensions, colorTheme: colorTheme, type: type)
         }
         
-        static var defaultDimensions: Dimensions { Dimensions(shape: .roundedRectangle(cornerRadius: 4), lengthRatio: 0.85, width: 4, outlineWidth: ClockHandConstants.Defaults.outlineWidth, overhangRatio: ClockHandConstants.Defaults.overhangRatio) }
+        static var defaultDimensions: Dimensions { Self.getDefaultDimensions() }
+        
+        static func getDefaultDimensions(
+            shape: Shape = .roundedRectangle(cornerRadius: 4),
+            lengthRatio: CGFloat = 0.84,
+            width: CGFloat = 4,
+            outlineWidth: CGFloat = ClockHandConstants.Defaults.outlineWidth,
+            overhangRatio: CGFloat = ClockHandConstants.Defaults.overhangRatio
+        ) -> Dimensions { Dimensions(shape: shape, lengthRatio: lengthRatio, width: width, outlineWidth: outlineWidth, overhangRatio: overhangRatio) }
     }
     
     /**
@@ -206,7 +222,15 @@ struct ClockHand: View {
             ClockHand(dimensions, colorTheme: colorTheme, type: type)
         }
         
-        static var defaultDimensions: Dimensions { Dimensions(shape: .roundedRectangle(cornerRadius: 4), lengthRatio: 0.92, width: 3, outlineWidth: ClockHandConstants.Defaults.outlineWidth, overhangRatio: ClockHandConstants.Defaults.overhangRatio) }
+        static var defaultDimensions: Dimensions { Self.getDefaultDimensions() }
+        
+        static func getDefaultDimensions(
+            shape: Shape = .roundedRectangle(cornerRadius: 4),
+            lengthRatio: CGFloat = 0.92,
+            width: CGFloat = 3,
+            outlineWidth: CGFloat = ClockHandConstants.Defaults.outlineWidth,
+            overhangRatio: CGFloat = ClockHandConstants.Defaults.overhangRatio
+        ) -> Dimensions { Dimensions(shape: shape, lengthRatio: lengthRatio, width: width, outlineWidth: outlineWidth, overhangRatio: overhangRatio) }
     }
     
     /**
@@ -227,7 +251,15 @@ struct ClockHand: View {
             ClockHand(dimensions, colorTheme: colorTheme, type: .period)
         }
         
-        static var defaultDimensions: Dimensions { Dimensions(shape: .roundedRectangle(cornerRadius: 3), lengthRatio: 0.95, width: 3, outlineWidth: ClockHandConstants.Defaults.outlineWidth, overhangRatio: 0.25) }
+        static var defaultDimensions: Dimensions { Self.getDefaultDimensions() }
+        
+        static func getDefaultDimensions(
+            shape: Shape = .roundedRectangle(cornerRadius: 3),
+            lengthRatio: CGFloat = 0.95,
+            width: CGFloat = 3,
+            outlineWidth: CGFloat = ClockHandConstants.Defaults.outlineWidth,
+            overhangRatio: CGFloat = 0.25
+        ) -> Dimensions { Dimensions(shape: shape, lengthRatio: lengthRatio, width: width, outlineWidth: outlineWidth, overhangRatio: overhangRatio) }
     }
     
     /**

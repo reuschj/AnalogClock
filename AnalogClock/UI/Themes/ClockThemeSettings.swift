@@ -245,9 +245,10 @@ class ClockTheme: Hashable, Comparable {
     
     static private(set) var themes: [String:ClockTheme] = [:]
     
-    static func loadThemes() {
+    static func loadThemes() -> [String:ClockTheme] {
         let themeList: [ClockTheme] = [.standardTheme, .altTheme]
         _ = themeList.map { themes[$0.key] = $0 }
+        return Self.themes
     }
     
     static let standardTheme = ClockTheme(
@@ -301,7 +302,7 @@ class ClockTheme: Hashable, Comparable {
     )
     
     static let altTheme = ClockTheme(
-        key: "impact_Theme",
+        key: "impact_theme",
         label: strings.impact,
         Settings(
             appBackground: nil,
@@ -310,22 +311,22 @@ class ClockTheme: Hashable, Comparable {
                 colors: AnalogClockView.Theme.Colors(
                     clock: ClockElementColor(fill: .impact10, outline: .impact75),
                     clockNumbers: .impact,
-                    clockMajorTicks: .secondary,
-                    clockMinorTicks: .gray,
+                    clockMajorTicks: .impact,
+                    clockMinorTicks: .impact50,
                     hourHand: ClockElementColor(fill: .impact10, outline: .impact),
                     minuteHand: ClockElementColor(fill: .impact10, outline: .impact75),
                     secondHand: ClockElementColor(fill: .impact10, outline: .impact75),
                     periodHand: ClockElementColor(fill: .impact50),
                     periodText: .impact75,
                     tickTockHand: ClockElementColor(fill: .gray),
-                    pivot: ClockElementColor(fill: .impact90)
+                    pivot: ClockElementColor(fill: .impact)
                 ),
                 outlineWidth: 2,
                 numbers: FlexClockFont(
                     name: CustomFonts.MajorMonoDisplay.regular,
-                    scale: UIScale(oneOver: 12, of: .clockDiameter)
+                    scale: UIScale(oneOver: 10, of: .clockDiameter)
                 ),
-                hourHand: ClockHand.Hour.defaultDimensions,
+                hourHand: ClockHand.Hour.getDefaultDimensions(outlineWidth: 2),
                 minuteHand: ClockHand.Minute.defaultDimensions,
                 secondHand: ClockHand.Second.defaultDimensions,
                 periodHand: ClockHand.Period.defaultDimensions,
@@ -341,7 +342,7 @@ class ClockTheme: Hashable, Comparable {
                 ),
                 timeDigits: FlexClockFont(
                     name: CustomFonts.MajorMonoDisplay.regular,
-                    scale: UIScale(oneOver: 12, of: .screenWidth)
+                    scale: UIScale(oneOver: 10, of: .screenWidth)
                 ),
                 timeSeparators: FlexClockFont(
                     name: CustomFonts.MajorMonoDisplay.regular,
@@ -351,11 +352,11 @@ class ClockTheme: Hashable, Comparable {
             ),
             date: DateDisplayView.Theme(
                 colors: DateDisplayView.Theme.Colors(
-                    dateText: .impact25
+                    dateText: .impact50
                 ),
                 dateText: FlexClockFont(
-                    name: CustomFonts.Montserrat.medium,
-                    scale: UIScale(oneOver: 16, of: .screenWidth)
+                    name: CustomFonts.Montserrat.regular,
+                    scale: UIScale(oneOver: 14, of: .screenWidth)
                 )
             )
         )

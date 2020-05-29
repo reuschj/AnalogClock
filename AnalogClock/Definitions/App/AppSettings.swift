@@ -81,20 +81,19 @@ class AppSettings: ObservableObject {
         )
         self.tickTockDisplay = showTickTockDisplay
         self.precision = precision
-        ClockTheme.loadThemes()
     }
     
     /**
      Get user defaults and create new instance
      */
     static func getFromDefaults() -> AppSettings {
-        
+                
         let defaults = UserDefaults.standard
         
         // Sets defaults on first run
         let clockDefaultsAreSet = defaults.bool(forKey: defaultsKeys.clockDefaultsAreSet)
         if !clockDefaultsAreSet {
-            defaults.set("default_theme", forKey: defaultsKeys.theme)
+            defaults.set(ClockTheme.standardTheme.key, forKey: defaultsKeys.theme)
             defaults.set(true, forKey: defaultsKeys.clockDefaultsAreSet)
             defaults.set(12, forKey: defaultsKeys.clockType)
             defaults.set(1.0, forKey: defaultsKeys.timeInterval)

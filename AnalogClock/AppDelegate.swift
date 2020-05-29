@@ -11,6 +11,9 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
+    /// Loads themes to app
+    var themes = ClockTheme.loadThemes()
+    
     /// Clock settings with defaults
     var settings = AppSettings.getFromDefaults()
     
