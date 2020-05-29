@@ -16,6 +16,7 @@ struct MainDisplay: View {
     
     /// Global app settings
     @ObservedObject var settings = getAppSettings()
+    private var theme: ClockTheme.Settings { settings.theme.settings }
     
     var body: some View {
         RotatableStack {
@@ -41,7 +42,7 @@ struct MainDisplay: View {
             }
         }
         .navigationBarItems(
-            trailing: SettingsLink()
+            trailing: SettingsLink(color: theme.settingsLinkColor)
         )
     }
 }

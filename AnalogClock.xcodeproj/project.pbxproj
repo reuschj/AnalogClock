@@ -34,6 +34,7 @@
 		A4B01A2B2364BD5700AF5D14 /* MainDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B01A2A2364BD5700AF5D14 /* MainDisplay.swift */; };
 		A4B60F2A23484F7100797A3B /* UIMeasurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B60F2923484F7100797A3B /* UIMeasurement.swift */; };
 		A4B60F2E234AE80B00797A3B /* limitToRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B60F2D234AE80B00797A3B /* limitToRange.swift */; };
+		A4B9D1672481BCBD0034E0F0 /* AppBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B9D1662481BCBD0034E0F0 /* AppBackgroundView.swift */; };
 		A4DFE134233DCAC200164D30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFE133233DCAC200164D30 /* AppDelegate.swift */; };
 		A4DFE136233DCAC200164D30 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFE135233DCAC200164D30 /* SceneDelegate.swift */; };
 		A4DFE138233DCAC200164D30 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFE137233DCAC200164D30 /* ContentView.swift */; };
@@ -110,6 +111,7 @@
 		A4B01A2A2364BD5700AF5D14 /* MainDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDisplay.swift; sourceTree = "<group>"; };
 		A4B60F2923484F7100797A3B /* UIMeasurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMeasurement.swift; sourceTree = "<group>"; };
 		A4B60F2D234AE80B00797A3B /* limitToRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = limitToRange.swift; sourceTree = "<group>"; };
+		A4B9D1662481BCBD0034E0F0 /* AppBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBackgroundView.swift; sourceTree = "<group>"; };
 		A4DFE130233DCAC200164D30 /* AnalogClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnalogClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4DFE133233DCAC200164D30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4DFE135233DCAC200164D30 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -348,9 +350,7 @@
 		A4DFE1AE2342FE8F00164D30 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				A46C878C246C5CBD00C188F1 /* Extensions */,
 				A46C8789246BB17000C188F1 /* Themes */,
-				A46C8784246BAC0D00C188F1 /* Fonts */,
 				A4FEB0CE23582BC500EA11F9 /* AnalogClock */,
 				A4FEB0D323582C3A00EA11F9 /* DigitalClock and Date */,
 				A4F0ADD22361597F00C74EE9 /* Settings */,
@@ -372,8 +372,11 @@
 		A4F73E5923504A5A0067525D /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				A46C8784246BAC0D00C188F1 /* Fonts */,
+				A46C878C246C5CBD00C188F1 /* Extensions */,
 				A409FC48239CAFDB0029A523 /* types.swift */,
 				A4B60F2923484F7100797A3B /* UIMeasurement.swift */,
+				A4B9D1662481BCBD0034E0F0 /* AppBackgroundView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -562,6 +565,7 @@
 				A4F0ADD623616E9C00C74EE9 /* SettingsLink.swift in Sources */,
 				A4DFE180233DCD0100164D30 /* AppSettings.swift in Sources */,
 				A4B60F2A23484F7100797A3B /* UIMeasurement.swift in Sources */,
+				A4B9D1672481BCBD0034E0F0 /* AppBackgroundView.swift in Sources */,
 				A409FC47239C3D8B0029A523 /* TickTockDisplayView.swift in Sources */,
 				A4F0ADD4236159B500C74EE9 /* SettingsPanel.swift in Sources */,
 				A4B01A272364115B00AF5D14 /* ClockTicks.swift in Sources */,

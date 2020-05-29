@@ -223,6 +223,7 @@ class ClockTheme: Hashable, Comparable {
     
     struct Settings {
         var appBackground: Color? = nil
+        var settingsLinkColor: Color = .accentColor
         var analog: AnalogClockView.Theme = AnalogClockView.Theme()
         var digital: DigitalClockView.Theme = DigitalClockView.Theme()
         var date: DateDisplayView.Theme = DateDisplayView.Theme()
@@ -257,6 +258,7 @@ class ClockTheme: Hashable, Comparable {
         sortClass: 0,
         Settings(
             appBackground: nil,
+            settingsLinkColor: .accentColor,
             analog: AnalogClockView.Theme(
                 shape: .circle,
                 colors: AnalogClockView.Theme.Colors(
@@ -305,7 +307,8 @@ class ClockTheme: Hashable, Comparable {
         key: "impact_theme",
         label: strings.impact,
         Settings(
-            appBackground: nil,
+            appBackground: .impactBackground,
+            settingsLinkColor: .impact,
             analog: AnalogClockView.Theme(
                 shape: .circle,
                 colors: AnalogClockView.Theme.Colors(

@@ -17,4 +17,5 @@ extension Color {
     static let impact90 = Color("Impact90")
     static let cool = Color("Cool")
     static let deepBackground = Color("DeepBackground")
+    static let impactBackground = Color("ImpactBackground")
 }
