@@ -292,6 +292,7 @@ class ClockTheme: Hashable, Comparable {
                 ),
                 timeDigits: FixedClockFont(.title),
                 timeSeparators: FixedClockFont(.body),
+                periodDigits: nil,
                 separatorCharacter: ":"
             ),
             date: DateDisplayView.Theme(
@@ -333,7 +334,10 @@ class ClockTheme: Hashable, Comparable {
                 minuteHand: ClockHand.Minute.defaultDimensions,
                 secondHand: ClockHand.Second.defaultDimensions,
                 periodHand: ClockHand.Period.defaultDimensions,
-                periodText: FlexClockFont(scale: UIScale(oneOver: 30, of: .clockDiameter)),
+                periodText: FlexClockFont(
+                    name: CustomFonts.Montserrat.regular,
+                    scale: UIScale(oneOver: 30, of: .screenWidth)
+                ),
                 pivotScale: UIScale(oneOver: 25, of: .clockDiameter),
                 pivotShape: .circle,
                 pivotOutlineWidth: 1
@@ -345,11 +349,15 @@ class ClockTheme: Hashable, Comparable {
                 ),
                 timeDigits: FlexClockFont(
                     name: CustomFonts.MajorMonoDisplay.regular,
-                    scale: UIScale(oneOver: 10, of: .screenWidth)
+                    scale: UIScale(oneOver: 11, of: .screenWidth)
                 ),
                 timeSeparators: FlexClockFont(
                     name: CustomFonts.MajorMonoDisplay.regular,
                     scale: UIScale(oneOver: 24, of: .screenWidth)
+                ),
+                periodDigits: FlexClockFont(
+                    name: CustomFonts.Montserrat.light,
+                    scale: UIScale(oneOver: 11, of: .screenWidth)
                 ),
                 separatorCharacter: ":"
             ),

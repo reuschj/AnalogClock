@@ -68,19 +68,25 @@ struct DigitalClockView: View {
         theme.timeSeparators.getFont(within: container, limitedTo: timeDigitFontRange)
     }
     
+    private func getPeriodFont(within container: CGFloat) -> Font? {
+        theme.periodDigits?.getFont(within: container, limitedTo: timeDigitFontRange)
+    }
+    
+    
     private func makeDigitalDisplay(within width: CGFloat) -> some View {
         let timeDigitFont: Font = getTimeDigitFont(within: width)
+        let periodFont: Font = getPeriodFont(within: width) ?? timeDigitFont
         let separatorFont: Font = getTimeDigitFont(within: width)
         let _separator_ = DigitalClockSeparator(
             color: colors.timeSeparators,
             font: separatorFont,
             character: theme.separatorCharacter
         )
-        func digit(_ text: String?) -> TimeTextBlock {
+        func digit(_ text: String?, font: Font = timeDigitFont) -> TimeTextBlock {
             TimeTextBlock(
                 text: text,
                 color: colors.timeDigits,
-                font: timeDigitFont
+                font: font
             )
         }
         return HStack {
@@ -92,7 +98,7 @@ struct DigitalClockView: View {
             digit(secondTimeText)
             if type == .twelveHour {
                 _separator_
-                digit(time.periodString)
+                digit(time.periodString, font: periodFont)
             }
             Spacer()
         }
@@ -108,6 +114,7 @@ struct DigitalClockView: View {
         var colors: Colors = Colors()
         var timeDigits: ClockFont = FixedClockFont(.title)
         var timeSeparators: ClockFont = FixedClockFont(.title)
+        var periodDigits: ClockFont? = nil
         var separatorCharacter: Character = ":"
         
         struct Colors {
