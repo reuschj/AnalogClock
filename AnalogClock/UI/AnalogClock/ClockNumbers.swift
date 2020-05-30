@@ -29,7 +29,14 @@ struct ClockNumbers: View {
     private var increment: Double { 360 / Double(steps) }
     
     /// Allowable bounds for font scaling
-    private let fontRange: ClosedRange<CGFloat> = 14...40
+    private var fontRange: ClosedRange<CGFloat> {
+        switch type {
+        case .twentyFourHour:
+            return 14...19
+        default:
+            return 14...40
+        }
+    }
     
     /**
     Calculates a scaled font size that fits with the clock's diameter

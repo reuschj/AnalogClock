@@ -8,204 +8,22 @@
 
 import SwiftUI
 
-struct UIScale {
-    
-    var percent: CGFloat = 1
-    
-    var scaleTo: ScaleBase = .screenWidth
-    
-    var flexFont: FlexFont { FlexFont(flexFontSize) }
-    var flexFontSize: FlexFontSize { percent * 100 }
-    
-    init(_ percent: CGFloat, of scaleBase: ScaleBase = .screenWidth) {
-        self.percent = percent
-        self.scaleTo = scaleBase
-    }
-    
-    init(oneOver denominator: CGFloat, of scaleBase: ScaleBase = .screenWidth) {
-        let percent: CGFloat = 1 / denominator
-        self.init(percent, of: scaleBase)
-    }
-    
-    init(flexFont: FlexFont, of scaleBase: ScaleBase = .screenWidth) {
-        self.init(flexFont.percent, of: scaleBase)
-    }
-    
-    init(fontSize: FlexFontSize, of scaleBase: ScaleBase = .screenWidth) {
-        self.init((fontSize / 100), of: scaleBase)
-    }
-    
-    func getSize(within containerSize: CGFloat, limitedTo range: ClosedRange<CGFloat>? = nil) -> CGFloat {
-        let scaled = containerSize * percent
-        guard let range = range else { return scaled }
-        if range.contains(scaled) { return scaled }
-        if scaled > range.upperBound { return range.upperBound }
-        if scaled < range.upperBound { return range.lowerBound }
-        return scaled
-    }
-    
-    enum ScaleBase {
-        case screenWidth
-        case screenHeight
-        case clockDiameter
-        case clockRadius
-    }
-    
-    /// A font size that is scaled based on it's container. Should read as a percentage of font height the overall container.
-    typealias FlexFontSize = CGFloat
-    
-    struct FlexFont {
-        var size: FlexFontSize = 10
-        var percent: CGFloat { size / 100 }
-        
-        init(_ size: FlexFontSize = 10) {
-            self.size = size
-        }
-    }
-}
-
-struct ClockElementColor {
-    var fill: Color? = nil
-    var outline: Color? = nil
-}
-
-//struct AnalogClockColorTheme {
-//    // Backgrounds
-//    var appBackground: Color? = nil
-//    // Clock
-//    var clock: ClockElementColor = ClockElementColor(fill: nil, outline: .primary)
-//    var clockNumbers: Color = .primary
-//    var clockMajorTicks: Color = .primary
-//    var clockMinorTicks: Color = .primary
-//    // Hands
-//    var hourHand: ClockElementColor = ClockElementColor(fill: .primary)
-//    var minuteHand: ClockElementColor = ClockElementColor(fill: .primary)
-//    var secondHand: ClockElementColor = ClockElementColor(fill: .primary)
-//    // Period hand
-//    var periodHand: ClockElementColor = ClockElementColor(fill: .primary)
-//    var periodText: Color = .secondary
-//    // Tick tock pendulum
-//    var tickTockHand: ClockElementColor = ClockElementColor(fill: .secondary)
-//}
-
-protocol ClockFont {
-    func getFont(within containerSize: CGFloat, limitedTo range: ClosedRange<CGFloat>?) -> Font
-}
-
-struct FixedClockFont: ClockFont {
-    var font: Font
-    
-    init(_ font: Font) {
-        self.font = font
-    }
-    
-    func getFont(within containerSize: CGFloat = 0, limitedTo range: ClosedRange<CGFloat>? = nil) -> Font { font }
-}
-
-struct FlexClockFont: ClockFont {
-    var fontName: String?
-    var scale: UIScale
-    
-    init(name fontName: String? = nil, scale: UIScale) {
-        self.fontName = fontName
-        self.scale = scale
-    }
-    
-    func getFontSize(within containerSize: CGFloat, limitedTo range: ClosedRange<CGFloat>? = nil) -> CGFloat {
-        scale.getSize(within: containerSize, limitedTo: range)
-    }
-    
-    func getFont(within containerSize: CGFloat, limitedTo range: ClosedRange<CGFloat>? = nil) -> Font {
-        let size = getFontSize(within: containerSize, limitedTo: range)
-        guard let fontName = fontName else {
-            return .system(size: size)
-        }
-        return Font.custom(fontName, size: size)
-    }
-}
-
-//struct HandShape<Content>: View where Content : View {
-//
-//    /// Stores the content function builder
-//    public var content: () -> Content
-//
-//    /**
-//     - Parameter content: The view builder content to pass
-//     */
-//    @inlinable public init(@ViewBuilder content: @escaping () -> Content) {
-//        self.content = content
-//    }
-//
-//    public var body: some View {
-//        self.content()
-//    }
-//}
-
-struct StrokedShape<ShapeContent>: View where ShapeContent: Shape {
-    var foreground: Color?
-    var outlineColor: Color?
-    var outlineWidth: CGFloat = 1
-    var shape: () -> ShapeContent
-    
-    @inlinable init(foreground: Color? = nil, outlineColor: Color? = nil, outlineWidth: CGFloat = 1, @ViewBuilder shape: @escaping () -> ShapeContent) {
-        self.foreground = foreground
-        self.outlineColor = outlineColor
-        self.outlineWidth = outlineWidth
-        self.shape = shape
-    }
-    
-    var body: some View {
-        let shape = self.shape()
-        return VStack {
-            shape
-                .foregroundColor(foreground)
-                .overlay(outlineColor.map { shape.stroke($0, lineWidth: outlineWidth) })
-        }
-    }
-}
-
-enum ClockShape {
-    case circle
-    case square
-    case roundedRectangle(cornerRadius: CGFloat, style: RoundedCornerStyle = .circular)
-
-    var circle: Circle? {
-        switch self {
-        case .circle:
-            return Circle()
-        default:
-            return nil
-        }
-    }
-    
-    var square: Rectangle? {
-        switch self {
-        case .square:
-            return Rectangle()
-        default:
-            return nil
-        }
-    }
-    
-    var roundedRectangle: RoundedRectangle? {
-        switch self {
-        case .roundedRectangle(cornerRadius: let radius, style: let style):
-            return RoundedRectangle(cornerRadius: radius, style: style)
-        default:
-            return nil
-        }
-    }
-}
-
+/// Class to hold theme for the clock app
 class ClockTheme: Hashable, Comparable {
     
+    /// A unique key to identify the theme
     var key: String
     
+    /// A user-facing label for the string (ideally, localized)
     var label: String
     
+    /// Optionally, add a sorting integer to sort the themes for the UI list.  By default, all sorting is alphabetical. This allows an integer to be added that overrides the alphabetical sorting
     var sortClass: Int8? = nil
     
+    /// Holds all settings for theme
     var settings: Settings
+    
+    // Initializers ---------------------------- /
     
     init(
         key: String,
@@ -221,6 +39,7 @@ class ClockTheme: Hashable, Comparable {
         print("Created a new theme with label \"\(label)\" and key \"\(key)\"")
     }
     
+    /// All settings to build a clock theme
     struct Settings {
         var appBackground: Color? = nil
         var settingsLinkColor: Color = .accentColor
@@ -228,6 +47,8 @@ class ClockTheme: Hashable, Comparable {
         var digital: DigitalClockView.Theme = DigitalClockView.Theme()
         var date: DateDisplayView.Theme = DateDisplayView.Theme()
     }
+    
+    // Methods ---------------------------- /
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(key)
@@ -244,14 +65,21 @@ class ClockTheme: Hashable, Comparable {
         return lhs.key < rhs.key
     }
     
+    // Static ---------------------------- /
+    
+    /// Holds a lookup dictionary of all themes created
     static private(set) var themes: [String:ClockTheme] = [:]
     
+    /// Loads all themes to the dictionary above ☝️
     static func loadThemes() -> [String:ClockTheme] {
         let themeList: [ClockTheme] = [.standardTheme, .altTheme]
         _ = themeList.map { themes[$0.key] = $0 }
         return Self.themes
     }
     
+    // Themes ---------------------------- /
+    
+    /// The default theme
     static let standardTheme = ClockTheme(
         key: "standard_theme",
         label: strings.standard,
@@ -304,6 +132,7 @@ class ClockTheme: Hashable, Comparable {
         )
     )
     
+    /// A bold, yellow theme
     static let altTheme = ClockTheme(
         key: "impact_theme",
         label: strings.impact,
@@ -328,7 +157,7 @@ class ClockTheme: Hashable, Comparable {
                 outlineWidth: 2,
                 numbers: FlexClockFont(
                     name: CustomFonts.MajorMonoDisplay.regular,
-                    scale: UIScale(oneOver: 10, of: .clockDiameter)
+                    scale: UIScale(oneOver: 12, of: .clockDiameter)
                 ),
                 hourHand: ClockHand.Hour.getDefaultDimensions(outlineWidth: 2),
                 minuteHand: ClockHand.Minute.defaultDimensions,
