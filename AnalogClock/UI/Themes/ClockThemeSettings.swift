@@ -322,7 +322,7 @@ class ClockTheme: Hashable, Comparable {
                     secondHand: ClockElementColor(fill: .impact10, outline: .impact75),
                     periodHand: ClockElementColor(fill: .impact50),
                     periodText: .impact75,
-                    tickTockHand: ClockElementColor(fill: .gray),
+                    tickTockHand: ClockElementColor(fill: .impact90),
                     pivot: ClockElementColor(fill: .impact)
                 ),
                 outlineWidth: 2,
