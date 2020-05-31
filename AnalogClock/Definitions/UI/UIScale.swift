@@ -25,12 +25,19 @@ struct UIScale {
     
     /**
      Inits with percentage and scale
+     - Parameter percent: Percentage of the container to fill (1 = 100%, 0.5 = 50%)
+     - Parameter scaleBase: Selects the container to scale to
      */
     init(_ percent: CGFloat, of scaleBase: ScaleBase = .screenWidth) {
         self.percent = percent
         self.scaleTo = scaleBase
     }
     
+    /**
+     Inits with percentage and scale
+     - Parameter denominator: Denominator of fractional amount of the container to fill (1 = 1/1 = 100%, 2 = 1/2 = 50%, 4 = 1/4 = 25%, etc.)
+     - Parameter scaleBase: Selects the container to scale to
+     */
     init(oneOver denominator: CGFloat, of scaleBase: ScaleBase = .screenWidth) {
         let percent: CGFloat = 1 / denominator
         self.init(percent, of: scaleBase)
@@ -46,6 +53,11 @@ struct UIScale {
     
     // Methods ---------------------------- /
     
+    /**
+    Gets the fixed size from the scale within a given container
+     - Parameter containerSize: The container size (just the relevant dimension, height or width)
+     - Parameter range: A closed range of allowable sizes to constrain to (optional)
+     */
     func getSize(within containerSize: CGFloat, limitedTo range: ClosedRange<CGFloat>? = nil) -> CGFloat {
         let scaled = containerSize * percent
         guard let range = range else { return scaled }
@@ -55,6 +67,7 @@ struct UIScale {
         return scaled
     }
     
+    /// Enum of containers within the app to scale to
     enum ScaleBase {
         case screenWidth
         case screenHeight
