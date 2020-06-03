@@ -8,16 +8,23 @@
 
 import SwiftUI
 
+/// Wraps content within a full-screen (edge-to-edge) background
 struct AppBackgroundView<Content, S>: View where Content : View, S: ShapeStyle {
     
+    /// The fill for the background
     var fill: S = Color.clear as! S
     
+    /// The fill style
     var style: FillStyle = FillStyle()
     
     /// Stores the content function builder
     public var content: () -> Content
     
+    // Initializer ---------------------------- /
+    
     /**
+     - Parameter fill: The fill for the background
+     - Parameter style: The fill style
      - Parameter content: The view builder content to pass
      */
     @inlinable public init(
@@ -29,6 +36,8 @@ struct AppBackgroundView<Content, S>: View where Content : View, S: ShapeStyle {
         self.style = style
         self.content = content
     }
+    
+    // Body ---------------------------- /
     
     var body: some View {
         ZStack {

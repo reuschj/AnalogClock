@@ -43,10 +43,20 @@ struct UIScale {
         self.init(percent, of: scaleBase)
     }
     
+    /**
+     Inits with a `FlexFont`
+     - Parameter flexFont: A font size that is scaled based on it's container.Denominator of fractional amount of the container to fill (1 = 1/1 = 100%, 2 = 1/2 = 50%, 4 = 1/4 = 25%, etc.)
+     - Parameter scaleBase: Selects the container to scale to
+     */
     init(flexFont: FlexFont, of scaleBase: ScaleBase = .screenWidth) {
         self.init(flexFont.percent, of: scaleBase)
     }
     
+    /**
+     Inits with a `FlexFontSize`
+     - Parameter fontSize: A font size that is scaled based on it's container. Should read as a full number percentage (of 100) of font height the overall container. (10 = 10%)
+     - Parameter scaleBase: Selects the container to scale to
+     */
     init(fontSize: FlexFontSize, of scaleBase: ScaleBase = .screenWidth) {
         self.init((fontSize / 100), of: scaleBase)
     }
@@ -75,13 +85,23 @@ struct UIScale {
         case clockRadius
     }
     
-    /// A font size that is scaled based on it's container. Should read as a percentage of font height the overall container.
+    /// A font size that is scaled based on it's container. Should read as a full number percentage (of 100) of font height the overall container. (10 = 10%)
     typealias FlexFontSize = CGFloat
     
+    /// A font size that is scaled based on it's container.
     struct FlexFont {
+        
+        /// A font size that is scaled based on it's container. Should read as a full number percentage (of 100) of font height the overall container. (10 = 10%)
         var size: FlexFontSize = 10
+        
+        /// Calculated `FlexFontSize` as a percentage of 1, rather than 100
         var percent: CGFloat { size / 100 }
         
+        // Initializer ---------------------------- /
+        
+        /**
+         - Parameter size: A font size that is scaled based on it's container. Should read as a full number percentage (of 100) of font height the overall container. (10 = 10%)
+         */
         init(_ size: FlexFontSize = 10) {
             self.size = size
         }
