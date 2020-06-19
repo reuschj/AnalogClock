@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import StrokedShape
 
 /**
  Displays the period (AM/PM) on an analog clock with small hand that points to AM or PM

@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import StrokedShape
 
 /**
  A generic updatable clock hand that observes a time emitter

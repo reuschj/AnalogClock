@@ -38,8 +38,8 @@
 		A4B9D1692482D5390034E0F0 /* UIScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B9D1682482D5380034E0F0 /* UIScale.swift */; };
 		A4B9D16C2482E8520034E0F0 /* ClockElementColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B9D16B2482E8520034E0F0 /* ClockElementColor.swift */; };
 		A4B9D16E2482E88D0034E0F0 /* ClockFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B9D16D2482E88D0034E0F0 /* ClockFont.swift */; };
-		A4B9D1702482E8D70034E0F0 /* StrokedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B9D16F2482E8D70034E0F0 /* StrokedShape.swift */; };
 		A4B9D1722482E9130034E0F0 /* ClockShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B9D1712482E9130034E0F0 /* ClockShape.swift */; };
+		A4BF193E24956B03003F1577 /* StrokedShape in Frameworks */ = {isa = PBXBuildFile; productRef = A4BF193D24956B03003F1577 /* StrokedShape */; };
 		A4DFE134233DCAC200164D30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFE133233DCAC200164D30 /* AppDelegate.swift */; };
 		A4DFE136233DCAC200164D30 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFE135233DCAC200164D30 /* SceneDelegate.swift */; };
 		A4DFE138233DCAC200164D30 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFE137233DCAC200164D30 /* ContentView.swift */; };
@@ -120,7 +120,6 @@
 		A4B9D1682482D5380034E0F0 /* UIScale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScale.swift; sourceTree = "<group>"; };
 		A4B9D16B2482E8520034E0F0 /* ClockElementColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockElementColor.swift; sourceTree = "<group>"; };
 		A4B9D16D2482E88D0034E0F0 /* ClockFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockFont.swift; sourceTree = "<group>"; };
-		A4B9D16F2482E8D70034E0F0 /* StrokedShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokedShape.swift; sourceTree = "<group>"; };
 		A4B9D1712482E9130034E0F0 /* ClockShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockShape.swift; sourceTree = "<group>"; };
 		A4DFE130233DCAC200164D30 /* AnalogClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnalogClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4DFE133233DCAC200164D30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -161,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4810094236F3B090072E4D2 /* RotatableStack in Frameworks */,
+				A4BF193E24956B03003F1577 /* StrokedShape in Frameworks */,
 				A481008D236E881B0072E4D2 /* TimeKeeper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -391,7 +391,6 @@
 				A4B60F2923484F7100797A3B /* UIMeasurement.swift */,
 				A4B9D1662481BCBD0034E0F0 /* AppBackgroundView.swift */,
 				A4B9D1682482D5380034E0F0 /* UIScale.swift */,
-				A4B9D16F2482E8D70034E0F0 /* StrokedShape.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -438,6 +437,7 @@
 			packageProductDependencies = (
 				A481008C236E881B0072E4D2 /* TimeKeeper */,
 				A4810093236F3B090072E4D2 /* RotatableStack */,
+				A4BF193D24956B03003F1577 /* StrokedShape */,
 			);
 			productName = AnalogClock;
 			productReference = A4DFE130233DCAC200164D30 /* AnalogClock.app */;
@@ -517,6 +517,7 @@
 			packageReferences = (
 				A481008B236E881B0072E4D2 /* XCRemoteSwiftPackageReference "TimeKeeper" */,
 				A4810092236F3B090072E4D2 /* XCRemoteSwiftPackageReference "RotatableStack" */,
+				A4BF193C24956B03003F1577 /* XCRemoteSwiftPackageReference "StrokedShape" */,
 			);
 			productRefGroup = A4DFE131233DCAC200164D30 /* Products */;
 			projectDirPath = "";
@@ -572,7 +573,6 @@
 			files = (
 				A4DFE134233DCAC200164D30 /* AppDelegate.swift in Sources */,
 				A4DFE136233DCAC200164D30 /* SceneDelegate.swift in Sources */,
-				A4B9D1702482E8D70034E0F0 /* StrokedShape.swift in Sources */,
 				A46C8790246D138500C188F1 /* Font.swift in Sources */,
 				A4B01A2B2364BD5700AF5D14 /* MainDisplay.swift in Sources */,
 				A4EEAD77237295A500297682 /* defaultKeys.swift in Sources */,
@@ -978,6 +978,14 @@
 				kind = branch;
 			};
 		};
+		A4BF193C24956B03003F1577 /* XCRemoteSwiftPackageReference "StrokedShape" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/reuschj/StrokedShape.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -990,6 +998,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A4810092236F3B090072E4D2 /* XCRemoteSwiftPackageReference "RotatableStack" */;
 			productName = RotatableStack;
+		};
+		A4BF193D24956B03003F1577 /* StrokedShape */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A4BF193C24956B03003F1577 /* XCRemoteSwiftPackageReference "StrokedShape" */;
+			productName = StrokedShape;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

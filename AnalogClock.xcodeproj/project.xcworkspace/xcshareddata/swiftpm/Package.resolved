@@ -20,6 +20,15 @@
         }
       },
       {
+        "package": "StrokedShape",
+        "repositoryURL": "https://github.com/reuschj/StrokedShape.git",
+        "state": {
+          "branch": null,
+          "revision": "72c810708225ddfc8d617634144c15c982f0261e",
+          "version": "1.0.2"
+        }
+      },
+      {
         "package": "TimeKeeper",
         "repositoryURL": "https://github.com/reuschj/TimeKeeper.git",
         "state": {
