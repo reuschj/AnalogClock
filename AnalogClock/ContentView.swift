@@ -7,16 +7,25 @@
 //
 
 import SwiftUI
+import AppBackgroundView
 
 /**
  Base content view for the clock app
  */
 struct ContentView: View {
     
+    /// Global app settings
+    @ObservedObject var settings: AppSettings = getAppSettings()
+    private var theme: ClockTheme.Settings { settings.theme.settings }
+    
     var body: some View {
         
         NavigationView {
-            MainDisplay()
+            ZStack {
+                AppBackgroundView(theme.appBackground ?? Color.clear) {
+                    MainDisplay()
+                }
+            }
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }

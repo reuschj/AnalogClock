@@ -6,9 +6,9 @@
 //  Copyright © 2019 Justin Reusch. All rights reserved.
 //
 
-import Foundation
 import SwiftUI
 
+/// A measurement for use in the UI that is based on multiples of a set base amount
 struct UIMeasurement {
     
     var multiplier: CGFloat
@@ -25,6 +25,7 @@ struct UIMeasurement {
     }
 }
 
+/// Base presets
 let base = [
     UIMeasurement(0).value,
     UIMeasurement(1).value,

@@ -27,5 +27,8 @@ let strings = (
     otherOptions: NSLocalizedString("otherOptions", comment: ""),
     showTickMarks: NSLocalizedString("showTickMarks", comment: ""),
     showPeriodDisplay: NSLocalizedString("showPeriodDisplay", comment: ""),
-    showTickTockDisplay: NSLocalizedString("showTickTockDisplay", comment: "")
+    showTickTockDisplay: NSLocalizedString("showTickTockDisplay", comment: ""),
+    theme: NSLocalizedString("theme", comment: ""),
+    standard: NSLocalizedString("standard", comment: ""),
+    impact: NSLocalizedString("impact", comment: "")
 )

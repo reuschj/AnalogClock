@@ -16,6 +16,7 @@ struct MainDisplay: View {
     
     /// Global app settings
     @ObservedObject var settings = getAppSettings()
+    private var theme: ClockTheme.Settings { settings.theme.settings }
     
     var body: some View {
         RotatableStack {
@@ -33,14 +34,15 @@ struct MainDisplay: View {
                         Spacer()
                     }
                     if self.settings.visibleModules.dateDisplay {
-                        DateDisplayView(color: .secondary).padding()
+                        DateDisplayView()
+                            .padding()
                         Spacer()
                     }
                 }
             }
         }
         .navigationBarItems(
-            trailing: SettingsLink()
+            trailing: SettingsLink(color: theme.settingsLinkColor)
         )
     }
 }

@@ -20,17 +20,39 @@ struct DateDisplayView: View {
     /// The emitted time from the `timeEmitter`
     var time: TimeKeeper { timeEmitter.time }
     
-    /// The color of the date display text
-    var color: Color = .primary
+    /// Global app settings
+    @ObservedObject var settings: AppSettings = getAppSettings()
     
-    /// The font to use for the date display text
-    var font: Font = .body
+    private var theme: Theme { settings.theme.settings.date }
+    private var colors: Theme.Colors { theme.colors }
+    
+    private let dateFontRange: ClosedRange<CGFloat> = 14...50
+    
+    private func makeDateDisplay(within width: CGFloat) -> some View {
+        let font: Font = theme.dateText.getFont(within: width, limitedTo: dateFontRange)
+        return HStack {
+            Spacer()
+            TimeTextBlock(
+                text: time.dateString,
+                color: colors.dateText,
+                font: font
+            )
+            Spacer()
+        }
+    }
     
     var body: some View {
-        HStack {
-            Spacer()
-            TimeTextBlock(text: time.dateString, color: color, font: font)
-            Spacer()
+        GeometryReader { geometry in
+            self.makeDateDisplay(within: geometry.size.width)
+        }
+    }
+    
+    struct Theme {
+        var colors: Colors = Colors()
+        var dateText: ClockFont = FixedClockFont(.body)
+        
+        struct Colors {
+            var dateText: Color = .primary
         }
     }
 }

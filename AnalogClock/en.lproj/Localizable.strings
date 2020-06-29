@@ -29,3 +29,6 @@
 "showTickMarks" = "Show tick marks";
 "showPeriodDisplay" = "Show period (AM/PM) hand";
 "showTickTockDisplay" = "Show pendulum";
+"theme" = "Theme";
+"standard" = "Standard";
+"impact" = "Impact";

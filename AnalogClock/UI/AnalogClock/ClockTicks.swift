@@ -30,7 +30,7 @@ struct ClockTicks: View {
         - clockDiameter: Diameter of the clock, obtained via geometry
      */
     private func calculateTickSize(clockDiameter: CGFloat) -> CGFloat {
-        limitToRange((clockDiameter / 60), range: tickSizeRange)
+        limit((clockDiameter / 60), to: tickSizeRange)
     }
     
     /**

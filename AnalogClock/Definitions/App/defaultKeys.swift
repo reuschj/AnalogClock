@@ -12,6 +12,7 @@ import Foundation
  Default key strings for user defaults
  */
 let defaultsKeys = (
+    theme: "analogClockKeys_theme",
     clockDefaultsAreSet: "analogClockKeys_clockDefaultsAreSet",
     clockType: "analogClockKeys_clockType",
     timeInterval: "analogClockKeys_timeInterval",

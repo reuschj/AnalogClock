@@ -13,9 +13,14 @@ import SwiftUI
  */
 struct SettingsLink: View {
     
+    /// Color of the settings link
+    var color: Color = .accentColor
+    
     var body: some View {
         NavigationLink(destination: SettingsPanel()) {
-            Text(strings.settings).padding(.trailing)
+            Text(strings.settings)
+                .foregroundColor(color)
+                .padding(.trailing)
         }
     }
 }

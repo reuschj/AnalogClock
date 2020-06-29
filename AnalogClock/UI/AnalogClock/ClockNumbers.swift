@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Percent
 
 /**
  Renders clock numbers around the inner edge of the clock
@@ -16,14 +17,11 @@ struct ClockNumbers: View {
     /// Type of clock, 12-hour, 24-hour or decimal (value of `ClockType` enum)
     var type: ClockType = .twelveHour
     
+    /// Multiplier for font size (compared to clock diameter)
+    var clockFont: FlexClockFont = FlexClockFont(scale: UIPercent(oneOver: 16, of: .container(.diameter, of: "clock")))
+    
     /// Color of clock numbers
     var color: Color = .primary
-    
-    /// Flag for 24-hour clock vs. 12-hour clock or decimal
-    private var twentyFourHour: Bool { type == .twentyFourHour }
-    
-    /// Flag for decimal clock vs. 12- or 24-hour clock
-    private var isDecimal: Bool { type == .decimal }
     
     /// Amount of clock numbers to display
     private var steps: Int { type.rawValue }
@@ -32,23 +30,30 @@ struct ClockNumbers: View {
     private var increment: Double { 360 / Double(steps) }
     
     /// Allowable bounds for font scaling
-    private let fontRange: ClosedRange<CGFloat> = 14...40
+    private var fontRange: ClosedRange<CGFloat> {
+        switch type {
+        case .twentyFourHour:
+            return 14...19
+        default:
+            return 14...40
+        }
+    }
     
     /**
     Calculates a scaled font size that fits with the clock's diameter
     - Parameter clockDiameter: Diameter of the clock, obtained via geometry
     */
-    private func calculateFontSize(clockDiameter: CGFloat) -> CGFloat {
-        limitToRange((clockDiameter / 22), range: fontRange)
+    private func getFont(within clockDiameter: CGFloat) -> Font {
+        clockFont.getFont(within: clockDiameter, limitedTo: fontRange)
     }
     
     /**
      Calculates an offset that based on the clock's diameter and scaled font size
      - Parameter clockDiameter: Diameter of the clock, obtained via geometry
-     - Parameter fontSize: The size of the font, obtained from `calculateFontSize`
      */
-    private func calculateOffset(clockDiameter: CGFloat, fontSize: CGFloat) -> CGFloat {
-        (clockDiameter / 2 - fontSize) * -1
+    private func calculateOffset(within clockDiameter: CGFloat) -> CGFloat {
+        let fontSize = clockFont.getFontSize(within: clockDiameter, limitedTo: fontRange)
+        return (clockDiameter / 2 - fontSize) * -1
     }
     
     /**
@@ -59,11 +64,11 @@ struct ClockNumbers: View {
     
     /// Positions the clock numbers around the inner edge of the clock
     private func positionClockNumbers(clockDiameter: CGFloat) -> some View {
-        let fontSize = calculateFontSize(clockDiameter: clockDiameter)
-        let offsetAmount = calculateOffset(clockDiameter: clockDiameter, fontSize: fontSize)
+        let clockNumberFont = getFont(within: clockDiameter)
+        let offsetAmount = calculateOffset(within: clockDiameter)
         return ZStack {
             ForEach((1...self.steps), id: \.self) {
-                ClockNumber(number: self.getNumber($0), fontSize: fontSize, color: self.color)
+                ClockNumber(number: self.getNumber($0), font: clockNumberFont, color: self.color)
                     .rotationEffect(Angle(degrees: self.increment * -Double($0)))
                     .offset(x: 0, y: offsetAmount)
                     .rotationEffect(Angle(degrees: self.increment * Double($0)))
@@ -86,15 +91,14 @@ struct ClockNumber: View {
     /// The number to render
     var number: Int
     
-    /// The font size to render the number
-    var fontSize: CGFloat = 16
+    var font: Font = .system(size: 16)
     
     /// The color to render the number
     var color: Color = .primary
     
     var body: some View {
         return Text("\(number)")
-            .font(.system(size: fontSize))
+            .font(font)
             .foregroundColor(color)
     }
 }

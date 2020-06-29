@@ -19,10 +19,18 @@ struct DigitalClockSeparator: View {
     /// The color of the visual character in the separator
     var color: Color = .secondary
     
+    /// The font of the separator
+    var font: Font = .title
+    
+    /// The character to use as a separator
+    var character: Character = ":"
+    
     var body: some View {
         HStack {
             Spacer().fixedSize().frame(width: width / 2)
-            Text(":").foregroundColor(color)
+            Text(String(character))
+                .font(font)
+                .foregroundColor(color)
             Spacer().fixedSize().frame(width: width / 2)
         }
     }
