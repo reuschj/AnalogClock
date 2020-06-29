@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "AppBackgroundView",
+        "repositoryURL": "https://github.com/reuschj/AppBackgroundView.git",
+        "state": {
+          "branch": null,
+          "revision": "407ad7578c3aec4a342fcd50abf0fa0d5ec33f54",
+          "version": "1.0.0"
+        }
+      },
+      {
         "package": "DecimalTime",
         "repositoryURL": "https://github.com/reuschj/DecimalTime",
         "state": {
@@ -11,12 +20,21 @@
         }
       },
       {
+        "package": "Percent",
+        "repositoryURL": "https://github.com/reuschj/Percent.git",
+        "state": {
+          "branch": null,
+          "revision": "2eb30850ca17a851a50af6e837ce6cc20c805243",
+          "version": "1.0.0"
+        }
+      },
+      {
         "package": "RotatableStack",
         "repositoryURL": "https://github.com/reuschj/RotatableStack.git",
         "state": {
-          "branch": "master",
+          "branch": null,
           "revision": "031504d6954701b8b9f9f165201969e90d843a79",
-          "version": null
+          "version": "1.0.0"
         }
       },
       {

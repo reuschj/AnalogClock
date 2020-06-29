@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Percent
 
 /// Class to hold theme for the clock app
 class ClockTheme: Hashable, Comparable {
@@ -103,13 +104,13 @@ class ClockTheme: Hashable, Comparable {
                     pivot: ClockElementColor(fill: .accentColor)
                 ),
                 outlineWidth: 2,
-                numbers: FlexClockFont(scale: UIScale(oneOver: 16, of: .clockDiameter)),
+                numbers: FlexClockFont(scale: UIPercent(oneOver: 16, of: .container(.diameter, of: "clock"))),
                 hourHand: ClockHand.Hour.defaultDimensions,
                 minuteHand: ClockHand.Minute.defaultDimensions,
                 secondHand: ClockHand.Second.defaultDimensions,
                 periodHand: ClockHand.Period.defaultDimensions,
-                periodText: FlexClockFont(scale: UIScale(oneOver: 30, of: .clockDiameter)),
-                pivotScale: UIScale(oneOver: 25, of: .clockDiameter),
+                periodText: FlexClockFont(scale: UIPercent(oneOver: 30, of: .container(.diameter, of: "clock"))),
+                pivotScale: UIPercent(oneOver: 25, of: .container(.diameter, of: "clock")),
                 pivotShape: .circle,
                 pivotOutlineWidth: 1
             ),
@@ -157,7 +158,7 @@ class ClockTheme: Hashable, Comparable {
                 outlineWidth: 2,
                 numbers: FlexClockFont(
                     name: CustomFonts.MajorMonoDisplay.regular,
-                    scale: UIScale(oneOver: 12, of: .clockDiameter)
+                    scale: UIPercent(oneOver: 12, of: .container(.diameter, of: "clock"))
                 ),
                 hourHand: ClockHand.Hour.getDefaultDimensions(outlineWidth: 2),
                 minuteHand: ClockHand.Minute.defaultDimensions,
@@ -165,9 +166,9 @@ class ClockTheme: Hashable, Comparable {
                 periodHand: ClockHand.Period.defaultDimensions,
                 periodText: FlexClockFont(
                     name: CustomFonts.Montserrat.regular,
-                    scale: UIScale(oneOver: 30, of: .screenWidth)
+                    scale: UIPercent(oneOver: 30, of: .screen(.width))
                 ),
-                pivotScale: UIScale(oneOver: 25, of: .clockDiameter),
+                pivotScale: UIPercent(oneOver: 25, of: .container(.diameter, of: "clock")),
                 pivotShape: .circle,
                 pivotOutlineWidth: 1
             ),
@@ -178,15 +179,15 @@ class ClockTheme: Hashable, Comparable {
                 ),
                 timeDigits: FlexClockFont(
                     name: CustomFonts.MajorMonoDisplay.regular,
-                    scale: UIScale(oneOver: 11, of: .screenWidth)
+                    scale: UIPercent(oneOver: 11, of: .screen(.width))
                 ),
                 timeSeparators: FlexClockFont(
                     name: CustomFonts.MajorMonoDisplay.regular,
-                    scale: UIScale(oneOver: 24, of: .screenWidth)
+                    scale: UIPercent(oneOver: 24, of: .screen(.width))
                 ),
                 periodDigits: FlexClockFont(
                     name: CustomFonts.Montserrat.light,
-                    scale: UIScale(oneOver: 11, of: .screenWidth)
+                    scale: UIPercent(oneOver: 11, of: .screen(.width))
                 ),
                 separatorCharacter: ":"
             ),
@@ -196,7 +197,7 @@ class ClockTheme: Hashable, Comparable {
                 ),
                 dateText: FlexClockFont(
                     name: CustomFonts.Montserrat.regular,
-                    scale: UIScale(oneOver: 14, of: .screenWidth)
+                    scale: UIPercent(oneOver: 14, of: .screen(.width))
                 )
             )
         )

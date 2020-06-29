@@ -8,6 +8,7 @@
 
 import SwiftUI
 import StrokedShape
+import Percent
 
 /**
  A complete analog clock view module
@@ -132,13 +133,13 @@ struct AnalogClockView: View {
         var shape: ClockShape = .circle
         var colors: Colors = Colors()
         var outlineWidth: CGFloat = 1
-        var numbers: FlexClockFont = FlexClockFont(scale: UIScale(oneOver: 16, of: .clockDiameter))
+        var numbers: FlexClockFont = FlexClockFont(scale: UIPercent(oneOver: 16, of: .container(.diameter, of: "clock")))
         var hourHand: ClockHand.Dimensions = ClockHand.Hour.defaultDimensions
         var minuteHand: ClockHand.Dimensions = ClockHand.Minute.defaultDimensions
         var secondHand: ClockHand.Dimensions = ClockHand.Second.defaultDimensions
         var periodHand: ClockHand.Dimensions = ClockHand.Period.defaultDimensions
-        var periodText: FlexClockFont = FlexClockFont(scale: UIScale(oneOver: 30, of: .clockDiameter))
-        var pivotScale: UIScale = UIScale(oneOver: 25, of: .clockDiameter)
+        var periodText: FlexClockFont = FlexClockFont(scale: UIPercent(oneOver: 30, of: .container(.diameter, of: "clock")))
+        var pivotScale: UIPercent = UIPercent(oneOver: 25, of: .container(.diameter, of: "clock"))
         var pivotShape: ClockHand.Shape.Pivot = .circle
         var pivotOutlineWidth: CGFloat = 1
         

@@ -8,6 +8,7 @@
 
 import SwiftUI
 import StrokedShape
+import Percent
 
 /**
  A generic updatable clock hand that observes a time emitter
@@ -271,7 +272,7 @@ struct ClockHand: View {
         /// Sets hand dimensions
         var shape: Shape.Pivot = .circle
         
-        var scale: UIScale = UIScale(oneOver: 20, of: .clockDiameter)
+        var scale: UIPercent = UIPercent(oneOver: 20, of: .container(.diameter, of: "clock"))
         
         var outlineWidth: CGFloat = 1
         
@@ -279,7 +280,7 @@ struct ClockHand: View {
         var colorTheme: AnalogClockView.Theme.Colors = AnalogClockView.Theme.Colors()
         
         private func renderPivot(clockDiameter: CGFloat) -> some View {
-            let size = scale.getSize(within: clockDiameter)
+            let size = scale.resolve(within: clockDiameter)
             return ZStack {
                 shape.circle.map { circle in
                     StrokedShape(foreground: colorTheme.pivot.fill, outlineColor: colorTheme.pivot.outline, outlineWidth: outlineWidth) { circle }

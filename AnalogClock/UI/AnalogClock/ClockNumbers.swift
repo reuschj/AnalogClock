@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Percent
 
 /**
  Renders clock numbers around the inner edge of the clock
@@ -17,7 +18,7 @@ struct ClockNumbers: View {
     var type: ClockType = .twelveHour
     
     /// Multiplier for font size (compared to clock diameter)
-    var clockFont: FlexClockFont = FlexClockFont(scale: UIScale(oneOver: 16, of: .clockDiameter))
+    var clockFont: FlexClockFont = FlexClockFont(scale: UIPercent(oneOver: 16, of: .container(.diameter, of: "clock")))
     
     /// Color of clock numbers
     var color: Color = .primary

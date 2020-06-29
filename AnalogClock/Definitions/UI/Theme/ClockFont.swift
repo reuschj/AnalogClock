@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Percent
 
 /// Defines a font usable for the clock app
 protocol ClockFont {
@@ -27,15 +28,15 @@ struct FixedClockFont: ClockFont {
 /// A font the flexes to fill a certain percentage of it's container
 struct FlexClockFont: ClockFont {
     var fontName: String?
-    var scale: UIScale
+    var scale: UIPercent
     
-    init(name fontName: String? = nil, scale: UIScale) {
+    init(name fontName: String? = nil, scale: UIPercent) {
         self.fontName = fontName
         self.scale = scale
     }
     
     func getFontSize(within containerSize: CGFloat, limitedTo range: ClosedRange<CGFloat>? = nil) -> CGFloat {
-        scale.getSize(within: containerSize, limitedTo: range)
+        scale.resolve(within: containerSize, limitedTo: range)
     }
     
     func getFont(within containerSize: CGFloat, limitedTo range: ClosedRange<CGFloat>? = nil) -> Font {

@@ -8,6 +8,7 @@
 
 import SwiftUI
 import StrokedShape
+import Percent
 
 /**
  Displays the period (AM/PM) on an analog clock with small hand that points to AM or PM
@@ -20,7 +21,7 @@ struct PeriodDisplayView: View {
     /// Sets the color theme
     var colorTheme: AnalogClockView.Theme.Colors = AnalogClockView.Theme.Colors()
     
-    var font: FlexClockFont = FlexClockFont(scale: UIScale(oneOver: 30, of: .clockDiameter))
+    var font: FlexClockFont = FlexClockFont(scale: UIPercent(oneOver: 30, of: .container(.diameter, of: "clock")))
     
     /// Allowable bounds for font scaling
     private let fontRange: ClosedRange<CGFloat> = 10...30

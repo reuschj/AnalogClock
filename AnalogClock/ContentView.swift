@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import AppBackgroundView
 
 /**
  Base content view for the clock app

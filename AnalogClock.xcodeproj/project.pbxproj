@@ -34,12 +34,11 @@
 		A4B01A2B2364BD5700AF5D14 /* MainDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B01A2A2364BD5700AF5D14 /* MainDisplay.swift */; };
 		A4B60F2A23484F7100797A3B /* UIMeasurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B60F2923484F7100797A3B /* UIMeasurement.swift */; };
 		A4B60F2E234AE80B00797A3B /* limitToRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B60F2D234AE80B00797A3B /* limitToRange.swift */; };
-		A4B9D1672481BCBD0034E0F0 /* AppBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B9D1662481BCBD0034E0F0 /* AppBackgroundView.swift */; };
-		A4B9D1692482D5390034E0F0 /* UIScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B9D1682482D5380034E0F0 /* UIScale.swift */; };
 		A4B9D16C2482E8520034E0F0 /* ClockElementColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B9D16B2482E8520034E0F0 /* ClockElementColor.swift */; };
 		A4B9D16E2482E88D0034E0F0 /* ClockFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B9D16D2482E88D0034E0F0 /* ClockFont.swift */; };
 		A4B9D1722482E9130034E0F0 /* ClockShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B9D1712482E9130034E0F0 /* ClockShape.swift */; };
 		A4BF193E24956B03003F1577 /* StrokedShape in Frameworks */ = {isa = PBXBuildFile; productRef = A4BF193D24956B03003F1577 /* StrokedShape */; };
+		A4D58204249E94E500A0138B /* AppBackgroundView in Frameworks */ = {isa = PBXBuildFile; productRef = A4D58203249E94E500A0138B /* AppBackgroundView */; };
 		A4DFE134233DCAC200164D30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFE133233DCAC200164D30 /* AppDelegate.swift */; };
 		A4DFE136233DCAC200164D30 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFE135233DCAC200164D30 /* SceneDelegate.swift */; };
 		A4DFE138233DCAC200164D30 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DFE137233DCAC200164D30 /* ContentView.swift */; };
@@ -56,6 +55,7 @@
 		A4EEAD77237295A500297682 /* defaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EEAD76237295A500297682 /* defaultKeys.swift */; };
 		A4F0ADD4236159B500C74EE9 /* SettingsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F0ADD3236159B500C74EE9 /* SettingsPanel.swift */; };
 		A4F0ADD623616E9C00C74EE9 /* SettingsLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F0ADD523616E9C00C74EE9 /* SettingsLink.swift */; };
+		A4F9830E24A9BF3900E1C88C /* Percent in Frameworks */ = {isa = PBXBuildFile; productRef = A4F9830D24A9BF3900E1C88C /* Percent */; };
 		A4FEB0CD23582B3700EA11F9 /* AnalogClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FEB0CC23582B3700EA11F9 /* AnalogClockView.swift */; };
 		A4FEB0D023582BDF00EA11F9 /* ClockNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FEB0CF23582BDF00EA11F9 /* ClockNumbers.swift */; };
 		A4FEB0D223582C0300EA11F9 /* ClockHands.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FEB0D123582C0300EA11F9 /* ClockHands.swift */; };
@@ -116,8 +116,6 @@
 		A4B01A2A2364BD5700AF5D14 /* MainDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDisplay.swift; sourceTree = "<group>"; };
 		A4B60F2923484F7100797A3B /* UIMeasurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMeasurement.swift; sourceTree = "<group>"; };
 		A4B60F2D234AE80B00797A3B /* limitToRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = limitToRange.swift; sourceTree = "<group>"; };
-		A4B9D1662481BCBD0034E0F0 /* AppBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBackgroundView.swift; sourceTree = "<group>"; };
-		A4B9D1682482D5380034E0F0 /* UIScale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScale.swift; sourceTree = "<group>"; };
 		A4B9D16B2482E8520034E0F0 /* ClockElementColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockElementColor.swift; sourceTree = "<group>"; };
 		A4B9D16D2482E88D0034E0F0 /* ClockFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockFont.swift; sourceTree = "<group>"; };
 		A4B9D1712482E9130034E0F0 /* ClockShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockShape.swift; sourceTree = "<group>"; };
@@ -160,6 +158,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4810094236F3B090072E4D2 /* RotatableStack in Frameworks */,
+				A4D58204249E94E500A0138B /* AppBackgroundView in Frameworks */,
+				A4F9830E24A9BF3900E1C88C /* Percent in Frameworks */,
 				A4BF193E24956B03003F1577 /* StrokedShape in Frameworks */,
 				A481008D236E881B0072E4D2 /* TimeKeeper in Frameworks */,
 			);
@@ -389,8 +389,6 @@
 				A46C878C246C5CBD00C188F1 /* Extensions */,
 				A409FC48239CAFDB0029A523 /* types.swift */,
 				A4B60F2923484F7100797A3B /* UIMeasurement.swift */,
-				A4B9D1662481BCBD0034E0F0 /* AppBackgroundView.swift */,
-				A4B9D1682482D5380034E0F0 /* UIScale.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -438,6 +436,8 @@
 				A481008C236E881B0072E4D2 /* TimeKeeper */,
 				A4810093236F3B090072E4D2 /* RotatableStack */,
 				A4BF193D24956B03003F1577 /* StrokedShape */,
+				A4D58203249E94E500A0138B /* AppBackgroundView */,
+				A4F9830D24A9BF3900E1C88C /* Percent */,
 			);
 			productName = AnalogClock;
 			productReference = A4DFE130233DCAC200164D30 /* AnalogClock.app */;
@@ -518,6 +518,8 @@
 				A481008B236E881B0072E4D2 /* XCRemoteSwiftPackageReference "TimeKeeper" */,
 				A4810092236F3B090072E4D2 /* XCRemoteSwiftPackageReference "RotatableStack" */,
 				A4BF193C24956B03003F1577 /* XCRemoteSwiftPackageReference "StrokedShape" */,
+				A4D58202249E94E500A0138B /* XCRemoteSwiftPackageReference "AppBackgroundView" */,
+				A4F9830C24A9BF3900E1C88C /* XCRemoteSwiftPackageReference "Percent" */,
 			);
 			productRefGroup = A4DFE131233DCAC200164D30 /* Products */;
 			projectDirPath = "";
@@ -581,7 +583,6 @@
 				A4F0ADD623616E9C00C74EE9 /* SettingsLink.swift in Sources */,
 				A4DFE180233DCD0100164D30 /* AppSettings.swift in Sources */,
 				A4B60F2A23484F7100797A3B /* UIMeasurement.swift in Sources */,
-				A4B9D1672481BCBD0034E0F0 /* AppBackgroundView.swift in Sources */,
 				A409FC47239C3D8B0029A523 /* TickTockDisplayView.swift in Sources */,
 				A4F0ADD4236159B500C74EE9 /* SettingsPanel.swift in Sources */,
 				A4B01A272364115B00AF5D14 /* ClockTicks.swift in Sources */,
@@ -598,7 +599,6 @@
 				A46C878E246C5CCF00C188F1 /* Color.swift in Sources */,
 				A481008F236E8ADE0072E4D2 /* ClockTimeEmitter.swift in Sources */,
 				A46C8770246B0DC700C188F1 /* TimeInterval.swift in Sources */,
-				A4B9D1692482D5390034E0F0 /* UIScale.swift in Sources */,
 				A46C8786246BAC5B00C188F1 /* CustomFonts.swift in Sources */,
 				A4DFE138233DCAC200164D30 /* ContentView.swift in Sources */,
 				A4FEB0CD23582B3700EA11F9 /* AnalogClockView.swift in Sources */,
@@ -974,8 +974,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/reuschj/RotatableStack.git";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 		A4BF193C24956B03003F1577 /* XCRemoteSwiftPackageReference "StrokedShape" */ = {
@@ -983,6 +983,22 @@
 			repositoryURL = "https://github.com/reuschj/StrokedShape.git";
 			requirement = {
 				kind = upToNextMinorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		A4D58202249E94E500A0138B /* XCRemoteSwiftPackageReference "AppBackgroundView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/reuschj/AppBackgroundView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		A4F9830C24A9BF3900E1C88C /* XCRemoteSwiftPackageReference "Percent" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/reuschj/Percent.git";
+			requirement = {
+				kind = upToNextMajorVersion;
 				minimumVersion = 1.0.0;
 			};
 		};
@@ -1003,6 +1019,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A4BF193C24956B03003F1577 /* XCRemoteSwiftPackageReference "StrokedShape" */;
 			productName = StrokedShape;
+		};
+		A4D58203249E94E500A0138B /* AppBackgroundView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A4D58202249E94E500A0138B /* XCRemoteSwiftPackageReference "AppBackgroundView" */;
+			productName = AppBackgroundView;
+		};
+		A4F9830D24A9BF3900E1C88C /* Percent */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A4F9830C24A9BF3900E1C88C /* XCRemoteSwiftPackageReference "Percent" */;
+			productName = Percent;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
