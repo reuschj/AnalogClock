@@ -96,11 +96,19 @@ struct ClockHand: View {
     }
     
     var body: some View {
-        Positioner(shape: shape, lengthRatio: lengthRatio, width: width, overhangRatio: overhangRatio, color: color, outlineColor: outlineColor, outlineWidth: outlineWidth)
+        Positioner(
+            shape: shape,
+            lengthRatio: lengthRatio,
+            width: width,
+            overhangRatio: overhangRatio,
+            color: color,
+            outlineColor: outlineColor,
+            outlineWidth: outlineWidth
+        )
             .scaledToFit()
             .rotationEffect(Angle(degrees: rotationInDegrees))
     }
-    
+
     struct Dimensions {
         var shape: Shape
         var lengthRatio: CGFloat = 1
@@ -298,6 +306,11 @@ struct ClockHand: View {
         var body: some View {
             GeometryReader { geometry in
                 self.renderPivot(clockDiameter: geometry.size.width)
+                    .frame(
+                        width: geometry.size.width,
+                        height: geometry.size.height,
+                        alignment: .center
+                    )
             }
         }
     }
@@ -367,6 +380,11 @@ struct ClockHand: View {
         var body: some View {
             GeometryReader { geometry in
                 self.renderClockHand(clockDiameter: geometry.size.width)
+                    .frame(
+                        width: geometry.size.width,
+                        height: geometry.size.height,
+                        alignment: .center
+                    )
             }
         }
     }
@@ -451,5 +469,22 @@ struct ClockHandConstants {
         
         static let tickTockDelta: Double = 15
         static var tickTockOffset: Angle { Angle(degrees:  -tickTockDelta / 2) }
+    }
+}
+
+
+
+struct ClockHand_Previews: PreviewProvider {
+    static var clockType: ClockType = .twelveHour
+    
+    static var previews: some View {
+        ZStack {
+            Circle()
+                .foregroundColor(.blue)
+            ClockHand.Hour(clockType: clockType)
+            ClockHand.Minute(clockType: clockType)
+            ClockHand.Second(clockType: clockType)
+        }
+            .padding()
     }
 }

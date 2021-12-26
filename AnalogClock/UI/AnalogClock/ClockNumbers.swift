@@ -69,6 +69,7 @@ struct ClockNumbers: View {
         return ZStack {
             ForEach((1...self.steps), id: \.self) {
                 ClockNumber(number: self.getNumber($0), font: clockNumberFont, color: self.color)
+                    .frame(width: clockDiameter, height: clockDiameter, alignment: .center)
                     .rotationEffect(Angle(degrees: self.increment * -Double($0)))
                     .offset(x: 0, y: offsetAmount)
                     .rotationEffect(Angle(degrees: self.increment * Double($0)))
@@ -80,6 +81,15 @@ struct ClockNumbers: View {
         GeometryReader { geometry in
             self.positionClockNumbers(clockDiameter: geometry.size.width)
         }
+    }
+}
+
+struct ClockNumbers_Previews: PreviewProvider {
+    static var previews: some View {
+        ClockNumbers(
+            type: .twelveHour
+        )
+            .padding()
     }
 }
 

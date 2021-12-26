@@ -32,7 +32,7 @@ struct TickTockDisplayView: View {
      */
     private func calculateSize(clockDiameter: CGFloat) -> ClockSize {
         let size = clockDiameter / 40
-        return (width: size, height: size)
+        return (height: size, width: size)
     }
     
     /// Positions the clock numbers around the inner edge of the clock
@@ -45,6 +45,11 @@ struct TickTockDisplayView: View {
     var body: some View {
         GeometryReader { geometry in
             self.positionTickTockDisplay(clockDiameter: geometry.size.width)
+                .frame(
+                    width: geometry.size.width,
+                    height: geometry.size.height,
+                    alignment: .center
+                )
         }
     }
 }

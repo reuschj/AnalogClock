@@ -179,7 +179,7 @@ class ClockTheme: Hashable, Comparable {
                 ),
                 timeDigits: FlexClockFont(
                     name: CustomFonts.MajorMonoDisplay.regular,
-                    scale: UIPercent(oneOver: 11, of: .screen(.width))
+                    scale: UIPercent(oneOver: 12, of: .screen(.width))
                 ),
                 timeSeparators: FlexClockFont(
                     name: CustomFonts.MajorMonoDisplay.regular,

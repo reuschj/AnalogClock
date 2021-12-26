@@ -126,6 +126,11 @@ struct AnalogClockView: View {
     var body: some View {
         GeometryReader { geometry in
             self.renderClock(size: self.getSize(geometry))
+                .frame(
+                    width: geometry.size.width,
+                    height: geometry.size.height,
+                    alignment: .center
+                )
         }
     }
     
@@ -160,5 +165,16 @@ struct AnalogClockView: View {
             // Pivot
             var pivot: ClockElementColor = ClockElementColor(fill: .primary)
         }
+    }
+}
+
+struct AnalogClockView_Previews: PreviewProvider {
+    static var previews: some View {
+        AnalogClockView(
+            timeEmitter: getTimeEmitter(),
+            type: .twelveHour,
+            settings: getAppSettings()
+        )
+            .padding()
     }
 }

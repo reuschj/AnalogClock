@@ -62,6 +62,11 @@ struct PeriodDisplayView: View {
     var body: some View {
         GeometryReader { geometry in
             self.positionPeriodDisplay(clockDiameter: geometry.size.width)
+                .frame(
+                    width: geometry.size.width,
+                    height: geometry.size.height,
+                    alignment: .center
+                )
         }
     }
 }
