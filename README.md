@@ -1,6 +1,6 @@
 #  AnalogClock
 
-This project has been renamed to [Qrono and moved to a new repo](https://github.com/reuschj/qrono). 
+> This project has been renamed to [Qrono and moved to a new repo](https://github.com/reuschj/qrono). 
 
 This is a work-in-progress for now.
 
